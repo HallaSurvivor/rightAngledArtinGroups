@@ -1,0 +1,598 @@
+\documentclass[12pt]{article}
+
+%{{{ Preamble
+
+%%%%%%%%{{{ Packages
+%%%%%%%%%%%%%%%%%%%%
+
+% the default margins have always felt big to me
+\usepackage[margin=1in]{geometry}
+
+% we aren't animals - we might use more than ASCII
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% we're gay, we like colors
+\usepackage[dvipsnames]{xcolor}
+
+% obligatory math environments, symbols, and theorems
+\usepackage{amsmath, amssymb, amsthm}
+
+% moar symbols
+\usepackage{stmaryrd}
+
+% obligatory citation library
+\usepackage{natbib}
+
+% sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
+\usepackage{tikz, tikz-cd}
+
+% sometimes you gotta put in pretty pictures
+\usepackage{graphicx}
+
+% sometimes you gotta write code
+\usepackage{listings}
+
+% proof trees are useful
+\usepackage{proof}
+
+% use \mathbbm for bb-numerals, use \bm for bold math symbols.
+\usepackage{bbm, bm}
+
+% I like clickable links in pdfs
+\usepackage{hyperref}
+
+% Convenient todo-notes and missing figure boxes
+\usepackage{todonotes}
+
+% remove paragraph indentation
+\usepackage{parskip}
+
+% allow fancy stuff (custom headers and footers)
+\usepackage{fancyhdr}
+
+% pretty boxes are pretty
+\usepackage[framemethod=TikZ]{mdframed}
+
+%}}}
+
+%%%%%%%%{{{ Formatting
+%%%%%%%%%%%%%%%%%%%%%%
+
+% prevent orphans/widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% never break words across lines -- hyphens are stupid
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+%}}}
+
+%%%%%%%%{{{ Environments
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+%}}}
+
+%%{{{ Aliases and Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{{{ blackboard letters
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+%}}}
+
+%{{{ categories
+\newcommand*{\catFont}[1]{\mathsf{#1}} 
+\newcommand*{\catVarFont}[1]{\mathcal{#1}}
+
+\newcommand{\Set}{\catFont{Set}}
+\newcommand{\Top}{\catFont{Top}}
+\newcommand{\Cat}{\catFont{Cat}}
+\newcommand{\Grp}{\catFont{Grp}}
+\newcommand{\Mod}{\catFont{Mod}}
+\newcommand{\Sub}{\catFont{Sub}}
+\newcommand{\FP}{\catFont{FP}}
+\newcommand{\Pos}{\catFont{Pos}}
+\newcommand{\FinSet}{\catFont{FinSet}}
+
+\newcommand{\cata}{\catVarFont{A}}
+\newcommand{\catb}{\catVarFont{B}}
+\newcommand{\catc}{\catVarFont{C}}
+\newcommand{\catd}{\catVarFont{D}}
+\newcommand{\catx}{\catVarFont{X}}
+\newcommand{\caty}{\catVarFont{Y}}
+\newcommand{\catZ}{\catVarFont{Z}}
+%}}}
+
+%{{{ "operators" (words in math mode)
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+%}}}
+
+%{{{ arrows
+\newcommand{\hookr}{\hookrightarrow}
+\newcommand{\hookl}{\hookleftarrow}
+\newcommand{\monor}{\rightarrowtail}
+\newcommand{\monol}{\leftarrowtail}
+\newcommand{\epir}{\twoheadrightarrow}
+\newcommand{\epil}{\twoheadleftarrow}
+\newcommand{\regepir}{\rightarrowtriangle}
+\newcommand{\regepil}{\leftarrowtriangle}
+%}}}
+
+%{{{ categorical limits
+\newcommand{\limr}{\varinjlim}
+\newcommand{\liml}{\varprojlim}
+%}}}
+
+%{{{ analysis
+\DeclareMathOperator{\dif}{d \!}
+\DeclareMathOperator{\Dif}{D \!}
+\newcommand{\del}{\partial}
+\newcommand*{\abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand*{\eval}[1]{\left . #1 \right \rvert}
+
+% partial derivative command (taken from commath package)
+% usage: \pd[n]{f}{x}
+\newcommand*{\pd}[3][]{\ensuremath{
+\ifinner
+\tfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\else
+\dfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\fi
+}}
+
+% ordinary derivative command (taken from commath package)
+% usage: \od[n]{f}{x}
+\newcommand*{\od}[3][]{\ensuremath{
+\ifinner
+\tfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\else
+\dfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\fi
+}}
+
+%}}}
+
+%{{{ algebra
+\newcommand{\meet}{\wedge}
+\newcommand{\join}{\vee}
+\newcommand{\id}{\mathrm{id}}
+%}}}
+
+%{{{ topology
+\newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
+%}}}
+
+%{{{ logic
+\renewcommand{\diamond}{\lozenge}
+\newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
+
+% \godelnum command, stolen from 
+% https://www.logicmatters.net/
+% 	latex-for-logicians/symbols/corner-quotes-for-godel-numbers/
+\newbox\gnBoxA
+\newdimen\gnCornerHgt
+\setbox\gnBoxA=\hbox{$\ulcorner$}
+\global\gnCornerHgt=\ht\gnBoxA
+\newdimen\gnArgHgt
+\def\godelnum #1{%
+\setbox\gnBoxA=\hbox{$#1$}%
+\gnArgHgt=\ht\gnBoxA%
+\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
+\else \advance \gnArgHgt by -\gnCornerHgt%
+\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
+\raise\gnArgHgt\hbox{$\urcorner$}}
+
+% coding function
+\newcommand*{\code}[1]{\langle #1 \rangle}
+
+%}}}
+
+%{{{ misc symbols
+\newcommand{\teq}{\triangleq}
+\newcommand{\fin}{ \subseteq_{\text{fin}} }
+
+% important words
+\newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
+
+% define a "danger" symbol for use when something surprising might occur
+% https://tex.stackexchange.com/questions/159669/
+% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+% use outside of math mode!
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+%}}}
+
+%}}}
+
+%% project specific aliases (if they exist)
+\IfFileExists{../preamble.tex}{\input{../preamble.tex}}{}
+
+%}}}
+
+\newsavebox{\pullback}
+\sbox\pullback{%
+\begin{tikzpicture}%
+\draw (0,0) -- (1ex,0ex);%
+\draw (1ex,0ex) -- (1ex,1ex);%
+\end{tikzpicture}}
+
+%% Heading
+\author{Chris Grossack}
+\title{RAAG Functor Survey of Ideas}
+
+\begin{document}
+\maketitle
+
+\section{Summary}
+
+This whole idea came out of the recognition that the 
+\important{Artin Group} construction $\Gamma \mapsto A \Gamma$ 
+is actually a functor 
+from the category of graphs to the category of groups. Morever,
+the universal property of this functor is best formalized by writing 
+$A \dashv C$ where $C$ is the \important{Commutation Graph} functor. 
+
+For completeness, given a graph $\Gamma = (V,E)$ and a group $G$:
+
+\[ A\Gamma \teq \langle V ~|~ [x,y] \text{ iff } x \mathrel{E} y \rangle \]
+
+\[ CG \teq (G, \{ (g,h) ~|~ [g,h] = 1 \}) \]
+
+Then adjointness says we have a bijection
+
+\[ 
+  \left \{ 
+  \begin{tabular}{c} 
+    group homomorphisms\\ 
+    $A\Gamma \to G$
+  \end{tabular} 
+  \right \} 
+  \leftrightarrow
+  \left \{ 
+  \begin{tabular}{c} 
+    graph homomorphisms\\ 
+    $\Gamma \to CG$
+  \end{tabular} 
+  \right \} 
+\]
+  
+The notion of ``graph homomorphism'' is somewhat subtle, and I'll address 
+exactly what is meant in the next section. I'll also be making a blog post
+on exactly this topic, because I can't seem to find a table comparing various
+choices of ``category of graphs'' anywhere\ldots
+
+Regardless, adjointness endows $A$ (and $C$) with certain nice properties for
+free. Most notably:
+
+\begin{itemize}
+  \item $A$ preserves colimits:
+    \begin{itemize}
+      \item simple example: 
+        $A(\Gamma + \Delta) = A\Gamma \ast A\Delta$ 
+        where $+$ (the disjoint union) is the coprudct in the category of graphs
+      \item more complex example: a pushout in graphs gets sent to an 
+        amalgamated free product of the corresponding groups
+    \end{itemize}
+  \item $C$ preserves limits:
+    \begin{itemize}
+      \item simple example: $C(G \times H) = CG \times CH$
+      \item more complex example: 
+        If $K$ is the kernel of a map $\varphi : G \to H$,
+        then $CK$ is the equalizer of $C\varphi$ and $C0$ 
+        in the category of graphs. (here $0$ is the constant identity map).
+    \end{itemize}
+  \item Since $\eta_\Gamma : \Gamma \monor CA\Gamma$, $A$ must be \emph{faithful}, 
+    that is $A$ is injective on arrows.
+  \item Dually, since $\epsilon_G : CAG \epir G$, $C$ must be faithful too.
+\end{itemize}
+
+Moreover, it is clear that $A$ preserves \emph{regular} monos. That is,
+if $\Gamma_0$ is a full subgraph of $\Gamma$, then $A\Gamma_0$ embeds in
+$A\Gamma$.
+
+The dream is to use this machinery to better understand when 
+$A\Gamma \leq A\Delta$. Such an inclusion obviously happens when 
+$\Gamma$ is a full subgraph of $\Delta$, but it may occur in other situations 
+as well. In fact, this adjointness says that \emph{general} homs from
+$A\Gamma \to A\Delta$ are in bijection with homs $\Gamma \to CA\Delta$. 
+Then we want to understand which homs $m : \Gamma \to CA\Delta$ induce 
+embeddings $\widetilde{m} : A\Gamma \to A\Delta$.
+
+Of course, there are few category-theoretic questions which are of
+independent interest. I'll spend slightly less time on those.
+
+\section{Category of Graphs}
+
+So here's what $\mathsf{Gph}$, the \important{Category of Graphs}, maens for us:
+
+\begin{itemize}
+  \item Objects are sets $V$ equipped with a symmetric binary relation 
+    $E \subseteq V \times V$. Notably, this allows self loops but 
+    does not allow multi-edges.
+  \item Arrows are functions which preserve this structure. That is,
+    functions $f : V_1 \to V_2$ with the bonus property that 
+    $x \mathrel{E_1} y \Longrightarrow fx \mathrel{E_2} fy$
+\end{itemize}
+
+It's important to allow self loops to make $A \dashv C$ work out. There
+are lots of non-injective homomorphisms $A\Gamma \to G$. Notably,
+since $g \in G$ commutes with itself, the map sending every generator to $g$
+should be a valid hom. But in order for this to coincide with a graph hom,
+we need to know that two different vertices $x$ and $y$ can both be sent to 
+$g \in CG$. But if $x \mathrel{E_\Gamma} y$, then we \emph{must} have 
+$g \mathrel{E_{CG}} g$ in order for the bonus property to be satisfied.
+
+\danger \quad If we allow self loops, then $A$ can still be defined. After
+all, $x$ will commute with itself anyways, so adding the relation $[x,x]$ 
+won't actually impact the raag. Unfortunately, we \emph{lose} uniqueness.
+Now it's possible that $A\Gamma \cong A\Delta$ but $\Gamma \not \cong \Delta$.
+But they're still the same up to the removal of self-loops, and I think this
+is a small price to pay for the existence of an adjoint.
+
+Here is a quick survey of some properties of $\mathsf{Gph}$ that I suspect
+might be useful.
+
+\begin{itemize}
+  \item It's ``topological over $\mathsf{Set}$''
+    \begin{itemize}
+      \item This means (among other things) the forgetful functor $U$ which 
+        sends a graph to its set of vertices has both a left and right adjoint
+        $D \dashv U \dashv K^\ell$
+      \item Here $D$ sends a set to the discrete graph on that set, and $K^\ell$
+        sends a set to the complete graph (with self loops!) on that set.
+      \item it also means $\mathsf{Gph}$ has all limits and all colimits,
+        and you can compute these by taking the (co)limits in $\mathsf{Set}$,
+        and then adding the edges that you're forced to add.
+    \end{itemize}
+  \item Regular monos (that is, equalizers) are exactly full subgraphs. 
+    This is a corollary of the statement about limits above.
+  \item It's Cartesian Closed. That is, it admits a ``tensor-hom'' 
+    adjunction $- \times \Gamma \dashv (-)^\Gamma$. You can think of $\Delta^\Gamma$
+    as a graph which ``represents'' all of the graph homs $\Gamma \to \Delta$.
+  \item It admits a (weak) subobject classifier. That is, regular monos (full subgraphs)
+    $\Gamma_0 \monor \Gamma$ are in bijection with ``characteristic functions''
+    $\Gamma \to \Omega$ where $\Omega$ is the following graph (which I'm too lazy to properly tikz): 
+    $\circlearrowright T \-- F \circlearrowleft$. You can think of $\Omega$ as the 
+    graph-theoretic analogue of the 2-element set $\{T,F\}$, which lets us
+    identify a subset $A \monor X$ with the function $\chi_A : X \to \{T,F\}$.
+
+    More formally, a (full) subgraph $\Gamma_0 \monor \Gamma$ is always a 
+    pullback of the ``principal subgraph'' $\circlearrowright T$:
+
+    \begin{center}
+    \begin{tikzcd}
+    \Gamma_0 \arrow[d, "m", tail] \arrow[r, "!"] \arrow[dr, phantom, "\usebox\pullback" , very near start, color=black] & \circlearrowright T \arrow[d, tail] \\
+    \Gamma \arrow[r, "\chi_m"]                   & \circlearrowright T \-- F \circlearrowleft
+    \end{tikzcd}
+    \end{center}
+\end{itemize}
+
+All of these give us ways to create monos in the graph-theoretic world, and
+have consequences for what these monos are allowed to look like. 
+
+\section{Monads are like Burritos}
+
+Given an adjunction $A \dashv C$, we get an endofunctor from $\mathsf{Gph}$
+to itself given by the composite $CA$. Moreover, there is a canonical
+arrow (the \important{unit} of the adjunction) $\eta : \Gamma \to CA\Gamma$ 
+which is obtained by transposing the identity 
+$\text{id} : A\Gamma \to A\Gamma \rightsquigarrow \eta : \Gamma \to CA\Gamma$.
+
+This composite $CA$ (equipped with $\eta$)
+is called the \important{Monad} associated to the adjunction $A \dashv C$.
+
+For the briefest of brief histories, monads are one way to formalize the notion
+of an algebraic structure in a category. An ``algebra'' associated to a monad
+$M : \catc \to \catc$ is an object $A \in \catc$ with an arrow $\alpha : MA \to A$
+so that $\alpha \eta = \text{id}$. It turns out if you look at 
+the free-forgetful adjunction of groups, its algebras are exactly groups.
+In general, you can view algebras of a monad as the algebras of a 
+(potentially complicated) equational theory.
+I think it could be interesting to see what the algebras of this adjunction are,
+and it's something I'll think about more at some point. For more info, 
+see Awodey's ``Category Theory'', or if you want the bible, see 
+Wells and Barr's ``Toposes, Triples, and Theories'' (I haven't read it yet, fwiw).
+
+We can also dualize this whole argument, and get a ``comonad'' 
+$AC : \mathsf{Grp} \to \mathsf{Grp}$. This comes equipped with a natural
+\important{counit} $\epsilon : ACG \to G$ (which is obtained by transposing the 
+identity in the other direction).
+
+Notice neither of these maps are scary. If we unwind the definitions, then
+$\eta$ is the inclusion from $\Gamma$ to $CA\Gamma$ which sends a vertex $v \in \Gamma$
+to the vertex $v \in CA\Gamma$. Dually, a word in $ACG$ is composed of
+elements of $G$, and so there is an ``evaluation map'' $ACG \to G$ that 
+simply sends each element of $G$ (viewed as a generator of $ACG$) to itself.
+$\epsilon$ is exactly this evaluation map.
+
+These are not just of theoretical interest, though. If 
+$f : \Gamma \to CG$, then $\widetilde{f} : A\Gamma \to G$ is given by
+$\widetilde{f} = \epsilon \circ Af$. Dually, if $g : A\Gamma \to G$,
+then $\widetilde{g} : \Gamma \to CG$ is given by $\widetilde{g} = Cg \circ \eta$.
+
+Now we see why we care: An arrow $f : \Gamma \to AC\Delta$ induces
+a mono $\widetilde{f} : A\Gamma \to A\Delta$ if and only if
+$\epsilon \circ Af$ is a mono. But we \emph{know} that $Af$ is a mono whenever
+$f$ is a regular mono. So it suffices to check when $\epsilon \upharpoonright (Af)$
+is a mono. Unfortunately, if we unwind what that means, we get a 
+not-so-enlightening condition. It literally unwinds to ``$A\Gamma \to A\Delta$
+is a mono''\ldots which\ldots isn't helpful.
+
+\section{Adjunctions Induce Equivalences (and Equivalnces are Nice)}
+
+Another approach to try (and an easy source of counterexamples) is to 
+restrict attention to special subcategories. An adjunction $A \dashv C$ 
+always induces an equivalence of (full) subcategories:
+
+\[ 
+  \left \{ 
+    \begin{tabular}{c}
+      $\Gamma$ such that\\
+      $CA\Gamma \cong \Gamma$
+    \end{tabular}
+  \right \} 
+  \simeq
+  \left \{ 
+    \begin{tabular}{c}
+      $G$ such that\\
+      $ACG \cong G$
+    \end{tabular}
+  \right \}
+\]
+
+So for instance, look at $K^\ell_{\aleph_0}$, the complete graph on countably
+many vertices (with self loops). Then $AK^\ell_{\aleph_0}$ is a free abelian group with a countable
+basis, and $CAK^\ell_{\aleph_0}$ is a graph with a vertex for each element of that 
+group (of which there are countably many) and an edge connecting any two
+commuting elements (which is everything). So $CAK^\ell_{\aleph_0} \cong K^\ell_{\aleph_0}$.
+
+The cool thing about this equivalence is that it lets us 1-to-1 convert 
+information between the graphs and their raags. For instance, in this setting
+\emph{every} mono $m : \Gamma \to \Delta$ induces a mono 
+$Am : A\Gamma \to A\Delta$. And moreover, every group-theoretic mono arises 
+in this way.
+
+The less-than-cool thing about this equivalence is that all the graphs are
+infinite. After all, $CA\Gamma$ is always countable, so if we want
+$\Gamma \cong CA\Gamma$, we have no choice but to look at infinite graphs.
+
+\section{RAPL and Friends}
+
+Since right-adjoints preserve limits, we know that a mono $m : G \to H$
+induces a mono $Cm : CG \to CH$. Moreover, since every mono in $\mathsf{Grp}$
+is regular, the induced mono $Cm$ is also regular. This isn't much, but
+we can push it further.
+
+Recall the kernel $K$ of a map $\varphi : G \to H$ is the following
+equalizer:
+
+\begin{center}
+\begin{tikzcd}
+K \arrow[r, "\iota"] & G \arrow[r, shift left=.75ex, "\varphi"] \arrow[r, shift right=.75ex, "0", swap] & H
+\end{tikzcd}
+\end{center}
+
+But equalizers are limits, so hitting this with $C$ will give us an equalizer
+diagram in $\mathsf{Gph}$. If we let $G = A\Gamma$, $H = A\Delta$, and $K = 1$
+(since we want our kernel to be trivial), we get the following equalizer in
+$\mathsf{Gph}$:
+
+\begin{center}
+\begin{tikzcd}
+\circlearrowright e \arrow[r, "\iota"] & CA\Gamma \arrow[r, shift left=.75ex, "C \varphi"] \arrow[r, shift right=.75ex, "C0", swap] & CA\Delta
+\end{tikzcd}
+\end{center}
+
+Here $\iota$ sends $e$ to the vertex representing the identity in $CA\Gamma$.
+
+Conjecture: The converse is also true. That is, given an equalizer in $\mathsf{Gph}$
+
+\begin{center}
+\begin{tikzcd}
+\circlearrowright e \arrow[r, "\iota"] & CA\Gamma \arrow[r, shift left=.75ex, "f"] \arrow[r, shift right=.75ex, "C0", swap] & CA\Delta
+\end{tikzcd}
+\end{center}
+
+we must have $f = C\varphi$ for some $\varphi : A\Gamma \to A\Delta$ an embedding of groups.
+
+Obviously, this could prove useful if true. This is probably where I'm going to
+focus my efforts for the next little while.
+
+
+\section{An Excuse to Say Big Words: QuasiTopoi and You}
+
+Remember that long set of stuff I said about the category $\mathsf{Gph}$?
+It turns out those are the defining characteristics of a \important{QuasiTopos}.
+QuasiTopoi basically look like $\mathsf{Set}$, and most arguments you can
+run in $\mathsf{Set}$ are also true in general quasitopoi. 
+
+The way to make this statement precise is by defining set builder notation in your (quasi)topos. 
+Then you can argue with the same naive set theory we use every day.
+For instance, the initial object plays the role of the empty set,
+and the terminal object plays the role of a singleton set. Then by 
+looking at the exponential $\Omega^X$ we can construct the ``powerset'' of $X$.
+Similarly (partial) functions $f : X \to Y$ can be represented as sets of
+pairs $\{(x,y)\} \monor X \times Y$. Plus, given a logical statement
+$\varphi$, we can form the ``subset'' $\{ x ~|~ \varphi(x) \} \monor X$ by
+cleverly using the subobject classifier $\Omega$. Many topoi 
+(including $\mathsf{Gph}$, I'm pretty sure) contain a ``natural numbers object'',
+which is an object $\N$ that satisfies the induction principle inside the topos.
+Once you have this, you can pick your favorite construction of the
+reals, and before you know it you're doing analysis in this strange world.
+Even without a natural numbers object, you can define algebraic structures
+internal to this topos by considering, for instance, an object $G$ 
+coupled with an arrow $m : G \times G \to G$ satisfying the group axioms.
+The definition can be moved, wholesale, to the ``internal logic'' of the (quasi)topos.
+
+Since we typically argue with set-theoretic proofs, most theorems end up 
+staying true inside a (quasi)topos as well. The only place you have to be 
+somewhat delicate is with nonconstructive arguments. In general, 
+(quasi)topoi might fail to satisfy:
+
+\begin{itemize}
+  \item The axiom of choice
+  \item Double negation elimination ($\{ x ~|~ \lnot \lnot \varphi(x) \} \neq \{ x ~|~ \varphi(x)\}$ in general)
+\end{itemize}
+
+This means you have to be somewhat careful with proofs by contradiction and
+theorems that need choice. The good news is that these are really the 
+\emph{only} caveats.
+
+This is mainly of theoretical interest. It's entirely opaque to me if knowing
+that $\mathsf{Gph}$ is a quasitopos will be useful (I suspect it won't be). 
+But it would be extremely exciting if it \emph{does} turn out to be useful.
+
+\section{Some Obstructions}
+
+The extension graph $\Delta^e$ is a full subgraph of $CA\Delta$, and so
+we have a regular mono $m : \Delta^e \monor CA\Delta$. I suspect it will
+be easy to find monos $f$ which correspond to embeddings $A\Gamma \monor A\Delta$
+which do \emph{not} factor through $m$, in the sense that no choice of dotted
+arrow will make the following commute:
+
+\begin{center}
+\begin{tikzcd}
+\Gamma \arrow[rd, "f"', tail] \arrow[r, dotted, tail] & \Delta^e \arrow[d, "m", tail] \\
+                                                      & CA\Delta                     
+\end{tikzcd}
+\end{center}
+
+\emph{But} this isn't actually helpful. Because Kim \& Koberda's claim has
+nothing to do with $f$ factoring through $m$. It only asks that $\Gamma$
+be a subgraph of $\Delta^e$. Asking for this factorization is asking that
+$\Gamma$ be a subgraph of $\Delta^e$ in some ``natural'' or ``obvious'' way,
+but it's possible that there's some random noncanonical embedding that
+category-theoretic methods can't detect.
+
+Another issue is that of the Clique graph $\Delta^e_k$. The clique graph
+construction isn't obviously functorial (here our choice of $\mathsf{Gph}$ fails us,
+since $k$-cliques might get squashed to a single vertex with a self loop).
+I'm going to think about ways to attack this, but I'm not sure if the category
+theoretic language will be directly useful in understanding the clique graph
+of the extension graph. I'll code up the clique graph sometime this week, and
+run some simple tests. Ideally we'll find a graph $\Lambda$ which is
+a (full) subgraph of $\Delta^e_k$ but \emph{isn't} a subgraph of $CA\Delta$.
+That would show that not all subgraphs of $\Delta^e_k$ induce inclusions
+into $A\Delta$.
+
+% \bibliographystyle{plain}
+% \bibliography{\string~/.bib.bib}
+
+\end{document}

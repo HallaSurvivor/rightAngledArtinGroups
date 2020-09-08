@@ -1,0 +1,6 @@
+*.aux
+*.fdb_latexmk
+*.fls
+*.out
+*.pdf
+.ipynb_checkpoints/*

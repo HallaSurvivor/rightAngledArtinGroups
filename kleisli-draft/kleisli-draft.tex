@@ -1,0 +1,417 @@
+\documentclass[12pt]{article}
+
+%{{{ Preamble
+
+%%%%%%%%{{{ Packages
+%%%%%%%%%%%%%%%%%%%%
+
+% the default margins have always felt big to me
+\usepackage[margin=1in]{geometry}
+
+% we aren't animals - we might use more than ASCII
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% we're gay, we like colors
+\usepackage[dvipsnames]{xcolor}
+
+% obligatory math environments, symbols, and theorems
+\usepackage{amsmath, amssymb, amsthm}
+
+% moar symbols
+\usepackage{stmaryrd}
+
+% obligatory citation library
+\usepackage{natbib}
+
+% sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
+\usepackage{tikz, tikz-cd}
+
+% sometimes you gotta put in pretty pictures
+\usepackage{graphicx}
+
+% sometimes you gotta write code
+\usepackage{listings}
+
+% proof trees are useful
+\usepackage{proof}
+
+% use \mathbbm for bb-numerals, use \bm for bold math symbols.
+\usepackage{bbm, bm}
+
+% I like clickable links in pdfs
+\usepackage{hyperref}
+
+% Convenient todo-notes and missing figure boxes
+\usepackage{todonotes}
+
+% remove paragraph indentation
+\usepackage{parskip}
+
+% allow fancy stuff (custom headers and footers)
+\usepackage{fancyhdr}
+
+% pretty boxes are pretty
+\usepackage[framemethod=TikZ]{mdframed}
+
+%}}}
+
+%%%%%%%%{{{ Formatting
+%%%%%%%%%%%%%%%%%%%%%%
+
+% prevent orphans/widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% never break words across lines -- hyphens are stupid
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+%}}}
+
+%%%%%%%%{{{ Environments
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}
+
+\theoremstyle{definition}
+\newtheorem{defn}{Definition}
+
+%}}}
+
+%%{{{ Aliases and Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{{{ blackboard letters
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+%}}}
+
+%{{{ categories
+\newcommand*{\catFont}[1]{\mathsf{#1}} 
+\newcommand*{\catVarFont}[1]{\mathcal{#1}}
+
+\newcommand{\Set}{\catFont{Set}}
+\newcommand{\Top}{\catFont{Top}}
+\newcommand{\Cat}{\catFont{Cat}}
+\newcommand{\Grp}{\catFont{Grp}}
+\newcommand{\Gph}{\catFont{Gph}}
+\newcommand{\Mod}{\catFont{Mod}}
+\newcommand{\Sub}{\catFont{Sub}}
+\newcommand{\FP}{\catFont{FP}}
+\newcommand{\Pos}{\catFont{Pos}}
+\newcommand{\FinSet}{\catFont{FinSet}}
+
+\newcommand{\cata}{\catVarFont{A}}
+\newcommand{\catb}{\catVarFont{B}}
+\newcommand{\catc}{\catVarFont{C}}
+\newcommand{\catd}{\catVarFont{D}}
+\newcommand{\catx}{\catVarFont{X}}
+\newcommand{\caty}{\catVarFont{Y}}
+\newcommand{\catZ}{\catVarFont{Z}}
+%}}}
+
+%{{{ "operators" (words in math mode)
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+%}}}
+
+%{{{ arrows
+\newcommand{\hookr}{\hookrightarrow}
+\newcommand{\hookl}{\hookleftarrow}
+\newcommand{\monor}{\rightarrowtail}
+\newcommand{\monol}{\leftarrowtail}
+\newcommand{\epir}{\twoheadrightarrow}
+\newcommand{\epil}{\twoheadleftarrow}
+\newcommand{\regepir}{\rightarrowtriangle}
+\newcommand{\regepil}{\leftarrowtriangle}
+%}}}
+
+%{{{ categorical limits
+\newcommand{\limr}{\varinjlim}
+\newcommand{\liml}{\varprojlim}
+%}}}
+
+%{{{ analysis
+\DeclareMathOperator{\dif}{d \!}
+\DeclareMathOperator{\Dif}{D \!}
+\newcommand{\del}{\partial}
+\newcommand*{\abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand*{\eval}[1]{\left . #1 \right \rvert}
+
+% partial derivative command (taken from commath package)
+% usage: \pd[n]{f}{x}
+\newcommand*{\pd}[3][]{\ensuremath{
+\ifinner
+\tfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\else
+\dfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\fi
+}}
+
+% ordinary derivative command (taken from commath package)
+% usage: \od[n]{f}{x}
+\newcommand*{\od}[3][]{\ensuremath{
+\ifinner
+\tfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\else
+\dfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\fi
+}}
+
+%}}}
+
+%{{{ algebra
+\newcommand{\meet}{\wedge}
+\newcommand{\join}{\vee}
+\newcommand{\id}{\mathrm{id}}
+%}}}
+
+%{{{ topology
+\newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
+%}}}
+
+%{{{ logic
+\renewcommand{\diamond}{\lozenge}
+\newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
+
+% \godelnum command, stolen from 
+% https://www.logicmatters.net/
+% 	latex-for-logicians/symbols/corner-quotes-for-godel-numbers/
+\newbox\gnBoxA
+\newdimen\gnCornerHgt
+\setbox\gnBoxA=\hbox{$\ulcorner$}
+\global\gnCornerHgt=\ht\gnBoxA
+\newdimen\gnArgHgt
+\def\godelnum #1{%
+\setbox\gnBoxA=\hbox{$#1$}%
+\gnArgHgt=\ht\gnBoxA%
+\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
+\else \advance \gnArgHgt by -\gnCornerHgt%
+\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
+\raise\gnArgHgt\hbox{$\urcorner$}}
+
+% coding function
+\newcommand*{\code}[1]{\langle #1 \rangle}
+
+%}}}
+
+%{{{ misc symbols
+\newcommand{\teq}{\triangleq}
+\newcommand{\fin}{ \subseteq_{\text{fin}} }
+
+% important words
+\newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
+
+% define a "danger" symbol for use when something surprising might occur
+% https://tex.stackexchange.com/questions/159669/
+% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+% use outside of math mode!
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+%}}}
+
+%}}}
+
+%% project specific aliases (if they exist)
+\IfFileExists{../preamble.tex}{\input{../preamble.tex}}{}
+
+%}}}
+
+%% Heading
+\author{Chris Grossack}
+\title{Kleisli Categories and You: Applications to Raags}
+
+\begin{document}
+\maketitle
+
+\section{Intro}
+  
+
+Recall the setup. We have a pair of adjoint functors
+$A \dashv C : \Grp \to \Gph$
+which induce a monad $CA : \Gph \to \Gph$.
+We will be working off of analogy with the free forgetful
+adjunction $F \dashv U : \Grp \to \Set$. 
+
+In the same way $U$ lets us view groups in terms of their underlying set,
+$C$ lets us view groups in terms of their ``underlying graph''. Similarly,
+since $F$ lets us construct a free group on a set, $A$ lets us construct
+a ``free group on a graph'' -- a raag.
+
+Obviously there's some superficial similarities. If we identify
+a set with its discrete graph, for instance, then the two notions of
+free group coincide. But how precise can we actually make this analogy?
+The answer can be found in Chapter VI of "Categories for the Working Mathematician".
+To discuss it, though, we need to talk about \important{Algebras}. 
+These are generalizations of the following observation:
+
+\section{Algebras of $F \dashv U$}
+
+Let $G$ be the underlying set of a group. The free group $FG$ gives us
+all of the ways to write down ``formal products'' of elements of $G$. 
+But since $G$ admits a group structure, $G$ comes equipped with a way to
+evalute these formal products to get an actual element of $G$. That is,
+$G$ comes equipped with a map $\alpha : UFG \to G$, which we can view as
+this evaluation map. There are two conditions on $\alpha$ which are implied
+by the group structure on $G$:
+
+First, $\alpha$ should be a retract of the inclusion $\eta : G \hookrightarrow UFG$ which sends $g$ to the word $[g]$. 
+
+Second, if we have a word of words (an element of $UFUFG$), then there are two 
+natural ways to evaluate this to an element of $G$. They should be the same.
+This is probably best given as an example. Let's work with $G = \mathbb{Z}$.
+
+Say $[[1,3],[-2],[1,-3]]$ is a word of words. The first way to get an
+element of $G$ is to concatenate these words to get $[1,3,-2,1,-3]$,
+then evaluate this with $\alpha$ to get $0$. The second way is to evaluate
+each inner word individually, to get $[4,-2,-2]$, then evaluate the outer word
+to get $0$. 
+
+We can describe the first condition with the commutative diagram
+
+\begin{center}
+\begin{tikzcd}
+G \arrow[r, "\eta"] \arrow[rd, "\text{Id}"'] & UFG \arrow[d, "\alpha"] \\
+                                             & G                      
+\end{tikzcd}
+\end{center}
+
+And we can describe the second as
+
+\begin{center}
+  \begin{tikzcd}
+    UFUFG \arrow[r, "UF\alpha"] \arrow[d, "\mu"] & UFG \arrow[d, "\alpha"]\\
+    UFG \arrow[r,"\alpha"]                       & G
+  \end{tikzcd}
+\end{center}
+
+In fact, it's not hard to convince yourself that the algebras of the monad
+$UF : \Set \to \Set$ are exactly the groups! Similarly, if you look at the 
+free-forgetful adjunction for rings, its algebras are exactly the rings.
+Or if you look at the monad $G \times - : \Set \to \Set$ for a fixed group $G$,
+its algebras are exactly the $G$-sets.
+
+In all of these cases, the ``algebras'' are exactly the algebras in the 
+classical sense which one might expect to be associated to each monad.
+
+\section{Algebras for a General Monad}
+
+So now we generalize, and given any monad $(M : \catc \to \catc, \eta, \mu)$, we say an
+\important{$M$-Algebra} is an object $X \in \catc$ equipped with an arrow
+$\alpha : MX \to X$ satisfying the above conditions.
+
+Of course there is a category of $M$-algebras, called $\catc^M$, where we define a 
+$M$-homomorphism from $(X,\alpha)$ to $(Y,\beta)$ by 
+a map on the underlying objects which ``respects the $M$-structure''
+in the sense that the following diagram commutes:
+
+\begin{center}
+  \begin{tikzcd}
+    MX \ar[r, "Mf"] \ar[d, "\alpha"] & MY \ar[d,"\beta"]\\
+    X \ar[r,"f"]                     & Y
+  \end{tikzcd}
+\end{center}
+
+There is an obvious forgetful functor $(X,\alpha) \mapsto X$ from 
+$\catc^M \to \catc$. Perhaps less obviously, there is a left adjoint 
+to this forgetful functor which sends $X$ to $(MX,\mu)$.
+
+Now for an important definition: 
+
+\begin{defn}
+We say an adjunction $L \dashv R : \cata \to \catc$ is \important{Monadic}
+whenever $\cata$ and $\catc^{RL}$ are equivalent. Here we want to
+think about $\cata$ as the \emph{Category of Algebras} and $\catc$ as the 
+\emph{base category}. This is the case in all of the above examples -- 
+for instance $\Grp \simeq \Set^{UF}$. In this case, $L$ and $R$ agree
+with the free and forgetful functors from the last paragraph.
+\end{defn}
+
+\section{Why Should We Care?}
+
+As you may have guessed, our adjunction is monadic.\footnote{%
+Nota bene: this is fairly routine to check, but it's also
+annoying and I was slightly sloppy when verifying it. If this turns into a paper, I'll be more thorough.} 
+This means that $\Gph^{CA} \simeq \Grp$!
+
+First and foremost, this means the analogy between raags and free groups 
+is basically perfect. $\Gph$ and $\Set$ share almost all of the same 
+categorical properties, and we have a monadic adjunction from $\Grp$ in both
+cases. So as far as category theory cares, we might as well be working 
+with the same object.
+
+The downside of this realization is it kills any dreams of a nice 
+graph theoretic characterization of monos $A\Gamma \monor A\Delta$.
+After all, there's no nice set theoretic characterization of monos of 
+free groups $FX \monor FY$. Thankfully there are two upsides:
+
+The first is that this basically kills \emph{everyone's} dreams. 
+It's not just that there's no nice \emph{category theoretic} description
+of free group inclusions. There's no nice description of free group inclusions
+using \emph{any} tools. The best we can do is say 
+``Images of the generators shouldn't have nontrivial relations''. So 
+this theorem provides good evidence that there are no good graph theoretic
+characterizations for raag embeddings. So even though we failed, we failed for
+good reason, and now we know what that reason is.
+
+The second upside is that Category Theory does have a saving grace for this
+problem, but it's a little bit awkward, and I haven't had time to play with
+it yet. This is called the \important{Kleisli Category}, and is described in
+Chapter VI, Section 5 of ``Categories for the Working Mathematician''.
+
+Before we talk about what a Kleisli Category \emph{is}, I'll point you 
+to the following theorem:
+
+\begin{thm}
+Given a monad $M : \catc \to \catc$, the Kleisli Category $\catc_M$ is
+equivalent to the full subcategory of free objects in $\catc^M$.
+\end{thm}
+
+Let that sink in. This (for us) says that the category $\catc_{CA}$ is
+equivalent to category of all raags and group homomorphisms! So monos
+in $\catc_{CA}$ will be in bijection with monos of raags! This is exactly
+what we're looking for!
+Ok. So what \emph{is} this magical category? And why was I so pessimistic
+earlier if it exists?
+
+Given a monad $M : \catc \to \catc$, the Kleisli Category $\catc_M$ 
+has the same objects as $\catc$, but has a strange notion of arrow:
+
+We add a Kleisli Arrow $f : X \to_K Y$ for every arrow $f : X \to MY$ in $\catc$.
+
+The identity arrows are given by $\eta : X \to MX$, and we
+compose two Kleisli Arrows according to the following rule:
+$(g : Y \to_K Z) \circ_K (f : X \to_K Y)$ is given by
+
+\[ X \overset{f}{\to} MY \overset{Mg}{\to} MMZ \overset{\mu}{\to} MZ \]
+
+So if we can find a characterization of monos $m : \Gamma \monor_K \Delta$,
+we would have a characterization of monos $\tilde{m} : A \Gamma \monor A \Delta$.
+Unfortunately, no amount of googling has turned up such a characterization 
+for free groups, so I assume we'll struggle to interpret this. 
+
+Who knows, though. One attainable goal might be to find a new \emph{class} 
+of monos, by finding some sufficient condition in the Kleisli Category.
+Even if this doesn't get all the possible monos, this would still be a 
+nice result.
+
+I haven't had time to play around with this, so I'm not sure how
+achievable this will end up being. Either way, now you're caught up 
+on my thoughts.
+
+
+% \newpage
+% \bibliographystyle{plain}
+% \bibliography{\string~/.bib.bib}
+
+\end{document}
