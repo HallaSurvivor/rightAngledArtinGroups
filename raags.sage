@@ -143,3 +143,61 @@ def testOnlyObviousRelations(G, n=100):
                     print(v)
     if found == False:
         print("only obvious relations existed")
+
+def centerless(G, w, n=10000):
+    """
+    Test if w commutes with anything other than w^n
+
+    @param G the raag to check inside
+    @param w the word (as a list of generators) to check
+    @param n how many to check
+    @return: None
+    """
+    found = False
+    W = product(w)
+    ws = words(G)
+    i = 0
+    for wd in ws:
+        if i % 1000 == 0:
+            print(i, "/", n)
+
+        if i == n:
+            return
+
+        evaledwd = product(list(wd))
+
+        index = len(wd) // len(w)
+
+        if evaledwd == W^index or evaledwd == W^(-index):
+            print("skipped", wd)
+            continue
+
+        if W*evaledwd == evaledwd*W:
+            print("Found one!")
+            print(wd)
+            return
+        else:
+            i += 1
+
+def testSageevPentagon(n=10000):
+    """
+    Test if 01234 in the raag of a pentagon has trivial centralizer.
+
+    This answers a question (exercise 3.22) in the sageev paper you're
+    reading with Matt, Jacob, and Elliott.
+
+    In particular, it shows that the element 01234 is a rank 1 isometry.
+
+    @param n how many things to check
+    @return: None
+
+    """
+    
+    # the pentagon graph
+    P = Graph([(0,1), (1,2), (2,3), (3,4), (4,0)])
+    G = raag(P)
+
+    v0,v1,v2,v3,v4 = G.gens()
+    w = [v0,v1,v2,v3,v4]
+
+    centerless(G,w,n)
