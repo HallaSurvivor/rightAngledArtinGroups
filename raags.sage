@@ -168,6 +168,9 @@ def centerless(G, w, n=10000):
 
         index = len(wd) // len(w)
 
+        if evaledwd == G(1):
+            continue
+
         if evaledwd == W^index or evaledwd == W^(-index):
             print("skipped", wd)
             continue
@@ -198,6 +201,6 @@ def testSageevPentagon(n=10000):
     G = raag(P)
 
     v0,v1,v2,v3,v4 = G.gens()
-    w = [v0,v1,v2,v3,v4]
+    w = [v0,v1,v3]
 
     centerless(G,w,n)
