@@ -1,0 +1,555 @@
+\documentclass[12pt]{article}
+% \documentclass[10pt,xcolor={dvipsnames}]{beamer}
+% \usetheme{Berlin}
+
+%{{{ Preamble
+
+%%%%%%%%{{{ Packages
+%%%%%%%%%%%%%%%%%%%%
+
+% the default margins have always felt big to me
+% if beamer: comment this out
+\usepackage[margin=1in]{geometry}
+
+% we're gay, we like colors
+% if beamer: comment this out
+\usepackage[dvipsnames]{xcolor}
+
+% we aren't animals - we might use more than ASCII
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% obligatory math environments, symbols, and theorems
+\usepackage{amsmath, amssymb, amsthm}
+
+% moar symbols
+\usepackage{stmaryrd}
+
+% obligatory citation library
+\usepackage{natbib}
+
+% sometimes you gotta draw stuff, like _c_ommutative _d_iagrams.
+\usepackage{tikz, tikz-cd}
+
+% sometimes you gotta put in pretty pictures
+\usepackage{graphicx}
+
+% sometimes you gotta write code
+\usepackage{listings}
+
+% proof trees are useful
+\usepackage{proof}
+
+% use \mathbbm for bb-numerals, use \bm for bold math symbols.
+\usepackage{bbm, bm}
+
+% I like clickable links in pdfs
+\usepackage{hyperref}
+
+% Convenient todo-notes and missing figure boxes
+\usepackage{todonotes}
+
+% remove paragraph indentation
+\usepackage{parskip}
+
+% allow fancy stuff (custom headers and footers)
+\usepackage{fancyhdr}
+
+% pretty boxes are pretty
+\usepackage[framemethod=TikZ]{mdframed}
+
+%q.uiver.app stuff
+%  is necessary to draw curved arrows.
+\usetikzlibrary{calc}
+%  is necessary to draw squiggly arrows.
+\usetikzlibrary{decorations.pathmorphing}
+
+% A TikZ style for curved arrows of a fixed height, due to AndréC.
+\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
+    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
+    .. (\tikztotarget)\tikztonodes}},
+    settings/.code={\tikzset{quiver/.cd,#1}
+        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
+    quiver/.cd,pos/.initial=0.35,height/.initial=0}
+
+% TikZ arrowhead/tail styles.
+\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
+\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
+\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
+% TikZ arrow styles.
+\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+
+%}}}
+
+%%%%%%%%{{{ Formatting
+%%%%%%%%%%%%%%%%%%%%%%
+
+% prevent orphans/widows
+\clubpenalty = 10000
+\widowpenalty = 10000
+
+% never break words across lines -- hyphens are stupid
+\hyphenpenalty 10000
+\exhyphenpenalty 10000
+
+% forcibly overlay two symbols on top of each other
+% used for the \cupdot and \bigcupdot commands
+% shamelessly taken from here:
+% https://tex.stackexchange.com/questions/3964/
+%   mathematical-symbol-for-disjoint-set-union
+\makeatletter
+\def\moverlay{\mathpalette\mov@rlay}
+\def\mov@rlay#1#2{\leavevmode\vtop{%
+   \baselineskip\z@skip \lineskiplimit-\maxdimen
+   \ialign{\hfil$\m@th#1##$\hfil\cr#2\crcr}
+}}
+\newcommand{\charfusion}[3][\mathord]{
+    #1{\ifx#1\mathop\vphantom{#2}\fi
+        \mathpalette\mov@rlay{#2\cr#3}
+      }
+    \ifx#1\mathop\expandafter\displaylimits\fi}
+\makeatother
+
+
+%}}}
+
+%%%%%%%%{{{ Environments
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newtheorem{thm}{Theorem}
+\newtheorem*{thm*}{Theorem}
+
+\newtheorem*{rmk}{Remark}
+
+% add some slashes to mark the end of a definition. 
+% shamelessly stolen from 
+% https://tex.stackexchange.com/
+% questions/291346/marking-the-end-of-a-definition
+
+\theoremstyle{definition}
+\newtheorem{defn/}{Definition}
+\newtheorem*{defn*/}{Definition}
+
+\newcommand{\defnendsymbol}%
+{%
+  \mathbin{\rotatebox[origin=c]{-45}{$\parallel$}}%
+}
+
+\newenvironment{defn}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn/}}
+  {\popQED\end{defn/}}
+
+\newenvironment{defn*}
+  {\renewcommand{\qedsymbol}{$\defnendsymbol$}%
+   \pushQED{\qed}\begin{defn*/}}
+  {\popQED\end{defn*/}}
+
+% stuff for submitting homeworks
+% beamer: comment out all 3 
+\theoremstyle{theorem}
+
+\newtheorem*{problem}{Problem}
+
+\newenvironment{soln}{\begin{proof}[Solution]}{\end{proof}}
+
+%}}}
+
+%%{{{ Aliases and Commands
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%{{{ blackboard letters
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\C}{\mathbb{C}}
+%}}}
+
+%{{{ categories
+\newcommand*{\catFont}[1]{\mathsf{#1}} 
+\newcommand*{\catVarFont}[1]{\mathcal{#1}}
+
+\newcommand{\Set}{\catFont{Set}}
+\newcommand{\Top}{\catFont{Top}}
+\newcommand{\Cat}{\catFont{Cat}}
+\newcommand{\Grp}{\catFont{Grp}}
+\newcommand{\Mod}{\catFont{Mod}}
+\newcommand{\Sub}{\catFont{Sub}}
+\newcommand{\FP}{\catFont{FP}}
+\newcommand{\Pos}{\catFont{Pos}}
+\newcommand{\FinSet}{\catFont{FinSet}}
+
+\newcommand{\catA}{\catVarFont{A}}
+\newcommand{\catB}{\catVarFont{B}}
+\newcommand{\catC}{\catVarFont{C}}
+\newcommand{\catD}{\catVarFont{D}}
+\newcommand{\catE}{\catVarFont{E}}
+\newcommand{\catX}{\catVarFont{X}}
+\newcommand{\catY}{\catVarFont{Y}}
+\newcommand{\catz}{\catVarFont{Z}}
+%}}}
+
+%{{{ arrows
+\newcommand{\hookr}{\hookrightarrow}
+\newcommand{\hookl}{\hookleftarrow}
+\newcommand{\monor}{\rightarrowtail}
+\newcommand{\monol}{\leftarrowtail}
+\newcommand{\epir}{\twoheadrightarrow}
+\newcommand{\epil}{\twoheadleftarrow}
+\newcommand{\regepir}{\rightarrowtriangle}
+\newcommand{\regepil}{\leftarrowtriangle}
+%}}}
+
+%{{{ categorical limits
+\newcommand{\limr}{\varinjlim}
+\newcommand{\liml}{\varprojlim}
+%}}}
+
+%{{{ analysis
+\DeclareMathOperator{\dif}{d \!}
+\DeclareMathOperator{\Dif}{D \!}
+\newcommand{\del}{\partial}
+\newcommand*{\abs}[1]{\left \lvert #1 \right \rvert}
+\newcommand*{\norm}[1]{\left \lVert #1 \right \rVert}
+\newcommand*{\eval}[1]{\left . #1 \right \rvert}
+
+\newcommand*{\dx}{\ \dif x}
+\newcommand*{\dy}{\ \dif x}
+\newcommand*{\ds}{\ \dif s}
+\newcommand*{\dt}{\ \dif t}
+
+\newcommand*{\dm}{\ \dif m}
+\newcommand*{\dmu}{\ \dif \mu}
+\newcommand*{\dlambda}{\ \dif \lambda}
+
+% partial derivative command (taken from commath package)
+% usage: \pd[n]{f}{x}
+\newcommand*{\pd}[3][]{\ensuremath{
+\ifinner
+\tfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\else
+\dfrac{\partial{^{#1}}#2}{ \partial{#3^{#1}} }
+\fi
+}}
+
+% ordinary derivative command (taken from commath package)
+% usage: \od[n]{f}{x}
+\newcommand*{\od}[3][]{\ensuremath{
+\ifinner
+\tfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\else
+\dfrac{\dif{^{#1}}#2}{ \dif{#3^{#1}} }
+\fi
+}}
+
+% restriction of a map
+\newcommand*{\restrict}{\upharpoonright}
+
+% almost everywhere
+\renewcommand*{\ae}{~\mathrm{a.e.}}
+
+% disjoint union
+\newcommand{\dotcup}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigdotcup}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+% I can't ever remember which one it is... 
+% So just have both so I can't be wrong
+\newcommand{\cupdot}{\charfusion[\mathbin]{\cup}{\cdot}}
+\newcommand{\bigcupdot}{\charfusion[\mathop]{\bigcup}{\cdot}}
+
+% indicator function
+% change to \chi, make it a subscript, etc. as necessary
+\newcommand{\ind}[1]{\mathbbm{1}[#1]}
+
+% epsilon alias... I really am this lazy
+\newcommand{\eps}{\epsilon}
+
+%}}}
+
+%{{{ algebra
+\newcommand{\meet}{\wedge}
+\newcommand{\join}{\vee}
+\newcommand{\id}{\mathrm{id}}
+\newcommand{\normal}{\vartriangleleft}
+
+\DeclareMathOperator{\Hom}{Hom}
+\DeclareMathOperator{\End}{End}
+\DeclareMathOperator{\Aut}{Aut}
+\DeclareMathOperator{\im}{im}
+\DeclareMathOperator{\coker}{coker}
+
+\DeclareMathOperator{\Tor}{Tor}
+\DeclareMathOperator{\Ext}{Ext}
+%}}}
+
+%{{{ number theory
+\DeclareMathOperator{\Li}{Li}
+%}}}
+
+%{{{ topology
+\newcommand*{\interior}[1]{ {\kern0pt#1}^{\mathrm{o}} }
+%}}}
+
+%{{{ lie theory
+
+\newcommand*{\LieGrpFont}{\mathsf}
+
+\newcommand*{\GLC}[1]{\LieGrpFont{GL}(#1,\C)}
+\newcommand*{\GLR}[1]{\LieGrpFont{GL}(#1,\R)}
+\newcommand*{\GLH}[1]{\LieGrpFont{GL}(#1,\mathbb{H})}
+
+\newcommand*{\SLC}[1]{\LieGrpFont{SL}(#1,\C)}
+\newcommand*{\SLR}[1]{\LieGrpFont{SL}(#1,\R)}
+\newcommand*{\SLH}[1]{\LieGrpFont{SL}(#1,\mathbb{H})}
+
+\newcommand*{\U}[1]{\LieGrpFont{U}(#1)}
+\renewcommand*{\O}[1]{\LieGrpFont{O}(#1)}
+
+\newcommand*{\SU}[1]{\LieGrpFont{SU}(#1)}
+\newcommand*{\SO}[1]{\LieGrpFont{SO}(#1)}
+
+\newcommand*{\Sp}[1]{\LieGrpFont{Sp}(#1)}
+
+\newcommand*{\Spin}[1]{\LieGrpFont{Spin}(#1)}
+
+%}}}
+
+%{{{ logic
+\renewcommand{\diamond}{\lozenge}
+\newcommand*{\denote}[1]{\llbracket #1 \rrbracket}
+
+% \godelnum command, stolen from 
+% https://www.logicmatters.net/
+% 	latex-for-logicians/symbols/corner-quotes-for-godel-numbers/
+\newbox\gnBoxA
+\newdimen\gnCornerHgt
+\setbox\gnBoxA=\hbox{$\ulcorner$}
+\global\gnCornerHgt=\ht\gnBoxA
+\newdimen\gnArgHgt
+\def\godelnum #1{%
+\setbox\gnBoxA=\hbox{$#1$}%
+\gnArgHgt=\ht\gnBoxA%
+\ifnum     \gnArgHgt<\gnCornerHgt \gnArgHgt=0pt%
+\else \advance \gnArgHgt by -\gnCornerHgt%
+\fi \raise\gnArgHgt\hbox{$\ulcorner$} \box\gnBoxA %
+\raise\gnArgHgt\hbox{$\urcorner$}}
+
+% coding function
+\newcommand*{\code}[1]{\langle #1 \rangle}
+
+% we have \models, but for some reason not \proves?
+\newcommand*{\proves}{\vdash}
+\newcommand*{\forces}{\Vdash}
+
+%}}}
+
+%{{{ misc symbols
+\newcommand{\teq}{\triangleq}
+\newcommand{\fin}{ \subseteq_{\text{fin}} }
+
+% important words
+\newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
+
+% define a "danger" symbol for use when something surprising might occur
+% https://tex.stackexchange.com/questions/159669/
+% 	how-to-print-a-warning-sign-triangle-with-exclamation-point
+% use outside of math mode!
+
+\newcommand*{\TakeFourierOrnament}[1]{{%
+\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}
+\newcommand*{\danger}{\TakeFourierOrnament{66}}
+
+% I always forget if this is named "danger" or "warning"...
+% So just name it both so I can't be wrong
+\newcommand*{\warning}{\danger}
+
+%}}}
+
+%}}}
+
+%% project specific aliases (if they exist)
+\IfFileExists{../preamble.tex}{\input{../preamble.tex}}{}
+
+%}}}
+
+%% Heading
+\author{Chris Grossack\\ (they/them)}
+\title{A Descent Theorem for Right Angled Artin Groups}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+  We can associate to each graph $G$ a group $AG$, called a
+  \emph{right angled artin group}, freely generated by the vertices
+  of $G$ with the relation that two vertices commute if and only if 
+  they're adjacent in $G$. This association is functorial, so that 
+  every graph homomorphism induces a group homomorphism. 
+  A natural question is to try characterize which group homomorphisms
+  arise in this way, and in this paper we provide an effective 
+  method for detecting these homomorphisms. We do this by applying the
+  methodology of \emph{comonadic descent} to the category of groups,
+  and thus find the category of graphs as a certain subcategory.
+\end{abstract}
+
+\section{Introduction}
+    For us, a \important{Graph} $G$ with underlying vertex set $V$ is a 
+    symmetric, relation on $V$. A \important{Graph Homomorphism} between 
+    a graph $G$ (with vertex set $V$) and $H$ (with vertex set $W$) is a 
+    function $f : V \to W$ so that $(v_1, v_2) \in G \implies (f v_1, f v_2) \in H$.
+    These obviously assemble into a category, which we call $\mathsf{Gph}$.
+
+    Given a graph $G$ with vertex set $V$, we can form a group $AG$, the 
+    \important{Right Angled Artin Group} (Raag) associated to $G$, defined as
+
+    \[ AG \teq \langle v \in V \mid [v_1, v_2] = 1 \text{ whenever } (v_1,v_2) \in G \rangle .\]
+
+    For example, if $G$ is a complete graph on $n$ vertices then 
+    $AG \cong \mathbb{Z}^n$, and if $G$ is a discrete graph on $n$ vertices
+    $AH \cong \mathbb{F}_n$ is a free group on $n$ generators. 
+
+    In this sense, raags allow us to \emph{interpolate} between free and free
+    abelian groups, and have been important objects of study in combinatorics
+    and group theory for this (and other) reasons \todo{find some citations for this}. 
+    Moreover, the interplay between the combinatorics of $G$ and the 
+    algebra of $AG$ is remarkably intricate. See, for instance 
+    \todo{more citations. Importantly, the paper on expanders and raags}.
+
+    More recently, raags have been of interest to geometric group theorists,
+    both for their geometric actions 
+    \todo{cite raags acting on cubes\ldots 
+    are there papers detailing some nice properties of raags? Maybe kim+koberda
+    or another survey? Iirc they generalize other geometrically interesting families of groups}
+    and their relationship to the curve graphs of mapping class groups
+    \todo{cite a whole slew of papers here\ldots Say the word ``pseudo-anasov'', if you want to sound fancy}.
+
+    \todo{rip off paragraph 2 of minasyan's paper}
+
+    Subgroups of raags are of particular interest \todo{Ask Matt why}
+    \todo{rip off section 2.2 of Charney's survey}
+
+    The precise relationship between a graph and its raag is still somewhat
+    mysterious, and much work has gone towards understanding \todo{etc}
+
+    Given a group $\Gamma$, it's natural to ask if it is $AG$ for some 
+    graph $G$. Moreover, given a group homomorphism $\varphi : AG \to AH$, it's 
+    natural to ask when $\varphi = Af$ for some group homomorphism $f : G \to H$.
+
+    \todo{go through and reread the papers about this. I forget exactly what's known}
+
+    Conversely, given a group $\Gamma$ we can take its \important{Commutation Graph}
+    $C\Gamma$ whose vertices are elements of $\Gamma$ and we say 
+    $(\gamma_1, \gamma_2) \in C\Gamma \iff [\gamma_1, \gamma_2] = 1$.
+    These graphs have been of interest to combinatorialists 
+    \todo{find some citations. Definitely look at old posts on Peter Cameron's blog}
+    for decades, because of \todo{reasons}
+
+    It's not hard to see that $C : \mathsf{Grp} \to \mathsf{Gph}$ is also a 
+    functor, and indeed is right adjoint to $A : \mathsf{Gph} \to \mathsf{Grp}$
+    (this has been noticed by many others \todo{citations}, and merely 
+    expresses the usual universal property of raags)
+
+    \todo{have we said what we're planning to prove? Put a statement of the main theorem here in the intro}
+
+\section{An Instructive Example}
+
+\todo{ give an example application of the main theorem, show that it's understandable even without CT }
+
+\section{A Brief Review of Comonadic Descent}
+
+\todo{add a bunch of citations for descent literature}
+
+Recall that an adjunction
+$(L : \catC \to \catD) \dashv (R : \catD \to \catC)$
+induces a \emph{monad} $RL : \catC \to \catC$ and a \emph{comonad}
+$LR : \catD \to \catD$.
+
+By a comonad, we mean a functor $W : \catD \to \catD$ equipped with natural
+transformations $\epsilon : W \Rightarrow 1_\catD$ and $\delta : W \Rightarrow WW$
+so that the following diagrams commute:
+
+\[
+    \begin{tikzcd}
+    & W &&& W & WW \\
+    W & WW & W && WW & WWW
+    \arrow["{1_W \cdot \epsilon}", Rightarrow, from=2-2, to=2-1]
+    \arrow["{\epsilon \cdot 1_W}"', Rightarrow, from=2-2, to=2-3]
+    \arrow["\delta", Rightarrow, from=1-2, to=2-2]
+    \arrow["{1_W}"', Rightarrow, from=1-2, to=2-1]
+    \arrow["{1_W}", Rightarrow, from=1-2, to=2-3]
+    \arrow["\delta"', Rightarrow, from=1-5, to=2-5]
+    \arrow["\delta", Rightarrow, from=1-5, to=1-6]
+    \arrow["{\delta \cdot 1_W}"', Rightarrow, from=2-5, to=2-6]
+    \arrow["{1_W \cdot \delta}", Rightarrow, from=1-6, to=2-6]
+    \end{tikzcd}
+\]
+
+Monads and comonads find application in settings as varied as universal algebra 
+\todo{cite something on monads and something on comonads}, probability theory \todo{cite leinster's paper on ct probability}
+computer science \todo{ cite Moggi's paper and some paper on comonads in CS },
+and phyiscs \todo{ is this true? if so, cite it }.
+Relevant for us is the theory of \important{comonadic descent}, 
+which comes from algebraic geometry \todo{can we find a survey paper on descent in AG?}
+
+A \important{$W$-coalgebra} is an object
+$A \in \catD$ equipped with an arrow $\alpha : A \to WA$ so that the
+diagrams in figure \ref{coalg} commute. A \important{$W$-cohomomorphism}
+between coalgebras $(A,\alpha)$ and $(B,\beta)$ is an arrow $f : A \to B$
+in $\mathcal{D}$ compatible with $\alpha$ and $\beta$, in the sense that 
+figure \ref{cohom} commutes. When $W$ is clear from context, we simply call these
+coalgebras and cohomomorphisms, and they assemble into a category $\catD_W$.
+
+\begin{figure}
+    \caption{The defining diagrams for a coalgebra}
+    \label{coalg}
+    \[
+        \begin{tikzcd}
+        A & WA && A & WA \\
+        & A && WA & WWA
+        \arrow["\alpha", from=1-1, to=1-2]
+        \arrow["{\epsilon_A}", from=1-2, to=2-2]
+        \arrow["{1_A}"', from=1-1, to=2-2]
+        \arrow["\alpha"', from=1-4, to=2-4]
+        \arrow["\alpha", from=1-4, to=1-5]
+        \arrow["\delta"', from=2-4, to=2-5]
+        \arrow["W\alpha", from=1-5, to=2-5]
+        \end{tikzcd}
+    \]
+\end{figure}
+
+\begin{figure}
+    \caption{The defining diagram for a cohomomorphism}
+    \label{cohom}
+    \[
+        \begin{tikzcd}
+        A & B \\
+        WA & WB
+        \arrow["\alpha", from=1-1, to=2-1]
+        \arrow["\beta", from=1-2, to=2-2]
+        \arrow["f", from=1-1, to=1-2]
+        \arrow["Wf"', from=2-1, to=2-2]
+        \end{tikzcd}
+    \]    
+\end{figure}
+
+
+\todo{end with the theorem saying how comonadic descent works}
+
+\section{Applying Descent to Raags}
+
+\section{Can we Really Compute These?}
+
+\section{Conclusion}
+
+\todo{ this comonad was useful, and it stands to reason the monad should be 
+useful too. In fact, this seems to be related to the extension graph of\ldots
+Kim and Koberda? Add a citation }
+
+\newpage
+\nocite{*}
+\bibliographystyle{plain}
+\bibliography{bib.bib}
+
+\end{document}
