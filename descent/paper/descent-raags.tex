@@ -9,7 +9,7 @@
 
 % the default margins have always felt big to me
 % if beamer: comment this out
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=4cm]{geometry}
 
 % we're gay, we like colors
 % if beamer: comment this out
@@ -47,7 +47,8 @@
 \usepackage{hyperref}
 
 % Convenient todo-notes and missing figure boxes
-\usepackage{todonotes}
+\usepackage[textwidth=3.7cm]{todonotes}
+\setlength{\marginparwidth}{3.7cm}
 
 % remove paragraph indentation
 \usepackage{parskip}
@@ -784,6 +785,69 @@ vertices $v$ with $\alpha v =  \beta v$.
 
 \section{Can we Really Compute These?}
 \label{computing}
+
+It is well known that the problem 
+``is a finitely presented group $G$ isomorphic to a raag'' 
+is undecidable. Indeed, being isomorphic to a raag is a 
+\emph{Markov property} in the sense of Definition 3.1 in 
+\todo{cite decision problems survey and reflections}. Then by 3.3 in
+the same paper, our question is undecidable.
+
+In the language of this paper, it is undecdiable whether a given
+(finitely presented) group is an $AC$-coalgebra. However, once we know
+that a group is an $AC$-coalgebra, we can already read off the combinatorics
+of our graph from just this data. Indeed, since $\mathsf{Gph}$ is equivalent
+to $\Grp_{AC}$, any categorical question about our graph can be answered 
+using only the abstract group $G$ with its structure morphism $\alpha : G \to ACG$.
+
+For instance, given a graph $\Gamma$, its vertices are in bijection with
+graph homomorphisms $1 \to \Gamma$, where $1$ is the unique graph with one vertex.
+This tells us how to find the graph $\Gamma$ with $G \cong A\Gamma$ using
+only the coalgebra structure $(G,\alpha)$. Since $A 1 = \mathbb{Z}$,
+vertices of $\Gamma$ are in bijection with cohomomorphisms 
+$(\mathbb{Z}, A \eta_1) \to (G, \alpha)$. 
+
+This also lets us check if a group homomorphism $f : G \to H$ is
+$A \varphi$ for some graph homomorphism, provided we know that $G$ 
+and $H$ are raags. If we're given the graphs $\Gamma$ and $\Delta$
+presenting $G$ and $H$ then this is easy -- we just ask if $f$ sends 
+each generator of $G$ to a generator of $H$. We would expect things to
+be just as easy if we're given the coalgebra stuctures 
+$\alpha : G \to ACG$ and $\beta : H \to ACH$. Indeed this is the case,
+and our algorithm avoids the (expensive) computation of graphs $\Gamma$
+and $\Delta$ presenting $G$ and $H$.
+
+\begin{thm}
+    Given a group homomorphism $f : G \to H$ where $(G,\alpha)$ and $(H,\beta)$
+    are finitely presented $AC$-coalgebras, there is an algorithm deciding 
+    whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
+    presenting $G$ and $H$.
+\end{thm}
+
+\begin{proof}
+    By the equivalence $\mathsf{Gph} \simeq \Grp_{AC}$, this amounts to 
+    checking if $f$ is a cohomomorphism. That is, whether the square
+
+    \[
+        \begin{tikzcd}
+            G & H \\
+            ACG & ACH
+            \arrow["f", from=1-1, to=1-2]
+            \arrow["\alpha"', from=1-1, to=2-1]
+            \arrow["ACf"', from=2-1, to=2-2]
+            \arrow["\beta", from=1-2, to=2-2]
+        \end{tikzcd}
+    \]
+
+    commutes. Of course, we can check this on the (finitely many) generators, 
+    and the claim now follows from the fact that raags have decidable 
+    word problem\footnote{Importantly, this is true even if we are using a 
+    nonstandard generating set. One way to see this is to use the fact
+    that all raags are CAT(0) and that all CAT(0) 
+    groups have decidable word problem, regardless of presentation.}
+    \todo{citations for these footnote claims}
+\end{proof}
+
 
 \section{Conclusion}
 \label{conclusion}
