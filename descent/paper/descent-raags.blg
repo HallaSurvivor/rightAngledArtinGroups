@@ -3,47 +3,55 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: descent-raags.aux
 The style file: plain.bst
 Database file #1: bib.bib
+Warning--empty institution in awodeyCoalgebraicDualBirkhoff2000
+Warning--empty journal in depaivaDialecticaComonads2021
 Warning--empty journal in johnsonNotesHomotopicDescent
 Warning--empty year in johnsonNotesHomotopicDescent
-You've used 7 entries,
+Warning--empty journal in meniniCOMONADSDESCENT
+Warning--empty year in meniniCOMONADSDESCENT
+Warning--empty journal in sacerdoteUNDECIDABLEPROBLEMSGROUP
+Warning--empty year in sacerdoteUNDECIDABLEPROBLEMSGROUP
+Warning--empty journal in saleGeometryConjugacyProblem
+Warning--empty year in saleGeometryConjugacyProblem
+You've used 31 entries,
             2118 wiz_defined-function locations,
-            545 strings with 5296 characters,
-and the built_in function-call counts, 1863 in all, are:
-= -- 187
-> -- 66
-< -- 1
-+ -- 29
-- -- 20
-* -- 116
-:= -- 333
-add.period$ -- 26
-call.type$ -- 7
-change.case$ -- 31
+            699 strings with 9660 characters,
+and the built_in function-call counts, 8568 in all, are:
+= -- 831
+> -- 337
+< -- 9
++ -- 141
+- -- 103
+* -- 541
+:= -- 1450
+add.period$ -- 91
+call.type$ -- 31
+change.case$ -- 141
 chr.to.int$ -- 0
-cite$ -- 9
-duplicate$ -- 78
-empty$ -- 145
-format.name$ -- 20
-if$ -- 375
+cite$ -- 41
+duplicate$ -- 352
+empty$ -- 714
+format.name$ -- 103
+if$ -- 1783
 int.to.chr$ -- 0
-int.to.str$ -- 7
-missing$ -- 7
-newline$ -- 43
-num.names$ -- 14
-pop$ -- 27
+int.to.str$ -- 31
+missing$ -- 26
+newline$ -- 153
+num.names$ -- 66
+pop$ -- 179
 preamble$ -- 1
-purify$ -- 24
+purify$ -- 110
 quote$ -- 0
-skip$ -- 54
+skip$ -- 256
 stack$ -- 0
-substring$ -- 91
-swap$ -- 11
-text.length$ -- 1
+substring$ -- 433
+swap$ -- 62
+text.length$ -- 9
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 28
-warning$ -- 2
-while$ -- 19
-width$ -- 8
-write$ -- 83
-(There were 2 warnings)
+type$ -- 120
+warning$ -- 10
+while$ -- 93
+width$ -- 33
+write$ -- 318
+(There were 10 warnings)

@@ -59,27 +59,8 @@
 % pretty boxes are pretty
 \usepackage[framemethod=TikZ]{mdframed}
 
-%q.uiver.app stuff
-%  is necessary to draw curved arrows.
-\usetikzlibrary{calc}
-%  is necessary to draw squiggly arrows.
-\usetikzlibrary{decorations.pathmorphing}
-
-% A TikZ style for curved arrows of a fixed height, due to AndréC.
-\tikzset{curve/.style={settings={#1},to path={(\tikztostart)
-    .. controls ($(\tikztostart)!\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
-    and ($(\tikztostart)!1-\pv{pos}!(\tikztotarget)!\pv{height}!270:(\tikztotarget)$)
-    .. (\tikztotarget)\tikztonodes}},
-    settings/.code={\tikzset{quiver/.cd,#1}
-        \def\pv##1{\pgfkeysvalueof{/tikz/quiver/##1}}},
-    quiver/.cd,pos/.initial=0.35,height/.initial=0}
-
-% TikZ arrowhead/tail styles.
-\tikzset{tail reversed/.code={\pgfsetarrowsstart{tikzcd to}}}
-\tikzset{2tail/.code={\pgfsetarrowsstart{Implies[reversed]}}}
-\tikzset{2tail reversed/.code={\pgfsetarrowsstart{Implies}}}
-% TikZ arrow styles.
-\tikzset{no body/.style={/tikz/dash pattern=on 0 off 1mm}}
+%q.uiver
+\usepackage{quiver}
 
 %}}}
 
@@ -504,9 +485,13 @@ decided.}
 \section{An Instructive Example}
 \label{eg}
 
-Let's look at the simplest possible case:
+We will use results from category theory in order to prove this theorem,
+but it's important to note that this result is still of use to those who 
+do not wish to learn about comonadic descent. Before seeing the proof,
+let's see an example of how the result can be used to detect whether a group 
+homomorphism came from a graph homomorphism or not.
 
-\todo{graphs should be roman and groups should be greek}
+\todo{standardize greek/roman lettering}
 
 \todo{also, proofread this for professionalism}
 
@@ -579,8 +564,6 @@ $f$ did \emph{not} come from a graph homomorphism!
 \section{A Brief Review of Comonadic Descent}
 \label{review}
 
-\todo{add a bunch of citations for descent literature}
-
 Recall that an adjunction
 $(L : \catC \to \catD) \dashv (R : \catD \to \catC)$
 induces a \emph{monad} $RL : \catC \to \catC$ and a \emph{comonad}
@@ -607,11 +590,24 @@ so that the following diagrams commute:
 \]
 
 Monads and comonads find application in settings as varied as universal algebra 
-\todo{cite something on monads and something on comonads}, probability theory \todo{cite leinster's paper on ct probability}
-computer science \todo{ cite Moggi's paper and some paper on comonads in CS },
-and phyiscs \todo{ is this true? if so, cite it }.
-Relevant for us is the theory of \important{comonadic descent}, 
-which comes from algebraic geometry \todo{can we find a survey paper on descent in AG?}
+\cite{borceuxCategoriesStructures1994, 
+adamekAlgebraicTheoriesCategorical2011,
+bojanczykRecognisableLanguagesMonads2015,
+awodeyCoalgebraicDualBirkhoff2000,
+hylandCategoryTheoreticUnderstanding2007}, 
+probability theory 
+\cite{giryCategoricalApproachProbability1982,
+culbertsonCategoricalFoundationBayesian2014,
+leinsterCodensityUltrafilterMonad2013}, 
+and computer science 
+\cite{moggiNotionsComputationMonads1991,
+depaivaDialecticaComonads2021,
+ghaniAlgebrasCoalgebrasMonads2001,
+ruttenUniversalCoalgebraTheory2000}.
+Relevant for us is the theory of \important{(co)monadic descent}, 
+which comes from gluing conditions in algebraic geometry
+\cite{grothendieckTechniqueDescenteTheoremes1960}, and is reviewed in
+\cite{borceuxCategoriesStructures1994}.
 
 A \important{$W$-coalgebra} is an object
 $A \in \catD$ equipped with an arrow $\alpha : A \to WA$ so that the
@@ -665,9 +661,14 @@ form $AG$ if and only it's a coalgebra, and a group homomorphism is of the
 form $Af$ if and only if it's a cohomomorphism!
 
 The main tool for proving $\mathsf{Gph} \simeq \Grp_{AC}$ is Beck's famed
-\important{(Co)Monadicity Theorem} \todo{cite something here}, which says
+\important{(Co)Monadicity Theorem}\footnote{The original manuscript due to Beck 
+was unpublished, but widely distributed. A scan is available at
+\cite{beckBeckMonadicityTheoremPdf}, but a textbook reference can be
+found as theorem 4.4.4 in \cite{borceuxCategoriesStructures1994}. Both of 
+these prove the statement for \emph{monads}, which is then dualized to give
+the comonadic version we use.}, which says
 
-\begin{thm}[Beck]
+\begin{thm}[Beck, 1968]
     $A$ is an equivalence of categories $\mathsf{Gph} \simeq \Grp_{AC}$ 
     if and only if
 
@@ -677,12 +678,11 @@ The main tool for proving $\mathsf{Gph} \simeq \Grp_{AC}$ is Beck's famed
     \end{enumerate}
 \end{thm}
 
-It's well known that $(1)$ holds 
-\todo{cite the original. This is also apparently thm 2.7 in Koberda's raag course}
-, so it remains to check $(2)$. We're off to a good start since $\mathsf{Gph}$
+It's well known that $(1)$ holds \cite{dromsIsomorphismsGraphGroups1987}, 
+so it remains to check $(2)$. We're off to a good start since $\mathsf{Gph}$
 is complete, and thus has all equalizers. In the next section we'll recall
 the definition of a coreflexive pair, and show that $A$ really does satisfy
-condition $(2)$.
+preserve their equalizers.
 
 \section{Applying Descent to Raags}
 \label{proof}
