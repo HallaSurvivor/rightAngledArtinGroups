@@ -7,6 +7,10 @@ Ji{\v r}{\'i} Ad{\'a}mek, E.~M. Vitale, and Ji{\v r}{\'i} Rosick{\'y}.
 \newblock Number 184 in Cambridge Tracts in Mathematics. {Cambridge Univ.
   Press}, {Cambridge}, 1. publ edition, 2011.
 
+\bibitem{arvindRecognizingCommutingGraph2022}
+V.~Arvind and Peter~J. Cameron.
+\newblock Recognizing the {{Commuting Graph}} of a {{Finite Group}}, June 2022.
+
 \bibitem{awodeyCoalgebraicDualBirkhoff2000}
 Steve Awodey and Jesse Hughes.
 \newblock The coalgebraic dual of birkhoff's variety theorem.
@@ -31,6 +35,10 @@ Martin~R. Bridson.
 \newblock On the subgroups of right-angled {{Artin}} groups and mapping class
   groups.
 \newblock {\em Mathematical Research Letters}, 20(2):203--212, 2013.
+
+\bibitem{cameronGraphsDefinedGroups2021}
+Peter~J. Cameron.
+\newblock Graphs defined on groups, March 2021.
 
 \bibitem{charneyIntroductionRightangledArtin2006}
 Ruth Charney.
@@ -94,6 +102,12 @@ A.~Grothendieck.
   fid\`element plats.
 \newblock {\em undefined}, 1960.
 
+\bibitem{haglundSpecialCubeComplexes2008}
+Fr{\'e}d{\'e}ric Haglund and Daniel~T. Wise.
+\newblock Special {{Cube Complexes}}.
+\newblock {\em Geometric and Functional Analysis}, 17(5):1551--1620, January
+  2008.
+
 \bibitem{hylandCategoryTheoreticUnderstanding2007}
 Martin Hyland and John Power.
 \newblock The {{Category Theoretic Understanding}} of {{Universal Algebra}}:
@@ -122,6 +136,11 @@ Thomas Koberda.
   for finitely generated subgroups of mapping class groups.
 \newblock {\em arXiv:1007.1118 [math]}, March 2012.
 
+\bibitem{koberdaGeometryCombinatoricsRightangled2021}
+Thomas Koberda.
+\newblock Geometry and combinatorics via right-angled {{Artin}} groups, April
+  2021.
+
 \bibitem{leinsterCodensityUltrafilterMonad2013}
 Tom Leinster.
 \newblock Codensity and the ultrafilter monad, July 2013.
@@ -135,7 +154,7 @@ Claudia Menini.
 V.~Metaftsis and E.~Raptis.
 \newblock On the profinite topology of right-angled {{Artin}} groups, May 2009.
 
-\bibitem{millerDecisionProblemsGroups1992a}
+\bibitem{millerDecisionProblemsGroups1992}
 Charles~F. Miller.
 \newblock Decision {{Problems}} for {{Groups}} \textemdash{} {{Survey}} and
   {{Reflections}}.
@@ -168,5 +187,15 @@ George~S Sacerdote.
 Andrew Sale.
 \newblock Geometry of the conjugacy problem.
 \newblock page~35.
+
+\bibitem{servatiusAutomorphismsGraphGroups1989b}
+Herman Servatius.
+\newblock Automorphisms of graph groups.
+\newblock {\em Journal of Algebra}, 126(1):34--60, October 1989.
+
+\bibitem{servatiusSURFACESUBGROUPSGRAPH}
+Herman Servatius, Carl Droms, and Brigitte Servatius.
+\newblock {{SURFACE SUBGROUPS OF GRAPH GROUPS}}.
+\newblock page~6.
 
 \end{thebibliography}
