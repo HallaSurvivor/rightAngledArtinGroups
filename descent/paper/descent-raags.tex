@@ -622,41 +622,41 @@ which comes from gluing conditions in algebraic geometry
 \cite{borceuxCategoriesStructures1994}.
 
 A \important{$W$-coalgebra} is an object
-$A \in \catD$ equipped with an arrow $\alpha : A \to WA$ so that the
-diagrams in figure \ref{coalg} commute. A \important{$W$-cohomomorphism}
-between coalgebras $(A,\alpha)$ and $(B,\beta)$ is an arrow $f : A \to B$
-in $\mathcal{D}$ compatible with $\alpha$ and $\beta$, in the sense that 
-figure \ref{cohom} commutes. When $W$ is clear from context, we simply call these
+$A \in \catD$ equipped with an arrow $\mathfrak{a} : A \to WA$ so that the
+diagrams in figure \ref{fig:coalg} commute. A \important{$W$-cohomomorphism}
+between coalgebras $(A,\mathfrak{a})$ and $(B,\mathfrak{b})$ is an arrow $f : A \to B$
+in $\mathcal{D}$ compatible with $\mathfrak{a}$ and $\mathfrak{b}$, in the sense that 
+figure \ref{fig:cohom} commutes. When $W$ is clear from context, we simply call these
 coalgebras and cohomomorphisms, and they assemble into a category $\catD_W$
 which admits a faithful functor $U : \catD_W \to \catD$ where we 
-simply forget the structure map $\alpha$.
+simply forget the structure map $\mathfrak{a}$.
 
 \begin{figure}
-    \label{coalg}
+    \label{fig:coalg}
     \[
         \begin{tikzcd}
         A & WA && A & WA \\
         & A && WA & WWA
-        \arrow["\alpha", from=1-1, to=1-2]
+        \arrow["\mathfrak{a}", from=1-1, to=1-2]
         \arrow["{\epsilon_A}", from=1-2, to=2-2]
         \arrow["{1_A}"', from=1-1, to=2-2]
-        \arrow["\alpha"', from=1-4, to=2-4]
-        \arrow["\alpha", from=1-4, to=1-5]
+        \arrow["\mathfrak{a}"', from=1-4, to=2-4]
+        \arrow["\mathfrak{a}", from=1-4, to=1-5]
         \arrow["\delta"', from=2-4, to=2-5]
-        \arrow["W\alpha", from=1-5, to=2-5]
+        \arrow["W\mathfrak{a}", from=1-5, to=2-5]
         \end{tikzcd}
     \]
     \caption{The defining diagrams for a coalgebra}
 \end{figure}
 
 \begin{figure}
-    \label{cohom}
+    \label{fig:cohom}
     \[
         \begin{tikzcd}
         A & B \\
         WA & WB
-        \arrow["\alpha", from=1-1, to=2-1]
-        \arrow["\beta", from=1-2, to=2-2]
+        \arrow["\mathfrak{a}", from=1-1, to=2-1]
+        \arrow["\mathfrak{b}", from=1-2, to=2-2]
         \arrow["f", from=1-1, to=1-2]
         \arrow["Wf"', from=2-1, to=2-2]
         \end{tikzcd}
@@ -692,14 +692,14 @@ the comonadic version we use.}, which says
 It's well known that $(1)$ holds \cite{dromsIsomorphismsGraphGroups1987}, 
 so it remains to check $(2)$. We're off to a good start since $\mathsf{Gph}$
 is complete, and thus has all equalizers. In the next section we'll recall
-the definition of a coreflexive pair, and show that $A$ really does satisfy
+the definition of a coreflexive pair, and show that $A$ really does 
 preserve their equalizers.
 
 \section{Applying Descent to Raags}
 \label{proof}
 
 A \important{coreflexive pair} is a pair of arrows with a common retract. 
-A situation
+That is, a situation
 
 \[\begin{tikzcd}
 	\Gamma && \Delta
@@ -714,38 +714,30 @@ Now, we want to show that if $\Theta$ is the equalizer of $\alpha$ and $\beta$,
 as computed in $\mathsf{Gph}$, 
 then $A\Theta$ should still be the equalizer of $A \alpha$ and $A \beta$, 
 as computed in $\mathsf{Grp}$.
+For ease of notation, we will confuse $\alpha$ and $\beta$ with $A \alpha$
+and $A \beta$, since 
+$(A\alpha)(v_1^{n_1} v_2^{n_2} \cdots v_k^{n_k}) = (\alpha v_1)^{n_1} (\alpha v_2)^{n_2} \cdots (\alpha v_k)^{n_k}$.
 
-Well thankfully, $\Theta$ is pretty easy to understand. It's the full subgraph
-of $\Gamma$ on those vertices where $\alpha v = \beta v$.
-
+Now, $\Theta$ is quickly seen to be the full subgraph of $\Gamma$
+on the vertices where $\alpha v = \beta v$. 
 So then $A\Theta = \langle v \mid \alpha v = \beta v \rangle \leq A \Gamma$.
+If instead we compute the equalizer of $A \alpha$ and $A \beta$ in $\Grp$,
+we get $G = \{ g \mid \alpha g = \beta g \} \leq A\Gamma$.
 
-What about the equalizer as computed in $\mathsf{Grp}$? Well, that's also not
-so bad. It's the group $G = \{ g \mid \alpha g = \beta g \} \leq A\Gamma$.
-
-Since $A\Theta$ is obviously a subgroup of $G$, all we need to do is show that 
-$G$ is a subgroup of $A\Theta$! 
-
-That is, we need to show that when 
-$\alpha$ and $\beta$ admit a common retract $\rho$,
-any group element $g$ with $\alpha g = \beta g$ should be a word in the
-vertices $v$ with $\alpha v =  \beta v$.
+So showing that $A \Theta = G$ amounts to showing that, provided $\alpha$ 
+and $\beta$ admit a common retract $\rho$, each $g$ 
+with $\alpha g = \beta g$ is a word in those vertices $v$ with $\alpha v = \beta v$.
 
 \begin{thm}
     $A$ preserves equalizers of coreflexive pairs
 \end{thm}
 
 \begin{proof}
-    First, since $\rho \alpha = 1_\Gamma = \rho \beta$, we know that $\alpha$ and
-    $\beta$ are both strongly injective on vertices. By this we mean that not 
-    only are $\alpha$ and $\beta$ injective, but moreover if
-    $\alpha v = \beta w$, then $v = w$.
-
-    Next, since $\rho$ is a graph
+    Since $\rho$ is a graph
     hom, we see that $v$ and $w$ are $\Gamma$-related if and only if $\alpha v$
-    and $\alpha w$ (resp. $\beta v$ and $\beta w$) are $\Delta$-related. Thus 
-    $v$ and $w$ commute in $A \Gamma$ if and only if their images under $\alpha$
-    (resp. $\beta$) commute in $A \Delta$.
+    and $\alpha w$ (equivalently $\beta v$ and $\beta w$, equivalently $\alpha v$ and $\beta w$) 
+    are $\Delta$-related. Thus $v$ and $w$ commute in $A \Gamma$ if and only 
+    if their images under $\alpha$ and $\beta$ commute in $A \Delta$.
 
     Now, in section 2.3 of \cite{charneyIntroductionRightangledArtin2006},
     Charney shows that for each $g \in A\Gamma$,
@@ -777,21 +769,10 @@ vertices $v$ with $\alpha v =  \beta v$.
     (\beta \gamma_1^{n_1}) (\beta \gamma_2^{n_2}) \ldots (\beta \gamma_k^{n_k})
     \]
 
-    The fear is that we have a situation where 
+    If we can show that actually $\alpha \gamma_i = \beta \gamma_i$ for each $i$,
+    then we'll be done.
 
-    \begin{itemize}
-        \item $\alpha \gamma_1 = \delta_1$
-        \item $\alpha \gamma_2 = \delta_2$
-        \item $\beta \gamma_1 = \delta_2$
-        \item $\beta \gamma_2 = \delta_1$
-    \end{itemize}
-
-    so that ``accidentally'' $\alpha(\gamma_1 \gamma_2) = \beta(\gamma_1 \gamma_2)$.
-
-    But these kinds of situations are not possible because $\rho$ implies that
-    $\alpha$ and $\beta$ are (strongly) injective!
-
-    Indeed, recall that $\alpha$ and $\beta$ give injections from $\{ \gamma_1 \ldots, \gamma_k \}$
+    But $\alpha$ and $\beta$ give injections from $\{ \gamma_1 \ldots, \gamma_k \}$
     to $\{ \delta_1, \ldots, \delta_k \}$, which are in fact bijections since we're
     dealing with finite sets of the same cardinality. 
 
@@ -816,14 +797,14 @@ In the language of this paper, it is undecdiable whether a given
 that a group is an $AC$-coalgebra, we can already read off the combinatorics
 of our graph from just this data. Indeed, since $\mathsf{Gph}$ is equivalent
 to $\Grp_{AC}$, any categorical question about our graph can be answered 
-using only the abstract group $G$ with its structure morphism $\alpha : G \to ACG$.
+using only the abstract group $G$ with its structure morphism $\mathfrak{a} : G \to ACG$.
 
 For instance, given a graph $\Gamma$, its vertices are in bijection with
 graph homomorphisms $1 \to \Gamma$, where $1$ is the unique graph with one vertex.
 This tells us how to find the graph $\Gamma$ with $G \cong A\Gamma$ using
-only the coalgebra structure $(G,\alpha)$. Since $A 1 = \mathbb{Z}$,
+only the coalgebra structure $(G,\mathfrak{a})$. Since $A 1 = \mathbb{Z}$,
 vertices of $\Gamma$ are in bijection with cohomomorphisms 
-$(\mathbb{Z}, A \eta_1) \to (G, \alpha)$. 
+$(\mathbb{Z}, A \eta_1) \to (G, \mathfrak{a})$. 
 
 This also lets us check if a group homomorphism $f : G \to H$ is
 $A \varphi$ for some graph homomorphism, provided we know that $G$ 
@@ -831,12 +812,10 @@ and $H$ are raags. If we're given the graphs $\Gamma$ and $\Delta$
 presenting $G$ and $H$ then this is easy -- we just ask if $f$ sends 
 each generator of $G$ to a generator of $H$. We would expect things to
 be just as easy if we're given the coalgebra stuctures 
-$\alpha : G \to ACG$ and $\beta : H \to ACH$. Indeed this is the case,
-and our algorithm avoids the (expensive) computation of graphs $\Gamma$
-and $\Delta$ presenting $G$ and $H$.
+$\mathfrak{a} : G \to ACG$ and $\mathfrak{b} : H \to ACH$. Indeed this is the case.
 
 \begin{thm}
-    Given a group homomorphism $f : G \to H$ where $(G,\alpha)$ and $(H,\beta)$
+  Given a group homomorphism $f : G \to H$ where $(G,\mathfrak{a})$ and $(H,\mathfrak{b})$
     are finitely presented $AC$-coalgebras, there is an algorithm deciding 
     whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
     presenting $G$ and $H$.
@@ -851,16 +830,20 @@ and $\Delta$ presenting $G$ and $H$.
             G & H \\
             ACG & ACH
             \arrow["f", from=1-1, to=1-2]
-            \arrow["\alpha"', from=1-1, to=2-1]
+            \arrow["\mathfrak{a}"', from=1-1, to=2-1]
             \arrow["ACf"', from=2-1, to=2-2]
-            \arrow["\beta", from=1-2, to=2-2]
+            \arrow["\mathfrak{b}", from=1-2, to=2-2]
         \end{tikzcd}
     \]
 
     commutes. Of course, we can check this on the (finitely many) generators
     of $G$, 
-    and the claim now follows from the fact that $ACH$ is a raag, and thus
-    has solvable word problem \cite{charneyIntroductionRightangledArtin2006}
+    and the claim now follows from the fact that $ACH$ is a raag
+    \footnote{We have to be a bit careful, since $CH$ is infinite, so that 
+    $ACH$ is not finitely generated. However, the images of each generator 
+    of $G$ will land in a finite subgraph of $CH$, so we can do our 
+    computation inside the raag associated to that finite subgraph.}, and thus
+    has solvable word problem \cite{charneyIntroductionRightangledArtin2006}.
 \end{proof}
 
 
@@ -884,7 +867,7 @@ and $r$ to be $AC$-cohomomorphisms, then we do guarantee this came from
 a retraction at the level of graphs.
 
 More speculatively, while this paper focused on the comonad $AC : \Grp \to \Grp$,
-we suspect there is a role to be played by the monad 
+we suspect there is a future role to be played by the monad 
 $CA : \mathsf{Gph} \to \mathsf{Gph}$. Indeed, Kim and Koberda conjecture 
 in \cite{kimEmbedabilityRightangledArtin2013} that embeddings 
 $A\Gamma \to A \Delta$ are possible exactly when $\Gamma$ embeds into the

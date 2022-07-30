@@ -5,57 +5,53 @@ The style file: plain.bst
 Database file #1: bib.bib
 Warning--empty institution in awodeyCoalgebraicDualBirkhoff2000
 Warning--empty journal in depaivaDialecticaComonads2021
-Warning--empty journal in johnsonNotesHomotopicDescent
-Warning--empty year in johnsonNotesHomotopicDescent
 Warning--empty journal in koberdaRIGHTANGLEDARTINGROUPS
 Warning--empty year in koberdaRIGHTANGLEDARTINGROUPS
-Warning--empty journal in meniniCOMONADSDESCENT
-Warning--empty year in meniniCOMONADSDESCENT
 Warning--empty journal in sacerdoteUNDECIDABLEPROBLEMSGROUP
 Warning--empty year in sacerdoteUNDECIDABLEPROBLEMSGROUP
 Warning--empty journal in saleGeometryConjugacyProblem
 Warning--empty year in saleGeometryConjugacyProblem
 Warning--empty journal in servatiusSURFACESUBGROUPSGRAPH
 Warning--empty year in servatiusSURFACESUBGROUPSGRAPH
-You've used 45 entries,
+You've used 43 entries,
             2118 wiz_defined-function locations,
-            776 strings with 11985 characters,
-and the built_in function-call counts, 12226 in all, are:
-= -- 1170
-> -- 493
-< -- 12
-+ -- 207
-- -- 151
-* -- 748
-:= -- 2041
-add.period$ -- 125
-call.type$ -- 45
-change.case$ -- 207
+            766 strings with 11794 characters,
+and the built_in function-call counts, 11688 in all, are:
+= -- 1120
+> -- 479
+< -- 10
++ -- 201
+- -- 147
+* -- 722
+:= -- 1957
+add.period$ -- 119
+call.type$ -- 43
+change.case$ -- 199
 chr.to.int$ -- 0
-cite$ -- 59
-duplicate$ -- 490
-empty$ -- 1036
-format.name$ -- 151
-if$ -- 2558
+cite$ -- 53
+duplicate$ -- 458
+empty$ -- 992
+format.name$ -- 147
+if$ -- 2440
 int.to.chr$ -- 0
-int.to.str$ -- 45
-missing$ -- 32
-newline$ -- 215
-num.names$ -- 94
-pop$ -- 291
+int.to.str$ -- 43
+missing$ -- 30
+newline$ -- 205
+num.names$ -- 90
+pop$ -- 273
 preamble$ -- 1
-purify$ -- 162
+purify$ -- 156
 quote$ -- 0
-skip$ -- 385
+skip$ -- 363
 stack$ -- 0
-substring$ -- 595
-swap$ -- 91
-text.length$ -- 12
+substring$ -- 577
+swap$ -- 81
+text.length$ -- 10
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 176
-warning$ -- 14
-while$ -- 130
-width$ -- 47
-write$ -- 443
-(There were 14 warnings)
+type$ -- 168
+warning$ -- 10
+while$ -- 124
+width$ -- 45
+write$ -- 425
+(There were 10 warnings)
