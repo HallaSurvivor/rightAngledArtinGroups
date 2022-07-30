@@ -17,45 +17,45 @@ Warning--empty journal in saleGeometryConjugacyProblem
 Warning--empty year in saleGeometryConjugacyProblem
 Warning--empty journal in servatiusSURFACESUBGROUPSGRAPH
 Warning--empty year in servatiusSURFACESUBGROUPSGRAPH
-You've used 46 entries,
+You've used 45 entries,
             2118 wiz_defined-function locations,
-            781 strings with 12153 characters,
-and the built_in function-call counts, 12425 in all, are:
-= -- 1187
-> -- 500
+            776 strings with 11985 characters,
+and the built_in function-call counts, 12226 in all, are:
+= -- 1170
+> -- 493
 < -- 12
-+ -- 210
-- -- 153
-* -- 756
-:= -- 2073
-add.period$ -- 127
-call.type$ -- 46
-change.case$ -- 211
++ -- 207
+- -- 151
+* -- 748
+:= -- 2041
+add.period$ -- 125
+call.type$ -- 45
+change.case$ -- 207
 chr.to.int$ -- 0
-cite$ -- 60
-duplicate$ -- 497
-empty$ -- 1058
-format.name$ -- 153
-if$ -- 2601
+cite$ -- 59
+duplicate$ -- 490
+empty$ -- 1036
+format.name$ -- 151
+if$ -- 2558
 int.to.chr$ -- 0
-int.to.str$ -- 46
+int.to.str$ -- 45
 missing$ -- 32
-newline$ -- 219
-num.names$ -- 96
-pop$ -- 300
+newline$ -- 215
+num.names$ -- 94
+pop$ -- 291
 preamble$ -- 1
-purify$ -- 165
+purify$ -- 162
 quote$ -- 0
-skip$ -- 393
+skip$ -- 385
 stack$ -- 0
-substring$ -- 600
-swap$ -- 92
+substring$ -- 595
+swap$ -- 91
 text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 180
+type$ -- 176
 warning$ -- 14
-while$ -- 132
-width$ -- 48
-write$ -- 451
+while$ -- 130
+width$ -- 47
+write$ -- 443
 (There were 14 warnings)

@@ -71,10 +71,6 @@
 \clubpenalty = 10000
 \widowpenalty = 10000
 
-% never break words across lines -- hyphens are stupid
-\hyphenpenalty 10000
-\exhyphenpenalty 10000
-
 % forcibly overlay two symbols on top of each other
 % used for the \cupdot and \bigcupdot commands
 % shamelessly taken from here:
@@ -369,11 +365,15 @@
   of $\Gamma$ with the relation that two vertices commute if and only if 
   they're adjacent in $\Gamma$. This association is functorial, so that 
   every graph homomorphism induces a group homomorphism. 
-  A natural question is to try characterize which group homomorphisms
-  arise in this way, and in this paper we provide an effective 
-  method for detecting these homomorphisms. We do this by applying the
-  methodology of \emph{comonadic descent} to the category of groups,
-  and thus find the category of graphs as a certain subcategory.
+  It is well known that the combinatorics of $\Gamma$ are faithfully
+  reflected in the algebra of $A\Gamma$ 
+  (see \cite{koberdaGeometryCombinatoricsRightangled2021} for a survey),
+  and a natural question is whether the combinatorics of graph \emph{homomorphisms}
+  are similarly preserved.
+  In this paper we use the machinery of comonadic descent to show that 
+  $A$ faithfully embeds the category of graphs into the category of groups,
+  and we give an effective method for detecting which group homomorhpisms 
+  are in the image of $A$.
 \end{abstract}
 
 \section{Introduction}
@@ -398,7 +398,7 @@
 
   Raags are of particular interest to geometric group theorists because
   of their connections to the fundamental groups of closed hyperbolic
-  $3$-manifolds \todo{there might be a better citation for this}\cite{servatiusSURFACESUBGROUPSGRAPH} 
+  $3$-manifolds \cite{servatiusSURFACESUBGROUPSGRAPH} 
   and to the mapping class groups of hyperbolic surfaces 
   \cite{kimGeometryCurveGraph2014}.
   These groups are incredibly complicated in general, and by relating
@@ -427,7 +427,7 @@
   that the answer is \emph{yes}, and indeed we can recognize the category
   of graphs $\mathsf{Gph}$ as the subcategory of groups equipped with 
   certain \important{descent data} and homomorphisms which respect this
-  bonus data.\todo{rewrite the abstract to push this as the punchline}
+  bonus data.
 
   Crucial for the proof of this theorem is the fact that 
   $A : \mathsf{Gph} \to \Grp$ has a right adjoint, the \important{Commutation Graph}
@@ -867,11 +867,34 @@ and $\Delta$ presenting $G$ and $H$.
 \section{Conclusion}
 \label{conclusion}
 
+It has been well known for some time now that the combinatorics of a graph
+$\Gamma$ are reflected in the algebra of its raag $A\Gamma$, but the 
+question of how the combinatorics of graph homomorphisms relates to 
+group homomorphisms between raags remains fertile ground. In this paper we've 
+shown that the connection remains strong, by showing that the category of
+(reflexive) graphs embeds faithfully as an explicit subcategory of 
+the category of groups. 
+
+This lets us quickly answer questions about how relationships between 
+graphs can be promoted to relationships between groups. As a quick 
+example, we might have a retraction of groups 
+$A\Gamma \overset{\iota}{\to} A\Delta \overset{r}{\to} A\Gamma$ even if
+$\Gamma$ is not a retract of $\Delta$. However, if we require $\iota$
+and $r$ to be $AC$-cohomomorphisms, then we do guarantee this came from
+a retraction at the level of graphs.
+
+More speculatively, while this paper focused on the comonad $AC : \Grp \to \Grp$,
+we suspect there is a role to be played by the monad 
+$CA : \mathsf{Gph} \to \mathsf{Gph}$. Indeed, Kim and Koberda conjecture 
+in \cite{kimEmbedabilityRightangledArtin2013} that embeddings 
+$A\Gamma \to A \Delta$ are possible exactly when $\Gamma$ embeds into the
+\emph{extension graph} $\Delta^e$. This graph is closely related to the 
+monad graph $CA\Delta$, as we might expect since, by adjointness, 
+maps $A\Gamma \to A \Delta$ are in natural bijection with maps 
+$\Gamma \to CA \Delta$. It would be interesting to see if category theoretic
+techniques can be brought to bear on this conjecture.
 
 
-\todo{ this comonad was useful, and it stands to reason the monad should be 
-useful too. In fact, this seems to be related to the extension graph of\ldots
-Kim and Koberda? Add a citation }
 
 \newpage
 \nocite{*}
