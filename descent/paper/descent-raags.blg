@@ -3,11 +3,12 @@ Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: descent-raags.aux
 The style file: plain.bst
 Database file #1: bib.bib
-Warning--I didn't find a database entry for "sabalkaRigidityIsomorphismProblem2009a"
 Warning--empty institution in awodeyCoalgebraicDualBirkhoff2000
 Warning--empty journal in depaivaDialecticaComonads2021
 Warning--empty journal in johnsonNotesHomotopicDescent
 Warning--empty year in johnsonNotesHomotopicDescent
+Warning--empty journal in koberdaRIGHTANGLEDARTINGROUPS
+Warning--empty year in koberdaRIGHTANGLEDARTINGROUPS
 Warning--empty journal in meniniCOMONADSDESCENT
 Warning--empty year in meniniCOMONADSDESCENT
 Warning--empty journal in sacerdoteUNDECIDABLEPROBLEMSGROUP
@@ -16,45 +17,45 @@ Warning--empty journal in saleGeometryConjugacyProblem
 Warning--empty year in saleGeometryConjugacyProblem
 Warning--empty journal in servatiusSURFACESUBGROUPSGRAPH
 Warning--empty year in servatiusSURFACESUBGROUPSGRAPH
-You've used 37 entries,
+You've used 46 entries,
             2118 wiz_defined-function locations,
-            735 strings with 10659 characters,
-and the built_in function-call counts, 10151 in all, are:
-= -- 979
-> -- 402
-< -- 10
-+ -- 167
-- -- 123
-* -- 643
-:= -- 1709
-add.period$ -- 106
-call.type$ -- 37
-change.case$ -- 169
+            781 strings with 12153 characters,
+and the built_in function-call counts, 12425 in all, are:
+= -- 1187
+> -- 500
+< -- 12
++ -- 210
+- -- 153
+* -- 756
+:= -- 2073
+add.period$ -- 127
+call.type$ -- 46
+change.case$ -- 211
 chr.to.int$ -- 0
-cite$ -- 49
-duplicate$ -- 409
-empty$ -- 855
-format.name$ -- 123
-if$ -- 2113
+cite$ -- 60
+duplicate$ -- 497
+empty$ -- 1058
+format.name$ -- 153
+if$ -- 2601
 int.to.chr$ -- 0
-int.to.str$ -- 37
-missing$ -- 29
-newline$ -- 180
-num.names$ -- 78
-pop$ -- 223
+int.to.str$ -- 46
+missing$ -- 32
+newline$ -- 219
+num.names$ -- 96
+pop$ -- 300
 preamble$ -- 1
-purify$ -- 132
+purify$ -- 165
 quote$ -- 0
-skip$ -- 304
+skip$ -- 393
 stack$ -- 0
-substring$ -- 515
-swap$ -- 70
-text.length$ -- 10
+substring$ -- 600
+swap$ -- 92
+text.length$ -- 12
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 144
-warning$ -- 12
-while$ -- 110
-width$ -- 39
-write$ -- 373
-(There were 13 warnings)
+type$ -- 180
+warning$ -- 14
+while$ -- 132
+width$ -- 48
+write$ -- 451
+(There were 14 warnings)
