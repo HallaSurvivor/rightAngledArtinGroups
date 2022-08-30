@@ -1,57 +1,48 @@
-This is BibTeX, Version 0.99d (TeX Live 2020)
+This is BibTeX, Version 0.99d (TeX Live 2022)
 Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
 The top-level auxiliary file: descent-raags.aux
 The style file: plain.bst
 Database file #1: bib.bib
 Warning--empty institution in awodeyCoalgebraicDualBirkhoff2000
-Warning--empty journal in depaivaDialecticaComonads2021
-Warning--empty journal in koberdaRIGHTANGLEDARTINGROUPS
-Warning--empty year in koberdaRIGHTANGLEDARTINGROUPS
-Warning--empty journal in sacerdoteUNDECIDABLEPROBLEMSGROUP
-Warning--empty year in sacerdoteUNDECIDABLEPROBLEMSGROUP
-Warning--empty journal in saleGeometryConjugacyProblem
-Warning--empty year in saleGeometryConjugacyProblem
-Warning--empty journal in servatiusSURFACESUBGROUPSGRAPH
-Warning--empty year in servatiusSURFACESUBGROUPSGRAPH
 You've used 43 entries,
             2118 wiz_defined-function locations,
-            766 strings with 11794 characters,
-and the built_in function-call counts, 11688 in all, are:
-= -- 1120
-> -- 479
-< -- 10
-+ -- 201
-- -- 147
-* -- 722
-:= -- 1957
-add.period$ -- 119
+            807 strings with 12755 characters,
+and the built_in function-call counts, 13866 in all, are:
+= -- 1428
+> -- 499
+< -- 11
++ -- 206
+- -- 152
+* -- 1007
+:= -- 2276
+add.period$ -- 132
 call.type$ -- 43
 change.case$ -- 199
 chr.to.int$ -- 0
-cite$ -- 53
-duplicate$ -- 458
-empty$ -- 992
-format.name$ -- 147
-if$ -- 2440
+cite$ -- 44
+duplicate$ -- 522
+empty$ -- 1161
+format.name$ -- 152
+if$ -- 2895
 int.to.chr$ -- 0
 int.to.str$ -- 43
-missing$ -- 30
-newline$ -- 205
-num.names$ -- 90
-pop$ -- 273
+missing$ -- 40
+newline$ -- 215
+num.names$ -- 96
+pop$ -- 167
 preamble$ -- 1
 purify$ -- 156
 quote$ -- 0
-skip$ -- 363
+skip$ -- 378
 stack$ -- 0
-substring$ -- 577
-swap$ -- 81
-text.length$ -- 10
+substring$ -- 1078
+swap$ -- 96
+text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 168
-warning$ -- 10
-while$ -- 124
+warning$ -- 1
+while$ -- 166
 width$ -- 45
-write$ -- 425
-(There were 10 warnings)
+write$ -- 478
+(There was 1 warning)

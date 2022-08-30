@@ -367,7 +367,7 @@
   every graph homomorphism induces a group homomorphism. 
   It is well known that the combinatorics of $\Gamma$ are faithfully
   reflected in the algebra of $A\Gamma$ 
-  (see \cite{koberdaGeometryCombinatoricsRightangled2021} for a survey),
+  (see \cite{koberdaGeometryCombinatoricsRightAngled2022} for a survey),
   and a natural question is whether the combinatorics of graph \emph{homomorphisms}
   are similarly preserved.
   In this paper we use the machinery of comonadic descent to show that 
@@ -398,9 +398,9 @@
 
   Raags are of particular interest to geometric group theorists because
   of their connections to the fundamental groups of closed hyperbolic
-  $3$-manifolds \cite{servatiusSURFACESUBGROUPSGRAPH} 
+  $3$-manifolds \cite{servatiusSurfaceSubgroupsGraph1989} 
   and to the mapping class groups of hyperbolic surfaces 
-  \cite{kimGeometryCurveGraph2014}.
+  \cite{kimGeometryCurveGraph2014a}.
   These groups are incredibly complicated in general, and by relating
   them to raags, we're able to study their geometry by leveraging
   the combinatorics of the underlying graph of the raag.
@@ -410,16 +410,16 @@
   cohomology of $A \Gamma$ is the \emph{exterior face algebra} 
   of $\Gamma$ \cite{sabalkaRigidityIsomorphismProblem2009},
   $A\Gamma$ factors as a direct product if and only if $\Gamma$ factors
-  as a join of two graphs \cite{servatiusAutomorphismsGraphGroups1989b},
+  as a join of two graphs \cite{servatiusAutomorphismsGraphGroups1989},
   and we can compute the Bieri-Neumann-Strebel invariant $\Sigma^1(A\Gamma)$
-  from the information in $\Gamma$ \cite{meierBieriNeumannStrebelInvariantsGraph1993}.
+  from the information in $\Gamma$ \cite{meierBieriNeumannStrebelInvariantsGraph1995}.
   This correspondence can be pushed remarkably far, and recently it was
   shown that \emph{expander graphs}\footnote{which are really sequences of graphs}
   can be recognized from the cohomology of their raags
-  \cite{floresExpandersRightangledArtin2020}! For more information about the 
+  \cite{floresExpandersRightangledArtin2021}! For more information about the 
   close connection between the combinatorics of $\Gamma$ and the algebra of
   $A\Gamma$, see 
-  \cite{floresExpandersRightangledArtin2020, koberdaGeometryCombinatoricsRightangled2021}.
+  \cite{floresExpandersRightangledArtin2021, koberdaGeometryCombinatoricsRightAngled2022}.
   
   With this context, it is natural to ask whether the combinatorics
   of graph homomorphisms are \emph{also} faithfully reflected in the 
@@ -436,7 +436,7 @@
   This is surely well known to 
   experts\footnote{It's implicit in the ``universal property of raags'' given 
   in \cite{koberdaRIGHTANGLEDARTINGROUPS}, for instance, and is stated as
-  such in \cite{servatiusAutomorphismsGraphGroups1989b}} but is not often 
+  such in \cite{servatiusAutomorphismsGraphGroups1989}} but is not often 
   mentioned. This is likely because of the common convention that graphs 
   have no self loops, whereas the adjunction requires us to work with graphs
   with a self loop at each vertex. Of course, this does not appreciably 
@@ -445,13 +445,13 @@
 
   Unsurprisingly, the commutation graph and related constructions have already 
   been of interest to combinatorialists for many years 
-  \cite{baumeisterCommutingGraphsOdd2009, 
-  dolinarMaximalDistancesCommuting2010,
-  giudiciDiametersCommutingGraphs2010,
+  \cite{baumeisterCommutingGraphsOdd2009,
+  dolinarMaximalDistancesCommuting2012,
+  giudiciDiametersCommutingGraphs2010a,
   arvindRecognizingCommutingGraph2022,
-  cameronGraphsDefinedGroups2021}, and the complement of the commutation 
+  cameronGraphsDefinedGroups2022}, and the complement of the commutation 
   graph was even the subject of a (now proven) conjecture of Erd\H{o}s
-  \cite{neumannProblemPaulErdos1976}.
+  \cite{neumannProblemPaulErdos1976a}.
 
   With the commutation graph functor $C$ defined, we can state the main result
   of this paper:
@@ -602,23 +602,23 @@ $\mu : MM \Rightarrow M$ satisfying diagrams opposite those above. A precise
 definition can be found in \cite{borceuxCategoriesStructures1994}.
 
 Monads and comonads find application in settings as varied as universal algebra 
-\cite{borceuxCategoriesStructures1994, 
+\cite{borceuxCategoriesStructures1994,
 adamekAlgebraicTheoriesCategorical2011,
-bojanczykRecognisableLanguagesMonads2015,
+bojanczykRecognisableLanguagesMonads2015a,
 awodeyCoalgebraicDualBirkhoff2000,
-hylandCategoryTheoreticUnderstanding2007}, 
+hylandCategoryTheoreticUnderstanding2007},
 probability theory 
 \cite{giryCategoricalApproachProbability1982,
 culbertsonCategoricalFoundationBayesian2014,
-leinsterCodensityUltrafilterMonad2013}, 
+leinsterCODENSITYULTRAFILTERMONAD2013},
 and computer science 
 \cite{moggiNotionsComputationMonads1991,
-depaivaDialecticaComonads2021,
+depaivaDialecticaComonads2021a,
 ghaniAlgebrasCoalgebrasMonads2001,
 ruttenUniversalCoalgebraTheory2000}.
 Relevant for us is the theory of \important{(co)monadic descent}, 
 which comes from gluing conditions in algebraic geometry
-\cite{grothendieckTechniqueDescenteTheoremes1960}, and is reviewed in
+\cite{grothendieckTechniqueDescenteTheoremes1958}, and is reviewed in
 \cite{borceuxCategoriesStructures1994}.
 
 A \important{$W$-coalgebra} is an object
@@ -674,7 +674,7 @@ form $Af$ if and only if it's a cohomomorphism!
 The main tool for proving $\mathsf{Gph} \simeq \Grp_{AC}$ is Beck's famed
 \important{(Co)Monadicity Theorem}\footnote{The original manuscript due to Beck 
 was unpublished, but widely distributed. A scan is available at
-\cite{beckBeckMonadicityTheoremPdf}, but this is also proven as
+\cite{beckBeckMonadicityTheorem}, but this is also proven as
 theorem 4.4.4 in \cite{borceuxCategoriesStructures1994}. Both of 
 these prove the statement for \emph{monads}, which is then dualized to give
 the comonadic version we use.}, which says
@@ -739,7 +739,7 @@ with $\alpha g = \beta g$ is a word in those vertices $v$ with $\alpha v = \beta
     are $\Delta$-related. Thus $v$ and $w$ commute in $A \Gamma$ if and only 
     if their images under $\alpha$ and $\beta$ commute in $A \Delta$.
 
-    Now, in section 2.3 of \cite{charneyIntroductionRightangledArtin2006},
+    Now, in section 2.3 of \cite{charneyIntroductionRightangledArtin2007},
     Charney shows that for each $g \in A\Gamma$,
     there's a minimal length word $g = w_0 w_1 \ldots w_k$ so that each 
     $w_i$ is a word in the vertices of $\Gamma$, and each $w_i$ is of maximal 
@@ -843,7 +843,7 @@ $\mathfrak{a} : G \to ACG$ and $\mathfrak{b} : H \to ACH$. Indeed this is the ca
     $ACH$ is not finitely generated. However, the images of each generator 
     of $G$ will land in a finite subgraph of $CH$, so we can do our 
     computation inside the raag associated to that finite subgraph.}, and thus
-    has solvable word problem \cite{charneyIntroductionRightangledArtin2006}.
+    has solvable word problem \cite{charneyIntroductionRightangledArtin2007}.
 \end{proof}
 
 
