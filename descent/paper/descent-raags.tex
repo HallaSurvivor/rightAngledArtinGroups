@@ -365,25 +365,30 @@
   of $\Gamma$ with the relation that two vertices commute if and only if 
   they're adjacent in $\Gamma$. This association is functorial, so that 
   every graph homomorphism induces a group homomorphism. 
-  It is well known that the combinatorics of $\Gamma$ are faithfully
-  reflected in the algebra of $A\Gamma$ 
+  There are many results in the literature showing that the combinatorics 
+  of $\Gamma$ are faithfully reflected in the algebraic structure of $A \Gamma$
   (see \cite{koberdaGeometryCombinatoricsRightAngled2022} for a survey),
   and a natural question is whether the combinatorics of graph \emph{homomorphisms}
   are similarly preserved.
-  In this paper we use the machinery of comonadic descent to show that 
-  $A$ faithfully embeds the category of graphs into the category of groups,
-  and we give an effective method for detecting which group homomorhpisms 
-  are in the image of $A$.
+  In this paper we show that the answer is ``yes'' in a very strong sense:
+  The raag functor $A$ is half of an equivalence between the category
+  of graphs and graph homomorphisms and the category of
+  groups admitting a bonus coalgebra structure with homomorphisms preserving 
+  this coalgebra structure. This moreover provides a categorical justification
+  for the close relationship between a graph and its raag.
 \end{abstract}
 
 \section{Introduction}
 \label{intro}
 
+  TODO: say that roman letters will always be in $\mathsf{Grp}$ and 
+  greek letters will be in $\mathsf{Gph}$.
+
   For us, a \important{Graph} $\Gamma$ with underlying vertex set $V$ is a 
   symmetric, reflexive relation on $V$. A \important{Graph Homomorphism} between 
   a graph $\Gamma$ (with vertex set $V$) and $\Delta$ (with vertex set $W$) is a 
   function $\varphi : V \to W$ so that $(v_1, v_2) \in \Gamma \implies (\varphi v_1, \varphi v_2) \in \Delta$.
-  These obviously assemble into a category, which we call $\mathsf{Gph}$.
+  These assemble into a category, which we call $\mathsf{Gph}$.
 
   Given a graph $\Gamma$ with vertex set $V$, we can form a group $A\Gamma$, the 
   \important{Right Angled Artin Group} (Raag) associated to $\Gamma$, defined as
@@ -401,9 +406,11 @@
   $3$-manifolds \cite{servatiusSurfaceSubgroupsGraph1989} 
   and to the mapping class groups of hyperbolic surfaces 
   \cite{kimGeometryCurveGraph2014a}.
-  These groups are incredibly complicated in general, and by relating
+  These groups are incredibly complicated in general (for instance, 
+  TODO: isn't there a raag which has thompson's group F as a finite 
+  index subgroup? Find a citation.), and by relating
   them to raags, we're able to study their geometry by leveraging
-  the combinatorics of the underlying graph of the raag.
+  the combinatorics of the underlying graph of the raag. 
 
   Moreover, a surprising amount of the combinatorics of $\Gamma$ is 
   reflected in the algebra of $A\Gamma$. For instance, the
@@ -426,8 +433,9 @@
   group homomorphisms between raags. The main result of this paper shows
   that the answer is \emph{yes}, and indeed we can recognize the category
   of graphs $\mathsf{Gph}$ as the subcategory of groups equipped with 
-  certain \important{descent data} and homomorphisms which respect this
-  bonus data.
+  certain \important{descent data} in the form of a 
+  \important{coalgebra structure}, and group homomorphisms which are moreover
+  cohomomorphisms.
 
   Crucial for the proof of this theorem is the fact that 
   $A : \mathsf{Gph} \to \Grp$ has a right adjoint, the \important{Commutation Graph}
@@ -459,35 +467,38 @@
   \begin{thm}
       A group $G$ is isomorphic to a raag $A\Gamma$
       if and only if there is a ``structure map''
-      $\alpha : G \to ACG$ making a certian diagram 
-      commute (see figure \ref{coalg}).
+      $\mathfrak{g} : G \to ACG$ making a pair of diagrams
+      commute (see figure \ref{fig:coalg}). 
 
-      Moreover, if $f : A\Gamma \to A\Delta$ is a group homomorphism,
-      is of the form $A \varphi$ for some graph homomorphism
-      $\varphi : \Gamma \to \Delta$ if and only if the following square commutes:
+      Moreover, if $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$ are groups with structure 
+      maps, then a homomorphism $f : G \to H$ is of the form $A \varphi$ for 
+      some $\varphi$ a map of graphs if and 
+      only if it respects the structure maps in the sense that the 
+      following square commutes:
 
       \[
           \begin{tikzcd}
-          A\Gamma && A\Delta \\
+          G && H \\
           \\
-          ACA\Gamma && ACA\Delta
+          ACG && ACH
           \arrow["f", from=1-1, to=1-3]
           \arrow["ACf", from=3-1, to=3-3]
-          \arrow["{A \eta}"{description}, from=1-1, to=3-1]
-          \arrow["A\eta"{description}, from=1-3, to=3-3]
+          \arrow["{\mathfrak{g}}"{description}, from=1-1, to=3-1]
+          \arrow["{\mathfrak{h}}"{description}, from=1-3, to=3-3]
           \end{tikzcd}
       \]
-
-      Importantly, this theorem remains true 
-      even for abstract groups $G$ and $H$ whose underlying graphs we don't know.
   \end{thm}
 
-  In section \ref{eg}, we will give an example of this machinery in action
-  to show that it doesn't require any knowledge of advanced category theory
-  to apply this result. Afterwards, in section \ref{review} 
-  we will briefly review \important{comonadic descent} in order to apply it
-  to the case of raags in section \ref{proof}. Lastly, in section \ref{computing}
-  we show that this condition is algorithmically checkable. 
+  Our proof uses some category theory that might not be familiar to all
+  readers, so in section \ref{refiew} we will briefly review the machinery 
+  of \important{comonadic descent}, which is the main technical tool for 
+  the proof. First, though, in section \ref{eg} we give an example to show that 
+  category theory is not needed in order to apply our results, even though 
+  it is instrumental in the proof. This section might also be of interest to 
+  those learning category theory looking for toy examples of comonadic descent, 
+  since it is usually applied in more complicated situations than this. 
+  Lastly, in section \ref{computing} we show that this condition is 
+  algorithmically checkable.
 
 \section{An Instructive Example}
 \label{eg}
@@ -498,22 +509,26 @@ do not wish to learn about comonadic descent. Before seeing the proof,
 let's see an example of how the result can be used to detect whether a group 
 homomorphism came from a graph homomorphism or not.
 
-
 Let $\Gamma = \{ v \}$ and $\Delta = \{ w \}$ be two one-vertex graphs.
 Then $A \Gamma = \langle v \rangle$ and $A \Delta = \langle w \rangle$,
 and we want to detect when a homomorphism between these groups came from a
 homomorphism of their underlying graphs.
+First we need structure maps for $A\Gamma$ and $A \Delta$. For $A \Gamma$
+this is a map $\mathfrak{g} : A \Gamma \to ACA \Gamma$.
 
-Well, $CA \Gamma$ is the complete graph on $\mathbb{Z}$ many vertices, each
-representing one of the $v^n \in A \Gamma$. 
-Then $\eta : \Gamma \to CA \Gamma$ sends $v \mapsto v^1$ in this graph,
-and the construction for $\Delta$ is the same.
-
-As a warning, notice that $ACA\Gamma = \langle v^n \mid [v^n, v^m] = 1 \rangle$
+Since $A \Gamma = \mathbb{Z}$, $CA \Gamma$ is the complete graph on 
+$\mathbb{Z}$ many vertices, each representing one of the $v^n \in A \Gamma$.
+So then $ACA\Gamma = \langle v^n \mid [v^n, v^m] = 1 \rangle$
 is generated by \emph{formal symbols} named $v^n$. In particular,
 $v^2 v^3 \neq v^5$ in this group. The first is a word of length $2$, the latter
 is a word of length $1$, and there are no relations saying we can combine
 the symbols.
+
+It's not hard to see that $\mathfrak{g} : A \Gamma \to ACA \Gamma$ sending 
+$v \mapsto v^1$ is a coalgebra structure map%
+\footnote{Again, see figure \ref{fig:coalg} for the precise definition},
+and similarly $\mathfrak{h} : A \Delta \to ACA \Delta$ sending 
+$w \mapsto w^1$ is a structure map.
 
 \bigskip
 
@@ -532,7 +547,7 @@ Then we want to consult the square
 	\arrow["{w \mapsto w^1}"{description}, from=1-3, to=3-3]
 \end{tikzcd}\]
 
-which clearly does commute. This tells us that $f$ comes from a graph homomorphism,
+which clearly commutes. This tells us that $f$ comes from a graph homomorphism,
 as indeed it did!
 
 \bigskip
@@ -565,8 +580,9 @@ If instead we chase around the lower left of the square, we get:
 since $(w^1)^2 \neq w^2$ in this group, we have successfully detected that 
 $f$ did \emph{not} come from a graph homomorphism!
 
-Importantly, this same approach works even if we merely know $G$ is isomorphic
-to a raag, without knowing the underlying graph.
+Importantly, this same approach works even if we merely know $G$ and $H$ 
+are isomorphic to raags because they have coalgebra structures 
+$\mathfrak{g}$ and $\mathfrak{h}$. We don't need to know the underlying graphs!
 
 \section{A Brief Review of Comonadic Descent}
 \label{review}
@@ -622,28 +638,28 @@ which comes from gluing conditions in algebraic geometry
 \cite{borceuxCategoriesStructures1994}.
 
 A \important{$W$-coalgebra} is an object
-$A \in \catD$ equipped with an arrow $\mathfrak{a} : A \to WA$ so that the
+$G \in \catD$ equipped with an arrow $\mathfrak{g} : G \to WG$ so that the
 diagrams in figure \ref{fig:coalg} commute. A \important{$W$-cohomomorphism}
-between coalgebras $(A,\mathfrak{a})$ and $(B,\mathfrak{b})$ is an arrow $f : A \to B$
-in $\mathcal{D}$ compatible with $\mathfrak{a}$ and $\mathfrak{b}$, in the sense that 
+between coalgebras $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$ is an arrow $f : G \to H$
+in $\mathcal{D}$ compatible with $\mathfrak{g}$ and $\mathfrak{h}$, in the sense that 
 figure \ref{fig:cohom} commutes. When $W$ is clear from context, we simply call these
 coalgebras and cohomomorphisms, and they assemble into a category $\catD_W$
 which admits a faithful functor $U : \catD_W \to \catD$ where we 
-simply forget the structure map $\mathfrak{a}$.
+simply forget the structure map $\mathfrak{g}$.
 
 \begin{figure}
     \label{fig:coalg}
     \[
         \begin{tikzcd}
-        A & WA && A & WA \\
-        & A && WA & WWA
-        \arrow["\mathfrak{a}", from=1-1, to=1-2]
-        \arrow["{\epsilon_A}", from=1-2, to=2-2]
-        \arrow["{1_A}"', from=1-1, to=2-2]
-        \arrow["\mathfrak{a}"', from=1-4, to=2-4]
-        \arrow["\mathfrak{a}", from=1-4, to=1-5]
+        G & WG && G & WG \\
+        & G && WG & WWG
+        \arrow["\mathfrak{g}", from=1-1, to=1-2]
+        \arrow["{\epsilon_G}", from=1-2, to=2-2]
+        \arrow["{1_G}"', from=1-1, to=2-2]
+        \arrow["\mathfrak{g}"', from=1-4, to=2-4]
+        \arrow["\mathfrak{g}", from=1-4, to=1-5]
         \arrow["\delta"', from=2-4, to=2-5]
-        \arrow["W\mathfrak{a}", from=1-5, to=2-5]
+        \arrow["W\mathfrak{g}", from=1-5, to=2-5]
         \end{tikzcd}
     \]
     \caption{The defining diagrams for a coalgebra}
@@ -653,10 +669,10 @@ simply forget the structure map $\mathfrak{a}$.
     \label{fig:cohom}
     \[
         \begin{tikzcd}
-        A & B \\
-        WA & WB
-        \arrow["\mathfrak{a}", from=1-1, to=2-1]
-        \arrow["\mathfrak{b}", from=1-2, to=2-2]
+        G & H \\
+        WG & WH
+        \arrow["\mathfrak{g}", from=1-1, to=2-1]
+        \arrow["\mathfrak{h}", from=1-2, to=2-2]
         \arrow["f", from=1-1, to=1-2]
         \arrow["Wf"', from=2-1, to=2-2]
         \end{tikzcd}
@@ -664,12 +680,40 @@ simply forget the structure map $\mathfrak{a}$.
     \caption{The defining diagram for a cohomomorphism}
 \end{figure}
 
-Now, each group $AG$ is automatically a coalgebra with structure map
-$A \eta : AG \to ACAG$, so that $A$ factors through $\Grp_{AC}$.
+Abstract nonsense shows that for any adjunction $L \dashv R$, the 
+essential image of $L$ lands inside the category of coalgebras $\mathcal{D}_{LR}$.
+That is, every object $LX \in \mathcal{D}$ is a $LR$-coalgebra, 
+where the structure map is given by $L \eta_X : LX \to LRLX$, and every 
+$L \varphi$ is a $LR$-cohomomorphism.
+TODO: find a citation for this? It's definitely in borceux or categories work.
+
+In our special case, $\eta_\Gamma : \Gamma \to CA\Gamma$ is the map sending 
+each $v \in \Gamma$ to $v^1 \in CA\Gamma$. Then the above says that the 
+functor $A : \mathsf{Gph} \to \mathsf{Grp}$ factors through the 
+category of coalgebras $\mathsf{Grp}_{AC}$ as follows:
+
+\begin{align*}
+  \mathsf{Gph} 
+  &\overset{A}{\longrightarrow} 
+  \mathsf{Grp}_{AG} 
+  &\overset{U}{\longrightarrow} 
+  \mathsf{Grp} \\
+  \Gamma 
+  &\mapsto (A\Gamma, \eta_\Gamma) 
+  &\mapsto A \Gamma
+\end{align*}
+
+TODO: fix this formatting. Maybe just use q.uiver
+
 We will show that $A$ is actually an equivalence of categories 
-$\mathsf{Gph} \simeq \Grp_{AC}$. Then we will see that a group is of the
-form $AG$ if and only it's a coalgebra, and a group homomorphism is of the
-form $Af$ if and only if it's a cohomomorphism!
+$\mathsf{Gph} \simeq \Grp_{AC}$. This tells us that a group is of the 
+form $A\Gamma$ if and only if it's a coalgebra, and a group homomorphism is 
+of the form $A\varphi$ if and only if it's a cohomomorphism!
+
+Again, we emphasize that, given the coalgebra structure $\mathfrak{g}$ this 
+process is effective. In section \ref{computing} we show that we can recover 
+the underlying graph from $\mathfrak{g}$ and how to recover the underlying 
+graph map from a cohomomorphism.
 
 The main tool for proving $\mathsf{Gph} \simeq \Grp_{AC}$ is Beck's famed
 \important{(Co)Monadicity Theorem}\footnote{The original manuscript due to Beck 
@@ -684,14 +728,23 @@ the comonadic version we use.}, which says
     if and only if
 
     \begin{enumerate}
-        \item $A$ reflects isomorphisms (that is, $A\Gamma \cong A\Delta$ if and only if $\Gamma \cong \Delta$)
-        \item $\mathsf{Gph}$ has, and $A$ preserves, ``equalizers of coreflexive pairs''
+        \item $A$ reflects isomorphisms (that is, whenever 
+          $A \varphi : A\Gamma \cong A\Delta$ is an isomorphism of groups, 
+          $\varphi$ must have already been an isomorphism of graphs)
+        \item $\mathsf{Gph}$ has, and $A$ preserves, 
+          ``equalizers of coreflexive pairs''
     \end{enumerate}
 \end{thm}
 
-It's well known that $(1)$ holds \cite{dromsIsomorphismsGraphGroups1987}, 
+Condition $(1)$ is a classical result due to Droms 
+\cite{dromsIsomorphismsGraphGroups1987}, and sharpened by 
+TODO: cite the rational cohomology paper.
+
 so it remains to check $(2)$. We're off to a good start since $\mathsf{Gph}$
-is complete, and thus has all equalizers. In the next section we'll recall
+is complete%
+\footnote{one quick way to see this is to note that it's \emph{topologically concrete}
+in the sense of TODO: cite joy of cats}, and thus has all equalizers. 
+In the next section we'll recall
 the definition of a coreflexive pair, and show that $A$ really does 
 preserve their equalizers.
 
@@ -797,14 +850,14 @@ In the language of this paper, it is undecdiable whether a given
 that a group is an $AC$-coalgebra, we can already read off the combinatorics
 of our graph from just this data. Indeed, since $\mathsf{Gph}$ is equivalent
 to $\Grp_{AC}$, any categorical question about our graph can be answered 
-using only the abstract group $G$ with its structure morphism $\mathfrak{a} : G \to ACG$.
+using only the abstract group $G$ with its structure morphism $\mathfrak{g} : G \to ACG$.
 
 For instance, given a graph $\Gamma$, its vertices are in bijection with
 graph homomorphisms $1 \to \Gamma$, where $1$ is the unique graph with one vertex.
 This tells us how to find the graph $\Gamma$ with $G \cong A\Gamma$ using
-only the coalgebra structure $(G,\mathfrak{a})$. Since $A 1 = \mathbb{Z}$,
+only the coalgebra structure $(G,\mathfrak{g})$. Since $A 1 = \mathbb{Z}$,
 vertices of $\Gamma$ are in bijection with cohomomorphisms 
-$(\mathbb{Z}, A \eta_1) \to (G, \mathfrak{a})$. 
+$(\mathbb{Z}, A \eta_1) \to (G, \mathfrak{g})$. 
 
 This also lets us check if a group homomorphism $f : G \to H$ is
 $A \varphi$ for some graph homomorphism, provided we know that $G$ 
@@ -812,10 +865,10 @@ and $H$ are raags. If we're given the graphs $\Gamma$ and $\Delta$
 presenting $G$ and $H$ then this is easy -- we just ask if $f$ sends 
 each generator of $G$ to a generator of $H$. We would expect things to
 be just as easy if we're given the coalgebra stuctures 
-$\mathfrak{a} : G \to ACG$ and $\mathfrak{b} : H \to ACH$. Indeed this is the case.
+$\mathfrak{g} : G \to ACG$ and $\mathfrak{h} : H \to ACH$. Indeed this is the case.
 
 \begin{thm}
-  Given a group homomorphism $f : G \to H$ where $(G,\mathfrak{a})$ and $(H,\mathfrak{b})$
+  Given a group homomorphism $f : G \to H$ where $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$
     are finitely presented $AC$-coalgebras, there is an algorithm deciding 
     whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
     presenting $G$ and $H$.
@@ -830,9 +883,9 @@ $\mathfrak{a} : G \to ACG$ and $\mathfrak{b} : H \to ACH$. Indeed this is the ca
             G & H \\
             ACG & ACH
             \arrow["f", from=1-1, to=1-2]
-            \arrow["\mathfrak{a}"', from=1-1, to=2-1]
+            \arrow["\mathfrak{g}"', from=1-1, to=2-1]
             \arrow["ACf"', from=2-1, to=2-2]
-            \arrow["\mathfrak{b}", from=1-2, to=2-2]
+            \arrow["\mathfrak{h}", from=1-2, to=2-2]
         \end{tikzcd}
     \]
 

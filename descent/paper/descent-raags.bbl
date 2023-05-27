@@ -31,7 +31,7 @@ Jon~M. Beck.
 \newblock Beck {{Monadicity Theorem}}.
 \newblock https://ncatlab.org/nlab/files/Beck\_MonadicityTheorem.pdf.
 
-\bibitem{bojanczykRecognisableLanguagesMonads2015a}
+\bibitem{bojanczykRecognisableLanguagesMonads2015}
 Miko{\l}aj Boja{\'n}czyk.
 \newblock Recognisable {{Languages}} over {{Monads}}.
 \newblock In Igor Potapov, editor, {\em Developments in {{Language Theory}}},
@@ -68,7 +68,7 @@ Jared Culbertson and Kirk Sturtz.
 \newblock A categorical foundation for {{Bayesian}} probability.
 \newblock {\em Applied Categorical Structures}, 22(4):647--662, August 2014.
 
-\bibitem{depaivaDialecticaComonads2021a}
+\bibitem{depaivaDialecticaComonads2021}
 Valeria {de Paiva}.
 \newblock Dialectica {{Comonads}}.
 \newblock In Fabio Gadducci and Alexandra Silva, editors, {\em 9th
@@ -117,7 +117,7 @@ Mich{\`e}le Giry.
   {{Topology}} and {{Analysis}}}, Lecture {{Notes}} in {{Mathematics}}, pages
   68--85, {Berlin, Heidelberg}, 1982. {Springer}.
 
-\bibitem{giudiciDiametersCommutingGraphs2010a}
+\bibitem{giudiciDiametersCommutingGraphs2010}
 Michael Giudici and Aedan Pope.
 \newblock The diameters of commuting graphs of linear groups and matrix rings
   over the integers modulo m.
@@ -154,7 +154,7 @@ Sang-hyun Kim and Thomas Koberda.
 \newblock Embedability between right-angled {{Artin}} groups.
 \newblock {\em Geometry \& Topology}, 17(1):493--530, April 2013.
 
-\bibitem{kimGeometryCurveGraph2014a}
+\bibitem{kimGeometryCurveGraph2014}
 Sang-Hyun Kim and Thomas Koberda.
 \newblock The geometry of the curve graph of a right-angled {{Artin}} group.
 \newblock {\em International Journal of Algebra and Computation},
@@ -162,9 +162,9 @@ Sang-Hyun Kim and Thomas Koberda.
 
 \bibitem{koberdaRIGHTANGLEDARTINGROUPS}
 Thomas Koberda.
-\newblock {{RIGHT-ANGLED ARTIN GROUPS AND THEIR SUBGROUPS}}.
+\newblock Right-{{Angled Artin Groups}} and {{Their Subgroups}}.
 
-\bibitem{koberdaRightangledArtinGroups2012a}
+\bibitem{koberdaRightangledArtinGroups2012}
 Thomas Koberda.
 \newblock Right-angled {{Artin}} groups and a generalized isomorphism problem
   for finitely generated subgroups of mapping class groups.
@@ -179,8 +179,8 @@ Thomas Koberda.
   Publishing}, {Cham}, 2022.
 
 \bibitem{leinsterCODENSITYULTRAFILTERMONAD2013}
-TOM LEINSTER.
-\newblock {{CODENSITY AND THE ULTRAFILTER MONAD}}.
+Tom Leinster.
+\newblock Codensity and the {{Ultrafilter Monad}}.
 \newblock {\em Theory and Applications of Categories}, 28(13):332--370, 2013.
 
 \bibitem{lohreySubmonoidRationalSubset2008}
@@ -214,7 +214,7 @@ Eugenio Moggi.
 \newblock Notions of computation and monads.
 \newblock {\em Information and Computation}, 93(1):55--92, July 1991.
 
-\bibitem{neumannProblemPaulErdos1976a}
+\bibitem{neumannProblemPaulErdos1976}
 B.~H. Neumann.
 \newblock A problem of {{Paul Erd\"os}} on groups.
 \newblock {\em Journal of the Australian Mathematical Society}, 21(4):467--472,
