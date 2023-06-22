@@ -4,45 +4,46 @@ The top-level auxiliary file: descent-raags.aux
 The style file: plain.bst
 Database file #1: bib.bib
 Warning--empty institution in awodeyCoalgebraicDualBirkhoff2000
-You've used 43 entries,
+Warning--empty journal in yamashitaVeryBriefIntroduction2013
+You've used 44 entries,
             2118 wiz_defined-function locations,
-            807 strings with 12747 characters,
-and the built_in function-call counts, 13866 in all, are:
-= -- 1428
-> -- 499
+            813 strings with 13018 characters,
+and the built_in function-call counts, 14161 in all, are:
+= -- 1459
+> -- 506
 < -- 11
-+ -- 206
-- -- 152
-* -- 1007
-:= -- 2276
-add.period$ -- 132
-call.type$ -- 43
-change.case$ -- 199
++ -- 210
+- -- 154
+* -- 1028
+:= -- 2324
+add.period$ -- 135
+call.type$ -- 44
+change.case$ -- 203
 chr.to.int$ -- 0
-cite$ -- 44
-duplicate$ -- 522
-empty$ -- 1161
-format.name$ -- 152
-if$ -- 2895
+cite$ -- 46
+duplicate$ -- 533
+empty$ -- 1187
+format.name$ -- 154
+if$ -- 2954
 int.to.chr$ -- 0
-int.to.str$ -- 43
-missing$ -- 40
-newline$ -- 215
-num.names$ -- 96
-pop$ -- 167
+int.to.str$ -- 44
+missing$ -- 41
+newline$ -- 220
+num.names$ -- 98
+pop$ -- 171
 preamble$ -- 1
-purify$ -- 156
+purify$ -- 159
 quote$ -- 0
-skip$ -- 378
+skip$ -- 385
 stack$ -- 0
-substring$ -- 1078
+substring$ -- 1109
 swap$ -- 96
 text.length$ -- 11
 text.prefix$ -- 0
 top$ -- 0
-type$ -- 168
-warning$ -- 1
-while$ -- 166
-width$ -- 45
-write$ -- 478
-(There was 1 warning)
+type$ -- 172
+warning$ -- 2
+while$ -- 170
+width$ -- 46
+write$ -- 488
+(There were 2 warnings)
