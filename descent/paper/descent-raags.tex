@@ -370,16 +370,36 @@
   (see \cite{koberdaGeometryCombinatoricsRightAngled2022} for a survey),
   and a natural question is whether the combinatorics of graph \emph{homomorphisms}
   are similarly preserved.
-  In this paper we show that the answer is ``yes'' in a very strong sense:
-  The raag functor $A$ is an equivalence between the category of graphs 
-  and the subcategory of groups equipped with a bonus coalgebra structure.
-  This additionally provides a categorical justification for the many 
-  disparate results relating the combinatorics of $\Gamma$ to the algebra 
-  of $A \Gamma$.
-\end{abstract}
 
+  In this paper we show that the answer is ``yes'' in a very strong sense. 
+  We find a purely algebraic condition that allows us to recognize those 
+  group homomorphisms that come from graph homomorphisms. As a necessary 
+  step we find a new algebraic condition that picks out the raags as 
+  those groups admitting a certain coalgebra structure. As a new proof that 
+  we can effectively decide whether two raags are isomorphic, even without 
+  being given their underlying graphs.    
+
+  In fact, we show that the raag functor $A$ is an equivalence between 
+  the category of graphs and the category of groups-with-coalgebra-structure,
+  which gives categorical justification for the many results 
+  relating the combinatorics of $\Gamma$ to the algebra of $A \Gamma$.
+\end{abstract}
+\todo{Is this abstract too long? How would you write it?}
+
+\newpage
 \section{Introduction}
 \label{intro}
+
+  \begin{mdframed}
+  TODO: \important{Remember!} The key point of this paper is that we can 
+  purely algebraically recognize the graph homomorphisms among the group 
+  homomorphisms between raags. 
+
+  In order to prove this, we find a new algebraic characterization of 
+  raags as those groups admitting a coalgebra structure. This characterization
+  is as tight as possible in the sense that $A$ is an equivalence between
+  the category of graphs and the category of groups-with-coalgebra-structure.
+  \end{mdframed}
 
   TODO: say that roman letters will always be in $\mathsf{Grp}$ and 
   greek letters will be in $\mathsf{Gph}$.
@@ -396,21 +416,22 @@
   \[ A\Gamma \teq \langle v \in V \mid [v_1, v_2] = 1 \text{ whenever } (v_1,v_2) \in \Gamma \rangle .\]
 
   For example, if $K_n$ is a complete graph on $n$ vertices then 
-  $AK_n \cong \mathbb{Z}^n$, and if $\Delta_n$ is a discrete graph on $n$ vertices
+  $AK_n \cong \mathbb{Z}^n$. If $\Delta_n$ is a discrete graph on $n$ vertices
   $A\Delta_n \cong \mathbb{F}_n$ is a free group on $n$ generators. 
-  In this sense, raags allow us to \emph{interpolate} between free and free
-  abelian groups. If $\square$ is the graph with $4$ vertices $a,b,c,d$ and 
+  If $\square$ is the graph with $4$ vertices $a,b,c,d$ and 
   four edges $(a,b)$, $(b,c)$, $(c,d)$, and $(d,a)$ then $A \square \cong 
   \langle a, c \rangle \times \langle b, d \rangle \cong \mathbb{F}_2 \times \mathbb{F}_2$.
+  In this sense, raags allow us to \emph{interpolate} between free and free
+  abelian groups. 
 
   Raags are of particular interest to geometric group theorists because
   of their connections to the fundamental groups of closed hyperbolic
   $3$-manifolds \cite{servatiusSurfaceSubgroupsGraph1989} 
   and to the mapping class groups of hyperbolic surfaces 
-  \cite{kimGeometryCurveGraph2014}. These connections proved useful in 
-  Agol's famed resolution of the Virtual Haken Conjecture (TODO: cite this),
-  see this survey, for instance \cite{yamashitaVeryBriefIntroduction2013}.
-  (TODO: this citation doesn't have an attached URL)
+  \cite{kimGeometryCurveGraph2014}. Moreover, raags were instrumental in
+  the resolution of the Virtual Haken Conjecture due to their close connection 
+  with the CAT(0) geometry of cube complexes. 
+  See \cite{bestvinaGeometricGroupTheory2013} for an overview of this proof.
 
   Interestingly, the combinatorial structure of $\Gamma$ is closely related to the 
   algebraic structure of $A \Gamma$, with useful information flow in both directions. 
@@ -420,7 +441,6 @@
   as a join of two graphs \cite{servatiusAutomorphismsGraphGroups1989},
   and we can compute the Bieri-Neumann-Strebel invariant $\Sigma^1(A\Gamma)$
   from just information in $\Gamma$ \cite{meierBieriNeumannStrebelInvariantsGraph1995}.
-  (TODO: fact check this BNS invariant thing)
   This correspondence can be pushed remarkably far, and recently it was
   shown that \emph{expander graphs}\footnote{which are really sequences of graphs}
   can be recognized from the cohomology of their raags
@@ -431,7 +451,11 @@
   
   With this context, it is natural to ask whether the combinatorics
   of graph homomorphisms are \emph{also} faithfully reflected in the 
-  group homomorphisms between raags. The main result of this paper shows
+  group homomorphisms between raags. In particular, is there a purely 
+  algebraic way to recognize when a group homomorphism between raags is 
+  $A \varphi$ for some homomorphism $\varphi$ of their underlying graphs.
+
+  The main result of this paper shows
   that the answer is \emph{yes} in a very strong way. The raag functor $A$ 
   is an equivalence between the category of graphs $\mathsf{Gph}$ and the 
   category of groups equipped with a coalgebra structure\footnote{A kind of \important{descent data}}.
@@ -693,6 +717,10 @@ That is, every object $LX \in \mathcal{D}$ is a $LR$-coalgebra,
 where the structure map is given by $L \eta_X : LX \to LRLX$, and every 
 $L \varphi$ is a $LR$-cohomomorphism.
 (TODO: find a citation for this? It's definitely in borceux or categories work.)
+
+(TODO: add a paragraph saying that, in the case of the adjunction between 
+$R$ and $S$ modules, we recover the usual notion of coalgebra, with a 
+map $S \to S \otimes_R S$.)
 
 In our special case, $\eta_\Gamma : \Gamma \to CA\Gamma$ is the map sending 
 each $v \in \Gamma$ to $v^1 \in CA\Gamma$. Then the above says that the 

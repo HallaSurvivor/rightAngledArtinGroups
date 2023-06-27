@@ -31,6 +31,13 @@ Jon~M. Beck.
 \newblock Beck {{Monadicity Theorem}}.
 \newblock https://ncatlab.org/nlab/files/Beck\_MonadicityTheorem.pdf.
 
+\bibitem{bestvinaGeometricGroupTheory2013}
+Mladen Bestvina.
+\newblock Geometric group theory and 3-manifolds hand in hand: The fulfillment
+  of {{Thurston}}'s vision.
+\newblock {\em Bulletin of the American Mathematical Society}, 51(1):53--70,
+  September 2013.
+
 \bibitem{bojanczykRecognisableLanguagesMonads2015}
 Miko{\l}aj Boja{\'n}czyk.
 \newblock Recognisable {{Languages}} over {{Monads}}.
@@ -246,12 +253,5 @@ Herman Servatius, Carl Droms, and Brigitte Servatius.
 \newblock Surface subgroups of graph groups.
 \newblock {\em Proceedings of the American Mathematical Society},
   106(3):573--578, 1989.
-
-\bibitem{yamashitaVeryBriefIntroduction2013}
-Yasushi Yamashita.
-\newblock A {{Very Brief Introduction}} to {{Virtual Haken Conjecture}}
-  (representation {{Spaces}}, {{Twisted Topological Invariants}} and
-  {{Geometric Structures}} of 3-{{Manifolds}}).
-\newblock 1836:192--199, May 2013.
 
 \end{thebibliography}
