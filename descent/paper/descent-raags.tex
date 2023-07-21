@@ -639,7 +639,7 @@ so that the following diagrams commute:
 Dually, a \important{monad} is a functor $M : \catC \to \catC$ equipped with 
 natural transformations $\eta : 1_\catC \Rightarrow M$ and 
 $\mu : MM \Rightarrow M$ satisfying diagrams opposite those above. A precise
-definition can be found in \cite{borceuxCategoriesStructures1994}.
+definition can be found in Chapter $4$ of \cite{borceuxCategoriesStructures1994}.
 
 Monads and comonads find application in settings as varied as universal algebra 
 \cite{borceuxCategoriesStructures1994,
@@ -658,8 +658,8 @@ ghaniAlgebrasCoalgebrasMonads2001,
 ruttenUniversalCoalgebraTheory2000}.
 Relevant for us is the theory of \important{(co)monadic descent}, 
 which comes from gluing conditions in algebraic geometry
-\cite{grothendieckTechniqueDescenteTheoremes1958}, and is reviewed in
-\cite{borceuxCategoriesStructures1994}.
+\cite{grothendieckTechniqueDescenteTheoremes1958}, and is reviewed in 
+this context in Section $4.7$ of \cite{borceuxCategoriesStructures1994}.
 
 A \important{$W$-coalgebra} is an object
 $G \in \catD$ equipped with an arrow $\mathfrak{g} : G \to WG$ so that the
@@ -709,47 +709,33 @@ essential image of $L$ lands inside the category of coalgebras $\mathcal{D}_{LR}
 That is, every object $LX \in \mathcal{D}$ is a $LR$-coalgebra, 
 where the structure map is given by $L \eta_X : LX \to LRLX$, and every 
 $L \varphi$ is a $LR$-cohomomorphism.
-(TODO: find a citation for this? It's definitely in borceux or categories work.)
 
-(TODO: add a paragraph saying that, in the case of the adjunction between 
-$R$ and $S$ modules, we recover the usual notion of coalgebra, with a 
-map $S \to S \otimes_R S$.)
-
-In our special case, $\eta_\Gamma : \Gamma \to CA\Gamma$ is the map sending 
+In our special case, $\eta : \Gamma \to CA\Gamma$ is the map sending 
 each $v \in \Gamma$ to $v^1 \in CA\Gamma$. Then the above says that the 
 functor $A : \mathsf{Gph} \to \mathsf{Grp}$ factors through the 
 category of coalgebras $\mathsf{Grp}_{AC}$ as follows:
 
-\begin{align*}
-  \mathsf{Gph} 
-  &\overset{A}{\longrightarrow} 
-  \mathsf{Grp}_{AG} 
-  &\overset{U}{\longrightarrow} 
-  \mathsf{Grp} \\
-  \Gamma 
-  &\mapsto (A\Gamma, \eta_\Gamma) 
-  &\mapsto A \Gamma
-\end{align*}
-
-TODO: fix this formatting. Maybe just use q.uiver
+\[\begin{tikzcd}
+	{\mathsf{Gph}} & {\mathsf{Grp}_{AC}} & {\mathsf{Grp}} \\
+	\Gamma & {(A\Gamma, A \eta)} & A\Gamma
+	\arrow[maps to, from=2-1, to=2-2]
+	\arrow[maps to, from=2-2, to=2-3]
+	\arrow["A", from=1-1, to=1-2]
+	\arrow["U", from=1-2, to=1-3]
+\end{tikzcd}\]
 
 We will show that $A$ is actually an equivalence of categories 
 $\mathsf{Gph} \simeq \Grp_{AC}$. This tells us that a group is of the 
 form $A\Gamma$ if and only if it's a coalgebra, and a group homomorphism is 
 of the form $A\varphi$ if and only if it's a cohomomorphism!
 
-Again, we emphasize that, given the coalgebra structure $\mathfrak{g}$ this 
-process is effective. In section \ref{computing} we show that we can recover 
-the underlying graph from $\mathfrak{g}$ and how to recover the underlying 
-graph map from a cohomomorphism.
-
-The main tool for proving $\mathsf{Gph} \simeq \Grp_{AC}$ is Beck's famed
+The main tool for proving this equivalence is Beck's famed
 \important{(Co)Monadicity Theorem}\footnote{The original manuscript due to Beck 
 was unpublished, but widely distributed. A scan is available at
 \cite{beckBeckMonadicityTheorem}, but this is also proven as
 theorem 4.4.4 in \cite{borceuxCategoriesStructures1994}. Both of 
 these prove the statement for \emph{monads}, which is then dualized to give
-the comonadic version we use.}, which says
+the comonadic theorem we use.}, which says
 
 \begin{thm}[Beck, 1968]
     $A$ is an equivalence of categories $\mathsf{Gph} \simeq \Grp_{AC}$ 
@@ -765,13 +751,11 @@ the comonadic version we use.}, which says
 \end{thm}
 
 Condition $(1)$ is a classical result due to Droms 
-\cite{dromsIsomorphismsGraphGroups1987}, and sharpened by 
-TODO: cite the rational cohomology paper.
-
+\cite{dromsIsomorphismsGraphGroups1987}
 so it remains to check $(2)$. We're off to a good start since $\mathsf{Gph}$
 is complete%
 \footnote{one quick way to see this is to note that it's \emph{topologically concrete}
-in the sense of TODO: cite joy of cats}, and thus has all equalizers. 
+in the sense of \cite{adamekAbstractConcreteCategories2009}}, and thus has all equalizers. 
 In the next section we'll recall
 the definition of a coreflexive pair, and show that $A$ really does 
 preserve their equalizers.
@@ -871,9 +855,9 @@ It is well known that the problem
 ``is a finitely presented group $G$ isomorphic to a raag'' 
 is undecidable. Indeed, being isomorphic to a raag is a 
 \emph{Markov property} in the sense of Definition 3.1 in \cite{millerDecisionProblemsGroups1992}
-Then by Theorem 3.3 in the same paper, our question is undecidable.
+so Theorem 3.3 in the same paper guarantees this problem is undecidable.
 
-In the language of this paper, it is undecdiable whether a given
+In our language, it is undecidable whether a given
 (finitely presented) group is an $AC$-coalgebra. However, once we know
 that a group is an $AC$-coalgebra, we can already read off the combinatorics
 of our graph from just this data. Indeed, since $\mathsf{Gph}$ is equivalent
@@ -887,17 +871,13 @@ only the coalgebra structure $(G,\mathfrak{g})$. Since $A 1 = \mathbb{Z}$,
 vertices of $\Gamma$ are in bijection with cohomomorphisms 
 $(\mathbb{Z}, A \eta_1) \to (G, \mathfrak{g})$. 
 
-This also lets us check if a group homomorphism $f : G \to H$ is
-$A \varphi$ for some graph homomorphism, provided we know that $G$ 
-and $H$ are raags. If we're given the graphs $\Gamma$ and $\Delta$
-presenting $G$ and $H$ then this is easy -- we just ask if $f$ sends 
-each generator of $G$ to a generator of $H$. We would expect things to
-be just as easy if we're given the coalgebra stuctures 
-$\mathfrak{g} : G \to ACG$ and $\mathfrak{h} : H \to ACH$. Indeed this is the case.
+Moreover, this procedure (and the more general procedure checking if a 
+homomorphism $f : G \to H$ came from a homomorphism of graphs) is effective.
 
 \begin{thm}
   Given a group homomorphism $f : G \to H$ where $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$
-    are finitely presented $AC$-coalgebras, there is an algorithm deciding 
+    are finitely presented\footnote{Note that these presentations may have nothing to do with the underlying graphs} 
+    $AC$-coalgebras, there is an algorithm deciding 
     whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
     presenting $G$ and $H$.
 \end{thm}
@@ -919,7 +899,7 @@ $\mathfrak{g} : G \to ACG$ and $\mathfrak{h} : H \to ACH$. Indeed this is the ca
 
     commutes. Of course, we can check this on the (finitely many) generators
     of $G$, 
-    and the claim now follows from the fact that $ACH$ is a raag
+    and the claim now follows from the fact that $ACH$ is a raag%
     \footnote{We have to be a bit careful, since $CH$ is infinite, so that 
     $ACH$ is not finitely generated. However, the images of each generator 
     of $G$ will land in a finite subgraph of $CH$, so we can do our 
@@ -939,22 +919,15 @@ shown that the connection remains strong, by showing that the category of
 (reflexive) graphs embeds faithfully as an explicit subcategory of 
 the category of groups. 
 
-This lets us quickly answer questions about how relationships between 
-graphs can be promoted to relationships between groups. As a quick 
-example, we might have a retraction of groups 
-$A\Gamma \overset{\iota}{\to} A\Delta \overset{r}{\to} A\Gamma$ even if
-$\Gamma$ is not a retract of $\Delta$. However, if we require $\iota$
-and $r$ to be $AC$-cohomomorphisms, then we do guarantee this came from
-a retraction at the level of graphs.
-
 More speculatively, while this paper focused on the comonad $AC : \Grp \to \Grp$,
 we suspect there is a future role to be played by the monad 
 $CA : \mathsf{Gph} \to \mathsf{Gph}$. Indeed, Kim and Koberda conjecture 
-(TODO: Actually I think this is a theorem\ldots Double check this)
 in \cite{kimEmbedabilityRightangledArtin2013} that embeddings 
-$A\Gamma \to A \Delta$ are possible exactly when $\Gamma$ embeds into the
-\emph{extension graph} $\Delta^e$. This graph is closely related to the 
-monad graph $CA\Delta$, as we might expect since, by adjointness, 
+$A\Gamma \to A \Delta$ exist exactly when $\Gamma$ embeds into a 
+graph $\Delta^e$ which they call the \emph{extension graph}.
+This graph is closely related to the monad graph $CA\Delta$
+(indeed, it's the full subgraph of $CA\Delta$ on the conjugates of generators),
+as we might expect since
 maps $A\Gamma \to A \Delta$ are in natural bijection with maps 
 $\Gamma \to CA \Delta$. It would be interesting to see if category theoretic
 techniques can be brought to bear on this conjecture.

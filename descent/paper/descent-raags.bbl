@@ -5,6 +5,12 @@ Alireza Abdollahi.
 \newblock Characterization of {{SL}} (2, q) by its non-commuting graph.
 \newblock {\em Contributions to Algebra and Geometry}, 50(2):443--448, 2009.
 
+\bibitem{adamekAbstractConcreteCategories2009}
+Ji{\v r}{\'i} Ad{\'a}mek, Horst Herrlich, and George~E. Strecker.
+\newblock {\em Abstract and Concrete Categories: The Joy of Cats}.
+\newblock Dover Books on Mathematics. {Dover Publications}, {Mineola, N.Y},
+  dover ed edition, 2009.
+
 \bibitem{adamekAlgebraicTheoriesCategorical2011}
 Ji{\v r}{\'i} Ad{\'a}mek, E.~M. Vitale, and Ji{\v r}{\'i} Rosick{\'y}.
 \newblock {\em Algebraic Theories: A Categorical Introduction to General
@@ -46,7 +52,8 @@ Miko{\l}aj Boja{\'n}czyk.
 
 \bibitem{borceuxCategoriesStructures1994}
 Francis Borceux.
-\newblock {\em Categories and Structures}.
+\newblock {\em Categories and {{Structures}}}, volume~2 of {\em Handbook of
+  {{Categorical Algebra}}}.
 \newblock {Cambridge University Press}, {Cambridge}, 1994.
 
 \bibitem{bridsonSubgroupsRightangledArtin2013}
