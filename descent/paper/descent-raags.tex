@@ -399,10 +399,9 @@
   raags as those groups admitting a coalgebra structure. This characterization
   is as tight as possible in the sense that $A$ is an equivalence between
   the category of graphs and the category of groups-with-coalgebra-structure.
-  \end{mdframed}
 
-  TODO: say that roman letters will always be in $\mathsf{Grp}$ and 
-  greek letters will be in $\mathsf{Gph}$.
+    Anyways basically make THIS the abstract!
+  \end{mdframed}
 
   For us, a \important{Graph} $\Gamma$ with underlying vertex set $V$ is a 
   symmetric, reflexive relation on $V$. A \important{Graph Homomorphism} from 
@@ -433,7 +432,7 @@
   with the CAT(0) geometry of cube complexes. 
   See \cite{bestvinaGeometricGroupTheory2013} for an overview of this proof.
 
-  Interestingly, the combinatorial structure of $\Gamma$ is closely related to the 
+  Importantly, the combinatorial structure of $\Gamma$ is closely related to the 
   algebraic structure of $A \Gamma$, with useful information flow in both directions. 
   For instance, the cohomology of $A \Gamma$ is the \emph{exterior face algebra} 
   of $\Gamma$ \cite{sabalkaRigidityIsomorphismProblem2009},
@@ -450,15 +449,17 @@
   \cite{floresExpandersRightangledArtin2021, koberdaGeometryCombinatoricsRightAngled2022}.
   
   With this context, it is natural to ask whether the combinatorics
-  of graph homomorphisms are \emph{also} faithfully reflected in the 
-  group homomorphisms between raags. In particular, is there a purely 
-  algebraic way to recognize when a group homomorphism between raags is 
-  $A \varphi$ for some homomorphism $\varphi$ of their underlying graphs.
+  of graph homomorphisms are \emph{also} closely connected to the algebra of
+  group homomorphisms between raags. For a particular problem, one might ask 
+  if there is a purely algebraic way to recognize when a group homomorphism 
+  between raags is $A \varphi$ for some homomorphism $\varphi$ of their 
+  underlying graphs.
 
   The main result of this paper shows
   that the answer is \emph{yes} in a very strong way. The raag functor $A$ 
   is an equivalence between the category of graphs $\mathsf{Gph}$ and the 
-  category of groups equipped with a coalgebra structure\footnote{A kind of \important{descent data}}.
+  category of groups equipped with a coalgebra structure\footnote{A kind of \important{descent data}}
+  that we will describe shortly.
 
   Crucial for the proof of this theorem is the fact that 
   $A : \mathsf{Gph} \to \Grp$ has a right adjoint, the \important{Commutation Graph}
@@ -487,31 +488,24 @@
   With the commutation graph functor $C$ defined, we can state the main result
   of this paper:
 
-  (TODO: rewrite this to phrase things as an equivalence of categories?)
+  \newpage
 
   \begin{thm}
-      A group $G$ is isomorphic to a raag $A\Gamma$
-      if and only if there is a ``structure map''
-      $\mathfrak{g} : G \to ACG$ making a pair of diagrams
-      commute (see figure \ref{fig:coalg}). 
+    The functor $A : \mathsf{Gph} \to \mathsf{Grp}$ factors through 
+    the category $\mathsf{Grp}_{AC}$ of groups equipped with an $AC$-coalgebra,
+    and group homomorphisms that are moreover $AC$-cohomomorphisms. Moreover,
+    $A$ with this restricted codomain is an equivalence of categories.
 
-      Moreover, if $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$ are groups with structure 
-      maps, then a homomorphism $f : G \to H$ is of the form $A \varphi$ for 
-      some $\varphi$ a map of graphs if and 
-      only if it respects the structure maps in the sense that the 
-      following square commutes:
+    In particular, there is a purely (co)algebraic way to recognize the 
+    right angled artin groups amongst the groups 
+    (a group is a raag if and only if it admits an $AC$-coalgebra structure)
+    and the image of the graph homomorphisms amongst the raags 
+    (they're exactly the $AC$-cohomomorphisms).
+    This gives us a new tool for recognizing the ``nonstandard'' embeddings 
+    of raags as those embeddings which are \emph{not} cohomomorphisms.
 
-      \[
-          \begin{tikzcd}
-          G && H \\
-          \\
-          ACG && ACH
-          \arrow["f", from=1-1, to=1-3]
-          \arrow["ACf", from=3-1, to=3-3]
-          \arrow["{\mathfrak{g}}"{description}, from=1-1, to=3-1]
-          \arrow["{\mathfrak{h}}"{description}, from=1-3, to=3-3]
-          \end{tikzcd}
-      \]
+    Moreover, it's decidable (even efficient!) to check wheter any particular
+    group homomorphism is an $AC$-cohomomorphism.
   \end{thm}
 
   Our proof uses some category theory that might not be familiar to all
@@ -521,7 +515,8 @@
   category theory is not needed in order to apply our results, even though 
   it is instrumental in the proof. This section might also be of interest to 
   those learning category theory looking for toy examples of comonadic descent, 
-  since it is usually applied in more complicated situations than this. 
+  since it is usually applied in more complicated situations than this%
+  \footnote{Indeed, this is how the author came upon this result.}. 
   Lastly, in section \ref{computing} we show that this condition is 
   algorithmically checkable.
 
@@ -529,8 +524,8 @@
 \label{eg}
 
 We will use deep results from category theory in order to prove this theorem,
-but it's important to note that this result is still of use to those who 
-do not wish to learn about comonadic descent. Before seeing the proof,
+but it's important to note that this result requires no knowledge of the 
+proof in order to apply it. Before seeing the proof,
 let's see an example of how the result can be used to detect whether a group 
 homomorphism came from a graph homomorphism or not.
 
@@ -538,9 +533,11 @@ Let $\Gamma = \{ v \}$ and $\Delta = \{ w \}$ be two one-vertex graphs.
 Then $A \Gamma = \langle v \rangle$ and $A \Delta = \langle w \rangle$,
 and we want to detect when a homomorphism between these groups came from a
 homomorphism of their underlying graphs.
-First we need structure maps for $A\Gamma$ and $A \Delta$. For $A \Gamma$
-this is a map $\mathfrak{g} : A \Gamma \to ACA \Gamma$.
 
+First we need an $AC$-coalgebra structures on $A \Gamma$ 
+(respectively on $A \Delta$), that is, 
+we need a group homomorphism $\mathfrak{g} : A \Gamma \to ACA \Gamma$ 
+satisfying certain axioms (which are shown in figure \ref{fig:coalg}).
 Since $A \Gamma = \mathbb{Z}$, $CA \Gamma$ is the complete graph on 
 $\mathbb{Z}$ many vertices, each representing one of the $v^n \in A \Gamma$.
 So then $ACA\Gamma = \langle v^n \mid [v^n, v^m] = 1 \rangle$
@@ -548,8 +545,6 @@ is generated by \emph{formal symbols} named $v^n$. In particular,
 $v^2 v^3 \neq v^5$ in this group. The first is a word of length $2$, the latter
 is a word of length $1$, and there are no relations saying we can combine
 the symbols.
-
-(TODO: probably put the definition sooner, lol)
 
 It's not hard to see that $\mathfrak{g} : A \Gamma \to ACA \Gamma$ sending 
 $v \mapsto v^1$ is a coalgebra structure map%
@@ -562,7 +557,8 @@ $w \mapsto w^1$ is a structure map.
 Let's first look at a map that \emph{does} come from a graph homomorphism.
 Say, $f : \langle v \rangle \to \langle w \rangle$ given by $fv = w$.
 
-Then we want to consult the square
+Then $f$ is a cohomomorphism (see figure \ref{fig:cohom})
+if and only if it makes the following square commute:
 
 \[\begin{tikzcd}
 	{\langle v \rangle} && {\langle w \rangle} \\
@@ -574,8 +570,8 @@ Then we want to consult the square
 	\arrow["{w \mapsto w^1}"{description}, from=1-3, to=3-3]
 \end{tikzcd}\]
 
-which clearly commutes. This tells us that $f$ comes from a graph homomorphism,
-as indeed it did!
+and since this is quickly seen to commute, we learn that $f$ is of the form 
+$A \varphi$ for some graph homomorphism (as indeed it is).
 
 \bigskip
 
@@ -609,11 +605,8 @@ $f$ did \emph{not} come from a graph homomorphism!
 
 Importantly, this same approach works even if we merely know the 
 coalgebra structures on $G$ and $H$. Thus we don't need to know their
-underlying graphs\footnote{Though we will see later that we can effectively 
-recover the underlying graph from the coalgebra structure}! 
-(TODO: again, here we're kind of using the fact that $G$ has a coalgebra 
-structure iff it's $A \Gamma$ for some graph\ldots maybe we should mention 
-this explicitly somewhere?)
+underlying graphs\footnote{Though this is slightly disingenuous since one 
+can recover the underlying graph from the coalgebra structure.}! 
 
 \section{A Brief Review of Comonadic Descent}
 \label{review}
