@@ -924,29 +924,33 @@ is undecidable. Indeed, being isomorphic to a raag is a
 \emph{Markov property} in the sense of Definition 3.1 in \cite{millerDecisionProblemsGroups1992}
 so Theorem 3.3 in the same paper guarantees this problem is undecidable.
 
-In our language, it is undecidable whether a given
-(finitely presented) group is an $AC$-coalgebra. However, once we know
-that a group is an $AC$-coalgebra, we can already read off the combinatorics
-of our graph from just this data. Indeed, since $\mathsf{Gph}$ is equivalent
-to $\Grp_{AC}$, any categorical question about our graph can be answered 
-using only the abstract group $G$ with its structure morphism $\mathfrak{g} : G \to ACG$.
+Let's work with the next best thing, then, and suppose we're given a 
+finitely presented group $G$ and a promise that it \emph{is} a raag 
+(though we are not given its underlying graph). How much can we learn 
+about the combinatorics of its underlying graph from just $G$?
 
-For instance, given a graph $\Gamma$, its vertices are in bijection with
-graph homomorphisms $1 \to \Gamma$, where $1$ is the unique graph with one vertex.
-This tells us how to find the graph $\Gamma$ with $G \cong A\Gamma$ using
-only the coalgebra structure $(G,\mathfrak{g})$. Since $A 1 = \mathbb{Z}$,
-vertices of $\Gamma$ are in bijection with cohomomorphisms 
-$(\mathbb{Z}, A \eta_1) \to (G, \mathfrak{g})$. 
+First, we must find an $AC$-coalgebra structure on $G$. That is, a group 
+homomorphism $\mathfrak{g} : G \to ACG$ satisfying the conditions from 
+Figure \ref{coalg}. Since $ACG$ is a raag, it has solvable word problem, so 
+we can enumerate all homomorphisms $G \to ACG$ and check if they satisfy the 
+axioms. We will eventually find such a $\mathfrak{g}$ since we were 
+promised that $G$ is abstractly isomorphic to a raag, so this algorithm 
+terminates. Recall also that that if we happen to already know the underlying 
+graph that we have an explicit formula for the coalgebra structure. The unique 
+map sending each generator $\gamma \in A \Gamma$ to $[\gamma] \in ACA\Gamma$ 
+always works.
 
-Moreover, this procedure (and the more general procedure checking if a 
-homomorphism $f : G \to H$ came from a homomorphism of graphs) is effective.
+Once we know the coalgebra structures on $G$ and $H$, we can already 
+efficiently check whether a group homomorphism $f : G \to H$ came from a 
+graph homomorphism.
 
 \begin{thm}
-  Given a group homomorphism $f : G \to H$ where $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$
-    are finitely presented\footnote{Note that these presentations may have nothing to do with the underlying graphs} 
-    $AC$-coalgebras, there is an algorithm deciding 
-    whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
-    presenting $G$ and $H$.
+  Given a homomorphism $f : G \to H$ between finitely presented groups%
+  \footnote{Recall that these presentations may have nothing to do with the 
+  underlying graphs} where $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$ are 
+  moreover $AC$-coalgebras, then there is an algorithm deciding 
+  whether $f$ is $A \varphi$ for $\varphi$ a graph homomorphism of the graphs 
+  presenting $G$ and $H$.
 \end{thm}
 
 \begin{proof}
@@ -974,6 +978,36 @@ homomorphism $f : G \to H$ came from a homomorphism of graphs) is effective.
     has solvable word problem \cite{charneyIntroductionRightangledArtin2007}.
 \end{proof}
 
+\begin{cor}
+  There is an algorithm to recover $\Gamma$ from the mere isomorphism 
+  type $G$ of $A \Gamma$
+\end{cor}
+
+\begin{proof}
+  We know that the vertices of $\Gamma$ are in bijection with 
+  graph homomorphisms from the one-vertex graph $1$ to $\Gamma$. 
+  By the equivalence $\mathsf{Gph} \simeq \Grp_{AC}$, this amounts 
+  to cohomomorphisms $\mathbb{Z} \to G$, which one can explicitly 
+  calculate to be those elements $g \in G$ so that $\mathfrak{g}(g) = [g]$.
+
+  Since we know that the number of vertices of $\Gamma$ is equal to the 
+  rank of the abelianization $G^\text{ab}$, we can keep checking elements 
+  of $G$ to see if $\mathfrak{g}(g) = [g]$. This algorithm terminates 
+  because once we've found $\text{rk}(G^\text{ab})$ many such elements, 
+  we must have found all of them.
+
+  Finally, two elements $g_1, g_2$ represent adjacent elements in $\Gamma$ 
+  if and only if they commute in $G$, if and only if $[g_1]$ and $[g_2]$ 
+  commute in $ACG$, if and only if there is a cohomomorphism from 
+  $A(\cdot - \cdot)$ to $G$ sending the two vertices to $g_1$ and $g_2$, 
+  all of which amount to the same condition.
+\end{proof}
+
+\todo[inline]{I want to say somewhere that in general a coalgebra structure 
+``deconstructs'' elements. For instance, we can see here that the 
+coalgebra structure on $A\Gamma$ decomposes $g$ into the formal product 
+$[\gamma_1] \cdots [\gamma_n]$ of generators that made up $g$. This is a 
+useful insight, but I'm not sure where to put it\ldots} 
 
 \section{Conclusion}
 \label{conclusion}
@@ -999,6 +1033,11 @@ maps $A\Gamma \to A \Delta$ are in natural bijection with maps
 $\Gamma \to CA \Delta$. It would be interesting to see if category theoretic
 techniques can be brought to bear on this conjecture.
 
+\section*{Acknowledgements}
+
+The author would like to thank Matt Durham, Jacob Garcia, Thomas Koberda, and 
+Peter Samuelson for helpful conversations and encouragement during the 
+writing of this paper.
 
 
 \newpage
