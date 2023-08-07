@@ -332,7 +332,7 @@
 \newcommand{\fin}{ \subseteq_{\text{fin}} }
 
 % important words
-\newcommand*{\important}[1]{\textcolor{MidnightBlue}{#1}}
+\newcommand*{\important}[1]{\textcolor{MidnightBlue}{\emph{#1}}}
 
 % define a "danger" symbol for use when something surprising might occur
 % https://tex.stackexchange.com/questions/159669/
@@ -371,7 +371,7 @@
   \emph{right angled artin group} (raag). It's natural to ask if the 
   graph \emph{homomorphisms} are similarly related to the group homomorphisms 
   between two raags. The main result of this paper shows that there 
-  is a purely algebraic way to recognize the raags amongst the groups, and 
+  is a purely algebraic way to characterize the raags amongst groups, and 
   the graph homomorphisms amongst the group homomorphisms. 
   As a corollary we 
   present a new algorithm for recovering $\Gamma$ from its raag.
@@ -426,13 +426,13 @@
   
   With this context, it is natural to ask whether the combinatorics
   of graph homomorphisms are \emph{also} closely connected to the algebra of
-  group homomorphisms between raags. For a particular problem, one might ask 
+  group homomorphisms between raags. For a particular example, one might ask 
   if there is a purely algebraic way to recognize when a group homomorphism 
   between raags is $A \varphi$ for some homomorphism $\varphi$ of their 
   underlying graphs.
 
   The main result of this paper shows
-  that the answer is \emph{yes} in a very strong way. We prove that the raag 
+  that the answer is \emph{yes} in a very strong sense. We prove that the raag 
   functor $A$ is an equivalence between the category of graphs $\mathsf{Gph}$ 
   and the category of groups equipped with a 
   coalgebra structure\footnote{A kind of \important{descent data}}
@@ -450,7 +450,7 @@
   experts\footnote{It's implicit in the ``universal property of raags'' given 
   in \cite{koberdaRIGHTANGLEDARTINGROUPS}, for instance, and is stated as
   such in \cite{servatiusAutomorphismsGraphGroups1989}} but is not often 
-  mentioned. This is likely because of the common convention that graphs 
+  mentioned in the literature. This is likely because of the common convention that graphs 
   have no self loops, whereas the adjunction requires us to work with graphs
   with a self loop at each vertex. Of course, this does not appreciably 
   change the combinatorics, and we feel it is a small price to pay for the 
@@ -473,7 +473,7 @@
     The right angled artin group functor $A : \mathsf{Gph} \to \mathsf{Grp}$ is comonadic. 
 
     That is, $A$ is an equivalence of categories between $\Gph$ and 
-    the category $\mathsf{Grp}_{AC}$ of groups equipped with an $AC$-coalgebra,
+    the category $\mathsf{Grp}_{AC}$ of groups equipped with an $AC$-coalgebra structure,
     and group homomorphisms that are moreover $AC$-cohomomorphisms. 
   \end{thm*}
 
@@ -486,7 +486,7 @@
   Now merely unwinding the category theoretic definitions gives the following corollary:
 
 
-  \begin{cor*}
+  \begin{cor*}[Main Corollary]
     An abstract group $G$ is isomorphic to a raag if and only if it admits a 
     group homomorphism $\mathfrak{g} : G \to ACG$ so that the following two 
     diagrams commute:
@@ -576,8 +576,8 @@ generators $[v^n]$.
 
 It's not hard to see that the map 
 $\mathfrak{v} : \langle v \rangle \to AC \langle v \rangle$
-sending $v^n \mapsto [v^n]$ satisfies the axioms from the corollary in 
-Section \ref{intro}. The existence of such a $\mathfrak{v}$ tells us that 
+sending $v^n \mapsto [v^n]$ satisfies the axioms from the Main Corollary. 
+The existence of such a $\mathfrak{v}$ tells us that 
 $\langle v \rangle$ must be a raag, which it is%
 \footnote{More generally, if we know $\Gamma$, then the map 
 $A\Gamma \to AC(A\Gamma)$ sending each generator $\gamma \mapsto [\gamma]$ 
@@ -585,8 +585,8 @@ will always satisfy the axioms.}.
 
 \bigskip
 
-Let's first look at a map that \emph{does} come from a graph homomorphism.
-Say, $f : \langle v \rangle \to \langle w \rangle$ given by $fv = w$.
+Let's first look at a map that \emph{does} come from a graph homomorphism,
+for instance $f : \langle v \rangle \to \langle w \rangle$ given by $fv = w$.
 
 The corollary says to consult the following square:
 
@@ -609,8 +609,8 @@ $A \varphi$ for some graph homomorphism (as indeed it is).
 
 \bigskip
 
-Next, let's look at a map which \emph{doesn't} come from a graph homomorphism.
-Say, $f : \langle v \rangle \to \langle w \rangle$ given by $fv = w^2$.
+Next, let's look at a map which \emph{doesn't} come from a graph homomorphism,
+like $f : \langle v \rangle \to \langle w \rangle$ given by $fv = w^2$.
 
 Now our square is
 
@@ -644,10 +644,20 @@ underlying graphs to detect the graph homomorphisms%
 \footnote{Though we will see later that the coalgebra structure 
 actually lets us recover the underlying graphs as well.}! 
 
+As a last aside, let's mention what the structure map 
+$\mathfrak{g} : G \to ACG$ does. Elements of $ACG$ are 
+formal words in the elements of $G$. Then, intuitively, 
+$\mathfrak{g}(g) = [\gamma_1][\gamma_2]\cdots[\gamma_k]$ decomposes 
+$g$ as a formal product of the vertices making up $g$. This means 
+that we can recover the vertices of $\Gamma$ as those $g$ 
+so that $\mathfrak{g}(g) = [g]$ is a word of length $1$, as we prove 
+in Section \ref{computing}
+
+
 \section{A Brief Review of Comonadic Descent}
 \label{review}
 
-Recall that an adjunction
+Recall that an \important{adjunction}
 $(L : \catC \to \catD) \dashv (R : \catD \to \catC)$ is a 
 pair of functors equipped with a natural isomorphism
 
@@ -657,7 +667,7 @@ Of particular interest for us is the adjunction $A \dashv C$ specifying the
 universal property of raags.
 
 Recall moreover that a \important{comonad} $W : \catD \to \catD$ is a 
-functor equpiped with natural transformations $\epsilon : W \Rightarrow 1_\catD$ 
+functor equipped with natural transformations $\epsilon : W \Rightarrow 1_\catD$ 
 and $\delta : W \Rightarrow WW$ so that the following diagrams of 
 natural transformations commute:
 
@@ -711,7 +721,7 @@ which comes from gluing conditions in algebraic geometry,
 and is reviewed in this context in Section $4.7$ of 
 \cite{borceuxCategoriesStructures1994}.
 
-A \important{$W$-coalgebra} is an object
+Given a comonad $W$, a \important{$W$-coalgebra} is an object
 $G \in \catD$ equipped with an arrow $\mathfrak{g} : G \to WG$ so that the
 diagrams in Figure \ref{fig:coalg} commute. A \important{$W$-cohomomorphism}
 between coalgebras $(G,\mathfrak{g})$ and $(H,\mathfrak{h})$ is an arrow $f : G \to H$
@@ -831,7 +841,7 @@ This gives us our outline for proving the main theorem:
 \label{proof}
 
 A \important{coreflexive pair} is a pair of arrows with a common retract. 
-That is, a situation
+That is, a diagram
 
 \[\begin{tikzcd}
 	\Gamma && \Delta
@@ -871,16 +881,18 @@ with $\alpha g = \beta g$ is a word in those vertices $v$ with $\alpha v = \beta
     are $\Delta$-related. Thus $v$ and $w$ commute in $A \Gamma$ if and only 
     if their images under $\alpha$ and $\beta$ commute in $A \Delta$.
 
-    Now, in Section 2.3 of \cite{charneyIntroductionRightangledArtin2007},
-    Charney shows that for each $g \in A\Gamma$,
-    there is a minimal length word $g = w_0 w_1 \ldots w_k$ so that each 
-    $w_i$ is a word in the vertices of $\Gamma$, and each $w_i$ is of maximal 
-    length so that the letters in some fixed $w_i$ mutually commute.
+    In Theorem 3.9 of her thesis \cite{greenGraphProductsGroups1990}, 
+    Green proves that elements of $A \Gamma$ have a normal form as words 
+    in the vertices of $\Gamma$\footnote{In fact, she proves something slightly more general}.
+    Say that a word $w \in A \Gamma$ ``commutes with itself'' if every 
+    letter in $w$ commutes with every other letter in $w$. Then each
+    $g \in A \Gamma$ can be written as a product $g = w_0 w_1 \ldots w_k$ 
+    where each $w_i$ commutes with itself, and each $w_i$ is of 
+    maximal length with this property. Moreover, such a decomposition is 
+    unique up to commuting the letters in each $w_i$. See also Section 3.3 
+    of \cite{charneyIntroductionRightangledArtin2007} for a summary.
 
-    Moreover, this decomposition $g = w_0 w_1 \ldots w_k$ is unique up to 
-    commuting the letters in each fixed $w_i$.
-
-    Suppose that $\alpha g = \beta g$. Fix such a decomposition
+    Now suppose that $\alpha g = \beta g$. Fix such a normal form
     $g = w_0 w_1 \ldots w_k$, and look at 
 
     \[ (\alpha w_0) (\alpha w_1) \ldots (\alpha w_k) = (\beta w_0) (\beta w_1) \ldots (\beta w_k) \]
@@ -929,7 +941,7 @@ finitely presented group $G$ and a promise that it \emph{is} a raag
 (though we are not given its underlying graph). How much can we learn 
 about the combinatorics of its underlying graph from just $G$?
 
-First, we must find an $AC$-coalgebra structure on $G$. That is, a group 
+First, we must find an $AC$-coalgebra structure on $G$ -- that is, a group 
 homomorphism $\mathfrak{g} : G \to ACG$ satisfying the conditions from 
 Figure \ref{fig:coalg}. Since $ACG$ is a raag, it has solvable word problem, so 
 we can enumerate all homomorphisms $G \to ACG$ and check if they satisfy the 
@@ -955,7 +967,7 @@ graph homomorphism.
 
 \begin{proof}
     By the equivalence $\mathsf{Gph} \simeq \Grp_{AC}$, this amounts to 
-    checking if $f$ is a cohomomorphism. That is, whether the square
+    checking if $f$ is a cohomomorphism -- that is, whether the square
 
     \[
         \begin{tikzcd}
@@ -980,7 +992,7 @@ graph homomorphism.
 
 \begin{cor}
   There is an algorithm to recover $\Gamma$ from the mere isomorphism 
-  type $G$ of $A \Gamma$
+  type $G$ of $A \Gamma$.
 \end{cor}
 
 \begin{proof}
@@ -996,18 +1008,16 @@ graph homomorphism.
   because once we've found $\text{rk}(G^\text{ab})$ many such elements, 
   we must have found all of them.
 
-  Finally, two elements $g_1, g_2$ represent adjacent elements in $\Gamma$ 
-  if and only if they commute in $G$, if and only if $[g_1]$ and $[g_2]$ 
-  commute in $ACG$, if and only if there is a cohomomorphism from 
-  $A(\bullet - \bullet)$ to $G$ sending the two vertices to $g_1$ and $g_2$, 
-  all of which amount to the same condition.
+  Finally, we see that the following conditions are equivalent:
+  \begin{enumerate}
+    \item Two elements $g_1, g_2$ represent adjacent elements in $\Gamma$ 
+    \item $g_1$ and $g_2$ commute in $G$
+    \item $[g_1]$ and $[g_2]$ commute in $ACG$
+    \item There is a cohomomorphism from $A(\bullet - \bullet)$ to $G$ 
+      sending the two vertices to $g_1$ and $g_2$
+  \end{enumerate}
+  
 \end{proof}
-
-\todo[inline]{I want to say somewhere that in general a coalgebra structure 
-``deconstructs'' elements. For instance, we can see here that the 
-coalgebra structure on $A\Gamma$ decomposes $g$ into the formal product 
-$[\gamma_1] \cdots [\gamma_n]$ of generators that made up $g$. This is a 
-useful insight, but I'm not sure where to put it\ldots} 
 
 \section{Conclusion}
 \label{conclusion}
