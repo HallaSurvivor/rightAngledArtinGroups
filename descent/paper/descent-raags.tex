@@ -526,7 +526,7 @@
   \begin{rmk}
     In particular, there is a purely algebraic way to recognize the 
     raags amongst the groups and the image of the graph homomorphisms 
-    amongst the raags.
+    amongst the group homomorphisms between raags.
 
     This additionally gives us a new way to recover $\Gamma$ from the 
     abstract isomorphism class of $A \Gamma$, and shows it is 
@@ -808,7 +808,9 @@ the \emph{co}monadicity theorem we use.}, which says
       \item $L$ reflects isomorphisms (that is, whenever 
         $L \varphi : L\Gamma \cong L\Delta$ is an isomorphism in $\catD$, 
         then $\varphi$ must have already been an isomorphism in $\catC$)
-      \item $\catC$ has, and $L$ preserves, ``equalizers of coreflexive pairs''
+      \item $\catC$ has, and $L$ preserves, equalizers of coreflexive pairs%
+        \footnote{We will recall the definition of a coreflexive pair in 
+        section \ref{proof}}
   \end{enumerate}
 \end{thm*}
 
@@ -884,15 +886,18 @@ with $\alpha g = \beta g$ is a word in those vertices $v$ with $\alpha v = \beta
     In Theorem 3.9 of her thesis \cite{greenGraphProductsGroups1990}, 
     Green proves that elements of $A \Gamma$ have a normal form as words 
     in the vertices of $\Gamma$\footnote{In fact, she proves something slightly more general}.
-    Say that a word $w \in A \Gamma$ ``commutes with itself'' if every 
-    letter in $w$ commutes with every other letter in $w$. Then each
-    $g \in A \Gamma$ can be written as a product $g = w_0 w_1 \ldots w_k$ 
-    where each $w_i$ commutes with itself, and each $w_i$ is of 
-    maximal length with this property. Moreover, such a decomposition is 
-    unique up to commuting the letters in each $w_i$. See also Section 3.3 
-    of \cite{charneyIntroductionRightangledArtin2007} for a summary.
+    Following the exposition of Koberda \cite{koberdaRightangledArtinGroups2012} 
+    and others, we call a word $w \in A \Gamma$ \important{central} if the 
+    letters in $w$ pairwise commute. This happens if and only if the letters 
+    in $w$ form a clique in $\Gamma$. We say that $w$ is in 
+    \important{central form} if it is a product of central words 
+    $w = w_1 w_2 \cdots w_k$. If we stipulate that we are ``left greedy'' 
+    in the sense that no letter in $w_{i+1}$ commutes with each letter of $w_i$%
+    \footnote{so that we first make $w_1$ as long as possible, then make $w_2$ as long as possible, and so on},
+    then the central form is unique up to commuting the letters in each $w_i$.
+    See also Section 3.3 of \cite{charneyIntroductionRightangledArtin2007} for a summary.
 
-    Now suppose that $\alpha g = \beta g$. Fix such a normal form
+    Now suppose that $\alpha g = \beta g$. Fix such a central form
     $g = w_0 w_1 \ldots w_k$, and look at 
 
     \[ (\alpha w_0) (\alpha w_1) \ldots (\alpha w_k) = (\beta w_0) (\beta w_1) \ldots (\beta w_k) \]
