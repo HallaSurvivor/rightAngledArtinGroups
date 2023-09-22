@@ -1,10 +1,5 @@
 \begin{thebibliography}{10}
 
-\bibitem{abdollahiCharacterizationSLIts2009}
-Alireza Abdollahi.
-\newblock Characterization of {{SL}} (2, q) by its non-commuting graph.
-\newblock {\em Contributions to Algebra and Geometry}, 50(2):443--448, 2009.
-
 \bibitem{adamekAbstractConcreteCategories2009}
 Ji{\v r}{\'i} Ad{\'a}mek, Horst Herrlich, and George~E. Strecker.
 \newblock {\em Abstract and Concrete Categories: The Joy of Cats}.
@@ -37,10 +32,10 @@ Barbara Baumeister and Alexander Stein.
 \newblock Commuting graphs of odd prime order elements in simple groups, August
   2009.
 
-\bibitem{beckBeckMonadicityTheorem}
+\bibitem{beckBeckMonadicityTheorem1968}
 Jon~M. Beck.
 \newblock Beck {{Monadicity Theorem}}.
-\newblock https://ncatlab.org/nlab/files/Beck\_MonadicityTheorem.pdf.
+\newblock https://ncatlab.org/nlab/files/Beck\_MonadicityTheorem.pdf, 1968.
 
 \bibitem{bestvinaGeometricGroupTheory2013}
 Mladen Bestvina.
@@ -66,12 +61,6 @@ Francis Borceux, Stefaan Caenepeel, and George Janelidze.
 \newblock Monadic {{Approach}} to {{Galois Descent}} and {{Cohomology}}.
 \newblock {\em Theory and Applications of Categories}, 23:92--112, 2010.
 
-\bibitem{bridsonSubgroupsRightangledArtin2013}
-Martin~R. Bridson.
-\newblock On the subgroups of right-angled {{Artin}} groups and mapping class
-  groups.
-\newblock {\em Mathematical Research Letters}, 20(2):203--212, 2013.
-
 \bibitem{cameronGraphsDefinedGroups2022}
 Peter~Jlrm;. Cameron.
 \newblock Graphs defined on groups.
@@ -81,11 +70,6 @@ Peter~Jlrm;. Cameron.
 Ruth Charney.
 \newblock An introduction to right-angled {{Artin}} groups.
 \newblock {\em Geometriae Dedicata}, 125(1):141--158, July 2007.
-
-\bibitem{crispConjugacyProblemSubgroups2009}
-John Crisp, Eddy Godelle, and Bert Wiest.
-\newblock The conjugacy problem in subgroups of right-angled {{Artin}} groups.
-\newblock {\em Journal of Topology}, 2(3):442--460, 2009.
 
 \bibitem{culbertsonCategoricalFoundationBayesian2014}
 Jared Culbertson and Kirk Sturtz.
@@ -111,17 +95,6 @@ Carl Droms.
 \newblock Isomorphisms of graph groups.
 \newblock {\em Proceedings of the American Mathematical Society},
   100(3):407--407, March 1987.
-
-\bibitem{dromsSubgroupsGraphGroups1987}
-Carl Droms.
-\newblock Subgroups of graph groups.
-\newblock {\em Journal of Algebra}, 110(2):519--522, October 1987.
-
-\bibitem{floresAlgorithmicProblemsRightangled2019}
-Ram{\'o}n Flores, Delaram Kahrobaei, and Thomas Koberda.
-\newblock Algorithmic problems in right-angled {{Artin}} groups: {{Complexity}}
-  and applications.
-\newblock {\em Journal of Algebra}, 519:111--129, February 2019.
 
 \bibitem{floresExpandersRightangledArtin2021}
 Ram{\'o}n Flores, Delaram Kahrobaei, and Thomas Koberda.
@@ -159,24 +132,12 @@ Alexander Grothendieck.
   plats}.
 \newblock {\em S\'eminaire Bourbaki}, 5:299--327, 1958.
 
-\bibitem{haglundSpecialCubeComplexes2008}
-Fr{\'e}d{\'e}ric Haglund and Daniel~T. Wise.
-\newblock Special {{Cube Complexes}}.
-\newblock {\em Geometric and Functional Analysis}, 17(5):1551--1620, January
-  2008.
-
 \bibitem{hylandCategoryTheoreticUnderstanding2007}
 Martin Hyland and John Power.
 \newblock The {{Category Theoretic Understanding}} of {{Universal Algebra}}:
   {{Lawvere Theories}} and {{Monads}}.
 \newblock {\em Electronic Notes in Theoretical Computer Science}, 172:437--458,
   April 2007.
-
-\bibitem{kambitesCommutingElementsEmbeddings2009}
-Mark Kambites.
-\newblock On commuting elements and embeddings of graph groups and monoids.
-\newblock {\em Proceedings of the Edinburgh Mathematical Society},
-  52(1):155--170, February 2009.
 
 \bibitem{kimEmbedabilityRightangledArtin2013}
 Sang-hyun Kim and Thomas Koberda.
@@ -188,10 +149,6 @@ Sang-Hyun Kim and Thomas Koberda.
 \newblock The geometry of the curve graph of a right-angled {{Artin}} group.
 \newblock {\em International Journal of Algebra and Computation},
   24(02):121--169, March 2014.
-
-\bibitem{koberdaRIGHTANGLEDARTINGROUPS}
-Thomas Koberda.
-\newblock Right-{{Angled Artin Groups}} and {{Their Subgroups}}.
 
 \bibitem{koberdaRightangledArtinGroups2012}
 Thomas Koberda.
@@ -212,22 +169,11 @@ Tom Leinster.
 \newblock Codensity and the {{Ultrafilter Monad}}.
 \newblock {\em Theory and Applications of Categories}, 28(13):332--370, 2013.
 
-\bibitem{lohreySubmonoidRationalSubset2008}
-Markus Lohrey and Benjamin Steinberg.
-\newblock The submonoid and rational subset membership problems for graph
-  groups.
-\newblock {\em Journal of Algebra}, 320(2):728--755, July 2008.
-
 \bibitem{meierBieriNeumannStrebelInvariantsGraph1995}
 John Meier and Leonard Vanwyk.
 \newblock The {{Bieri-Neumann-Strebel Invariants}} for {{Graph Groups}}.
 \newblock {\em Proceedings of the London Mathematical Society},
   s3-71(2):263--280, September 1995.
-
-\bibitem{metaftsisProfiniteTopologyRightangled2008}
-V.~Metaftsis and E.~Raptis.
-\newblock On the profinite topology of right-angled {{Artin}} groups.
-\newblock {\em Journal of Algebra}, 320(3):1174--1181, August 2008.
 
 \bibitem{millerDecisionProblemsGroups1992}
 Charles~F. Miller.
@@ -258,12 +204,6 @@ J.J.M.M. Rutten.
 Lucas Sabalka.
 \newblock On rigidity and the isomorphism problem for tree braid groups.
 \newblock {\em Groups, Geometry, and Dynamics}, pages 469--523, 2009.
-
-\bibitem{sacerdoteUndecidableProblemsGroup1972}
-George~S. Sacerdote.
-\newblock Some undecidable problems in group theory.
-\newblock {\em Proceedings of the American Mathematical Society},
-  36(1):231--231, January 1972.
 
 \bibitem{servatiusAutomorphismsGraphGroups1989}
 Herman Servatius.
