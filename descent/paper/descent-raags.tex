@@ -558,7 +558,7 @@ It's important to note that applying this result requires no knowledge of
 the deep category theory used in its proof. Let's begin with a simple example
 of how the result can be used to detect whether a group 
 homomorphism came from a graph homomorphism or not. This is meant only to 
-illustrate the technique, rather than to solve a novel problem. In section
+illustrate the technique, rather than to solve a novel problem. In Section
 \ref{computing} we give a more interesting example.
 
 Let $\Gamma = \{ v \}$ and $\Delta = \{ w \}$ be two one-vertex graphs.
@@ -619,7 +619,9 @@ Now our square is
 \[\begin{tikzcd}
 	{\langle v \rangle} && {\langle w \rangle} \\
 	\\
-	{\langle v^n \mid [v^n,v^m] = 1 \rangle} && {\langle w^n \mid [w^n, w^m] = 1 \rangle}
+  {\langle [v^n] \mid [v^n][v^m] = [v^m][v^n] \rangle} 
+  && 
+  {\langle [w^n] \mid [w^n][w^m] = [w^m][w^n] \rangle}
 	\arrow["{v \mapsto w^2}", from=1-1, to=1-3]
   \arrow["{[v^n] \mapsto [w^{2n}]}", from=3-1, to=3-3]
 	\arrow["{v \mapsto [v^1]}"{description}, from=1-1, to=3-1]
@@ -812,7 +814,7 @@ the \emph{co}monadicity theorem we use.}, which says
         then $\varphi$ must have already been an isomorphism in $\catC$)
       \item $\catC$ has, and $L$ preserves, equalizers of coreflexive pairs%
         \footnote{We will recall the definition of both equalizers and 
-        coreflexive pairs in section \ref{proof}}
+        coreflexive pairs in Section \ref{proof}}
   \end{enumerate}
 \end{thm*}
 
@@ -1225,7 +1227,7 @@ Now if we consider $\psi$, we want to check the following square:
 	\arrow["{[x_4 x_1^{-1}][x_1] \mapsto [y_3 \ y_1^{-1}][y_1]}"', from=3-1, to=3-5]
 \end{tikzcd}\]
 
-As in the example from section \ref{eg}, since $[y_3 y_1^{-1}][y_1] \neq [y_3]$,
+As in the example from Section \ref{eg}, since $[y_3 y_1^{-1}][y_1] \neq [y_3]$,
 this square \emph{doesn't} commute, which tells us that $\psi$ was not 
 induced from a graph homomorphism!
 
