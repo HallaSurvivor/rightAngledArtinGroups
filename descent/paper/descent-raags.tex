@@ -1113,6 +1113,14 @@ and we're promised both $G$ and $H$ are raags:
 %
 % relations 11 and 22 force y2=y4=e 
 % relations 12 and 21 show y2/y4 are the commutators as above
+%
+% This means that phi is the map induced by 
+% a |--> q 
+% b |--> r
+%
+% and psi is the map induced by 
+% a |--> qr^{-1}
+% b |--> r
 %%%%
 
 Then the algorithm described at the start of this section will terminate and 
@@ -1229,18 +1237,24 @@ and Corollary \ref{cor:recover-graph} tells us how!
 We now that the abelianization of $G$ has rank $2$. 
 This tells us that we're looking for $2$ elements $a,b \in G$ so 
 that $\mathfrak{g}(a) = [a]$ and $\mathfrak{g}(b) = [b]$. An exhaustive 
-search quickly finds $a = x_1$ and $b = y_4 y_1^{-1}$ do the job. Now 
+search quickly finds $a = x_1$ and $b = x_4 x_1^{-1}$ do the job. Now 
 since $a$ and $b$ commute in $G$, they must be joined by an edge so that 
 
 \[ G = A(\bullet - \bullet) .\]
 
 Similarly, the abelianization of $H$ has rank $3$, so we want three elements 
 $p,q,r \in H$ with $\mathfrak{h}(p) = [p]$, $\mathfrak{h}(q) = [q]$, and 
-$\mathfrak{h}(r) = [r]$. Again, we find $p = x_1$, $q = x_3$, and $r = x_5$ 
+$\mathfrak{h}(r) = [r]$. Again, we find $p = y_1$, $q = y_3$, and $r = y_5$ 
 work, and we can check that $p$ and $q$ commute, $q$ and $r$ commute, but 
 $p$ and $r$ don't commute, so that 
 
 \[ H = A(\bullet - \bullet - \bullet) .\]
+
+From here, we can see that $\varphi$ is just the map extending
+$\varphi(a)=p$ and $\varphi(b)=q$ 
+(which, as predicted, \emph{does} come from a graph homomorphism) while 
+$\psi$ is the map extending $\psi(a)=p$ and $\psi(b)=qp^{-1}$ 
+(which, as predicted does \emph{not} come from a graph homomorphism).
 
 \section{Conclusion}
 \label{conclusion}
@@ -1276,7 +1290,8 @@ embeddings $\Gamma \to CA \Delta$ which transpose to an embedding of raags.
 
 The author would like to thank Matt Durham, Jacob Garcia, Thomas Koberda, and 
 Peter Samuelson for helpful conversations and encouragement during the 
-writing of this paper. Additionally, the author would like to thank 
+writing of this paper, as well as the referee for many helpful comments. 
+Additionally, the author would like to thank 
 Carl-Fredrik Nyberg-Brodda for a preliminary reading, and informing them 
 about the Casals-Ruiz paper falsifying the extension graph conjecture.
 
