@@ -1084,6 +1084,37 @@ and we're promised both $G$ and $H$ are raags:
   \right \rangle
 \]
 
+%%%%
+% Just in case I need this one day, I want to put it in the latex file!
+% I haven't double checked these, I'm just reading them off the sheet of 
+% paper from a day or two ago when I came up with these examples!
+% In case you REALLY need them, you'll want to use this as a guide to 
+% make sure everything works out, and you're not off by an inverse somewhere.
+% But even having this amount of a guide will help a LOT, haha
+%
+% G = <x1, x2, x3, x4> is the raag A(a-b). 
+%
+% x1 = b 
+% x2 = extra variable
+% x3 = [a,b]^{-1}
+% x4 = ab
+% 
+% relation 1 says x3 = [a,b]^{-1}
+% relations 2 and 3 force x2 = x3 = e
+%
+%
+% H = <y1, y2, y3, y4, y5> is the raag A(p-q-r)
+%
+% y1 = r 
+% y2 = [p,q]^{-1}
+% y3 = q
+% y4 = [q,r]
+% y5 = p
+%
+% relations 11 and 22 force y2=y4=e 
+% relations 12 and 21 show y2/y4 are the commutators as above
+%%%%
+
 Then the algorithm described at the start of this section will terminate and 
 provide the $AC$-coalgebra structures, given on generators by
 
@@ -1124,7 +1155,7 @@ These are given on generators by
   \psi(x_1) &= y_1 \\
   \psi(x_2) &= y_2 \\
   \psi(x_3) &= y_2 y_4 \\
-  \psi(x_4) &= y_1^2
+  \psi(x_4) &= y_3
 \end{align*}
 \end{minipage}
 
@@ -1180,13 +1211,13 @@ Now if we consider $\psi$, we want to check the following square:
 	G &&&& H \\
 	\\
 	ACG &&&& ACH
-	\arrow["{x_4 \mapsto y_1^2}", from=1-1, to=1-5]
+	\arrow["{x_4 \mapsto y_3}", from=1-1, to=1-5]
 	\arrow["{x_4 \mapsto [x_4 x_1^{-1}][x_1]}"{description}, from=1-1, to=3-1]
-	\arrow["{y_1^2 \mapsto [y_1]^2}"{description}, from=1-5, to=3-5]
-	\arrow["{[x_4 x_1^{-1}][x_1] \mapsto [y_1^2 \ y_1^{-1}][y_1]}"', from=3-1, to=3-5]
+	\arrow["{y_3 \mapsto [y_3]}"{description}, from=1-5, to=3-5]
+	\arrow["{[x_4 x_1^{-1}][x_1] \mapsto [y_3 \ y_1^{-1}][y_1]}"', from=3-1, to=3-5]
 \end{tikzcd}\]
 
-As in the example from section \ref{eg}, since $[y_1^2] \neq [y_1]^2$, 
+As in the example from section \ref{eg}, since $[y_3 y_1^{-1}][y_1] \neq [y_3]$,
 this square \emph{doesn't} commute, which tells us that $\psi$ was not 
 induced from a graph homomorphism!
 
