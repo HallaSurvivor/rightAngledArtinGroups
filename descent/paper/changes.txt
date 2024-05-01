@@ -1,0 +1,43 @@
+In addition to several small typos that were fixed 
+(some pointed out by the referee, others caught in 
+revision), here are the main changes:
+
+1. On page 3, following the referee suggestion,
+we replaced the vague "map" with the more 
+precise "homomorphism", and clarified that 
+this takes place in the class of all groups.
+
+2. On page 6, following the referee suggestion,
+we clarified that the functors in our adjunction 
+are covariant.
+
+3. On pages 9 and 10, following the referee suggestion,
+we clarified the definition of coreflexive pair 
+and added a quick definition of an equalizer.
+
+4. On pages 11 and 12, following the referee suggestion, 
+we clarified that the algorithm expects a finite presentation 
+of a group, rather than a nebulous "isomorphism type".
+
+5. On page 12, inspired by a referee remark, 
+we added a sentence clarifying that we don't need to 
+explicitly ask for G and H to be raags in the statement 
+of theorem 2. Indeed, the existence of an AC-coalgebra structure
+guarantees that a group is a raag, and we already require this 
+in the theorem statement. Additionally we added a footnote 
+saying that the coalgebra structure and the underlying graph 
+contain exactly the same information, and we can recover one 
+from the other.
+
+5. On page 12, we removed a sentence flagged by the referee 
+describing the coalgebra structure in case we know the 
+underlying graph. This is actually the same information as 
+presented in the last paragraph of section 2, so it wasn't 
+worth keeping.
+
+6. The most substantial change was the addition of a 
+more difficult example, worked out in full, at the 
+end of Section 5. The referee's suggestion to include 
+this example was extremely helpful, and I think this 
+new example does a much better job showing the utility 
+of this machinery. 
